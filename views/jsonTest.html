@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jsonTest</title>
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous">
+    </script>
+
+    <script src="../public/javascripts/json-test.js">
+
+    </script>
+    <style>
+        .reportTable {
+            border: 1px solid darkgrey;
+            margin: auto ;
+            align-content: center;
+        }
+        .reportTable td, th {
+            border: 1px solid grey;
+            padding: 2px;
+            text-align: center;
+        }
+
+        .reportDiv {
+            margin: auto;
+            align-content: center
+        }
+        .reportTable tr:nth-child(even) {
+            background-color: rgb(231, 231, 231);
+        }
+        .reportTable tr:hover {
+            background-color:darkkhaki;
+        }
+        .reportTable tr:nth-last-child() {
+            background-color: grey;
+            font-style: italic;
+            font-size: 1.5em
+        }
+
+
+
+
+        .reportTable th {
+            border: 1px solid grey;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            background-color: darkcyan;
+            color: rgb(245, 245, 245);
+        }
+
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="datasheet"  class="reportDiv">
+
+        <h1>Ai TABLE 1</h1>
+
+        <table class="reportTable" id="dataEco1">
+
+        </table>
+
+                <h1>Ai TABLE 2</h1>
+     
+        <table  class="reportTable" id="dataEco2">
+
+        </table>
+
+    </div>
+
+</body>
+</html>

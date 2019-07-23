@@ -4,7 +4,7 @@
   "private": true,
   "node-remote": "95.158.47.15",
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node www"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",

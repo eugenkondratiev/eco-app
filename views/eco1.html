@@ -9,7 +9,12 @@
         </head>
  
     <body>
-    
+        <div class="content">
+        <h1>Котельная 1. Текущие данные</h1>
+                <table class="datatable" id="dataEco1">
+                        <tr> <th></th> <th>Параметр</th> <th>ед.</th> <th>Значение</th> </tr>
+                </table>
+<!--			
         <h1>Котельная 1. Текущие данные</h1>
         <p ><span class="aiLabel">Тепло за прошлые сутки, Гкал.   </span><span class="value" id="Eco1_lastDayW_38"> NaN </span></p>
         <p ><span class="aiLabel">Производимое тепло, Гкал/ч </span><span class="value" id="Eco1_W_38"> NaN </span></p>
@@ -24,10 +29,13 @@
         <p ><span class="aiLabel">Разрежение в топке, Па </span><span class="value" id="Eco1_P_36"> NaN </span></p>
         <p ><span class="aiLabel">ПЧ дымососа, Гц    </span><span class="value" id="Eco1_EI_86"> NaN </span></p>
         <p ><span class="aiLabel">Давление воды в котле, МПа.   </span><span class="value" id="Eco1_P_19"> NaN </span></p>
-
-        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+-->
+        </div>
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
         <!-- <script src="/scripts/client.js" ></script> -->
+        <script src="javascripts/eco1.js"></script>
+
         <script>
 
                     // пока так. потом с express сделаю удаенное подключение скриптов и css
@@ -47,7 +55,7 @@
                             socket.on('newdata', function(message) {
                                 const dataM340 = JSON.parse(message);
 
-                                document.getElementById('Eco1_lastDayW_38').innerText = dataM340[48];
+                                document.getElementById('Eco1_LastDayW38').innerText = dataM340[48];
                                 document.getElementById('Eco1_T_10').innerText = dataM340[47];
                                 document.getElementById('Eco1_P_22').innerText = dataM340[46];
                                 document.getElementById('Eco1_P_21').innerText = dataM340[45];
@@ -66,5 +74,7 @@
        </script>
         <!-- <script src="scripts/client-eco2.js"></script> -->
         <script src="javascripts/test.js"></script>
+        <script src="javascripts/main-menu.js"></script>
+
     </body>
 </html>

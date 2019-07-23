@@ -18,7 +18,19 @@ app.set('port', port);
 /**
  * Create HTTP server.
  */
+const ais = require('./public/data/read-parameters');
+ais.getLists()
+.then(list => new Promise((resolve, reject) => {
+  resolve(list)
+}))
+.catch( err => {
+  console.log(err);
+})
+.finally( list => {
+ 
 
+})
+ 
 var server = http.createServer(app);
 
 /**

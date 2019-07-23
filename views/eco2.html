@@ -9,26 +9,37 @@
     </head>
  
     <body>
-        <h1>Котельная 2. Текущие данные</h1>
-
-        <p ><span class="aiLabel">Производимое тепло, Гкал/ч </span><span class="value" id="W_38"> NaN </span></p>
-        <p ><span class="aiLabel">Расход воды, м3/час </span><span class="value" id="Q_39"> NaN </span></p>
-        <p ><span class="aiLabel">Разрежение в топке, Па </span><span class="value" id="P_21"> NaN </span></p>
-        <p ><span class="aiLabel">Давление в коллекторе, см.вд.ст.   </span><span class="value" id="P_34"> NaN </span></p>
-        <p ><span class="aiLabel">ПЧ дымососа, Гц    </span><span class="value" id="EI_86"> NaN </span></p>
-        <p ><span class="aiLabel">ПЧ дутьевого вентилятора, Гц    </span><span class="value" id="EI_83"> NaN </span></p>
-        <p ><span class="aiLabel">ПЧ шнека-питателя, Гц    </span><span class="value" id="EI_74"> NaN </span></p>
-        <p ><span class="aiLabel">Давление на зоне 1, Па    </span><span class="value" id="P_32"> NaN </span></p>
-        <p ><span class="aiLabel">Давление на зоне 2, Па    </span><span class="value" id="P_31"> NaN </span></p>
-        <p ><span class="aiLabel">Температура оброротной воды, °С    </span><span class="value" id="T_5"> NaN </span></p>
-        <p ><span class="aiLabel">Температура горячей воды, °С    </span><span class="value" id="T_3"> NaN </span></p>
-        <p ><span class="aiLabel">Температура дымовых газов до ЭКО, °С    </span><span class="value" id="T_10"> NaN </span></p>
-        <p ><span class="aiLabel">Температура дымовых газов перед дымососом, °С    </span><span class="value" id="T_4"> NaN </span></p>
-        <p ><span class="aiLabel">Давление воды в котле, МПа.   </span><span class="value" id="P_19"> NaN </span></p>
-        <p ><span class="aiLabel">Тепло за прошлые сутки, Гкал.   </span><span class="value" id="lastDayW_38"> NaN </span></p>
-
+    <div class="content">
+           <div id="datasheet"  class="reportDiv">
+           <h1>Котельная 2. Текущие данные</h1>
+            <table class="datatable" id="dataEco2">
+                    <tr> <th></th> <th>Параметр</th> <th>ед.</th> <th>Значение</th> </tr>
+            </table>
+        </div>
+        <div>         
+            <!--  
+                    <p ><span class="aiLabel">Производимое тепло, Гкал/ч </span><span class="value" id="W_38"> NaN </span></p>
+                    <p ><span class="aiLabel">Расход воды, м3/час </span><span class="value" id="Q_39"> NaN </span></p>
+                    <p ><span class="aiLabel">Разрежение в топке, Па </span><span class="value" id="P_21"> NaN </span></p>
+                    <p ><span class="aiLabel">Давление в коллекторе, см.вд.ст.   </span><span class="value" id="P_34"> NaN </span></p>
+                    <p ><span class="aiLabel">ПЧ дымососа, Гц    </span><span class="value" id="EI_86"> NaN </span></p>
+                    <p ><span class="aiLabel">ПЧ дутьевого вентилятора, Гц    </span><span class="value" id="EI_83"> NaN </span></p>
+                    <p ><span class="aiLabel">ПЧ шнека-питателя, Гц    </span><span class="value" id="EI_74"> NaN </span></p>
+                    <p ><span class="aiLabel">Давление на зоне 1, Па    </span><span class="value" id="P_32"> NaN </span></p>
+                    <p ><span class="aiLabel">Давление на зоне 2, Па    </span><span class="value" id="P_31"> NaN </span></p>
+                    <p ><span class="aiLabel">Температура оброротной воды, °С    </span><span class="value" id="T_5"> NaN </span></p>
+                    <p ><span class="aiLabel">Температура горячей воды, °С    </span><span class="value" id="T_3"> NaN </span></p>
+                    <p ><span class="aiLabel">Температура дымовых газов до ЭКО, °С    </span><span class="value" id="T_10"> NaN </span></p>
+                    <p ><span class="aiLabel">Температура дымовых газов перед дымососом, °С    </span><span class="value" id="T_4"> NaN </span></p>
+                    <p ><span class="aiLabel">Давление воды в котле, МПа.   </span><span class="value" id="P_19"> NaN </span></p>
+                    <p ><span class="aiLabel">Тепло за прошлые сутки, Гкал.   </span><span class="value" id="lastDayW_38"> NaN </span></p>
+            -->
+        </div>
+    </div>
         <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+        <script src="javascripts/eco2.js"></script>
+
         <!-- <script src="/scripts/client.js" ></script> -->
         <script>
 
@@ -47,21 +58,21 @@
                             socket.on('newdata', function(message) {
                                  const dataM340 = JSON.parse(message);
 
-                                document.getElementById('W_38').innerText = dataM340[25];
-                                document.getElementById('Q_39').innerText = dataM340[26];
-                                document.getElementById('P_21').innerText = dataM340[35];
-                                document.getElementById('P_34').innerText = dataM340[32];
-                                document.getElementById('EI_86').innerText = dataM340[17];
-                                document.getElementById('EI_83').innerText = dataM340[16];
-                                document.getElementById('EI_74').innerText = dataM340[14];
-                                document.getElementById('P_32').innerText = dataM340[31];
-                                document.getElementById('P_31').innerText = dataM340[30];
-                                document.getElementById('P_19').innerText = dataM340[34];
-                                document.getElementById('T_5').innerText = dataM340[5];
-                                document.getElementById('T_3').innerText = dataM340[3];
-                                document.getElementById('T_4').innerText = dataM340[19];
-                                document.getElementById('T_10').innerText = dataM340[8];
-                                document.getElementById('lastDayW_38').innerText = dataM340[49];
+                                document.getElementById('Eco2_W_38').innerText = dataM340[25];
+                                document.getElementById('Eco2_Q_39').innerText = dataM340[26];
+                                document.getElementById('Eco2_P_21').innerText = dataM340[35];
+                                document.getElementById('Eco2_P_34').innerText = dataM340[32];
+                                document.getElementById('Eco2_EI_86').innerText = dataM340[17];
+                                document.getElementById('Eco2_EI_83').innerText = dataM340[16];
+                                document.getElementById('Eco2_EI_74').innerText = dataM340[14];
+                                document.getElementById('Eco2_P_32').innerText = dataM340[31];
+                                document.getElementById('Eco2_P_31').innerText = dataM340[30];
+                                document.getElementById('Eco2_P_19').innerText = dataM340[34];
+                                document.getElementById('Eco2_T_5').innerText = dataM340[5];
+                                document.getElementById('Eco2_T_3').innerText = dataM340[3];
+                                document.getElementById('Eco2_T_4').innerText = dataM340[19];
+                                document.getElementById('Eco2_T_10').innerText = dataM340[8];
+                                document.getElementById('Eco2_LastDayW38').innerText = dataM340[49];
                             
                            // $('#value3').text(dataM340[35]);
                             // $('#value3').innerText = dataM340;
@@ -69,5 +80,6 @@
          </script>
         <!-- <script src="scripts/client-eco2.js"></script> -->
         <script src="javascripts/test.js"></script>
+		<script src="javascripts/main-menu.js"></script>
     </body>
 </html>

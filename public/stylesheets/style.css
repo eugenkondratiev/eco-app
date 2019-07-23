@@ -1,6 +1,57 @@
 body {
-  padding: 5px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding: 0;
+  margin : 0;
+  font:"Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.datatable {
+  border: 1px solid darkgrey;
+  margin: auto ;
+  
+  align-content: center;
+  /* width: max-content */
+}
+
+.datatable td, th {
+  border: 1px solid grey;
+  padding: 1px;
+  text-align: center;
+  margin-block-start: 0.5em;
+  margin-block-end: 0.5em
+}
+
+.reportDiv {
+             margin-top: 4em; 
+            margin-left: 10px;
+            align-content: center
+
+}
+.datatable tr:nth-child(even) {
+  background-color: rgb(231, 231, 231);
+}
+.datatable tr:hover {
+  background-color:darkkhaki;
+}
+.datatable tr:nth-last-child() {
+  background-color: grey;
+  font-style: italic;
+  font-size: 1.5em
+}
+
+
+
+
+.datatable th {
+  border: 1px solid grey;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: darkcyan;
+  color: rgb(245, 245, 245);
+}
+
+h1 {
+  text-align: center;
+  color: darkblue
 }
 
 a {
@@ -12,12 +63,80 @@ p {
   margin-block-end: 0.5em
 }
 
-.value {
+.datatable  tr td[class=value] {
   font-family: Arial, Helvetica, sans-serif;
   font-size: larger;
-  background-color: rgb(189, 193, 196)
+  font-style: bold;
+  /* background-color: rgb(189, 193, 196) */
+  text-align: right;
+  /* align: right; */
+  padding-right: 0.5em;
+}
+.datatable  tr td[class=aiLabel]{
+  border: 1px solid grey;
+  padding: 1px;
+ color: darkblue;
+  text-align: left;
+  /* align:left; */
+  padding-left: 0.5em
+}
+/*==================menu============================*/
+#topmenu {
+  /* width: 920px; */
+  /* text-transform: uppercase; */
+  background-color: darkcyan;
+  text-align: center;
+  line-height: 20px;
+  overflow: hidden;
+  align-content: center;
+   /*position: fixed;  */
+  /* top: 0;  */
+  width: 100%; 
 }
 
-.aiLabel {
-  color: darkblue
+#topmenu.fixed {
+    position:fixed;
+    top:0; left:0;
+    width:100%;
 }
+#topmenu.ecoMenu {
+    width:100%;
+    /* width: 920px; */
+}
+
+        #topmenu ul {
+          padding: 0;
+          margin: 0;
+          
+        }
+        #topmenu li {
+          display: inline;
+          list-style: none;
+            margin: 0;
+          /* margin: 0.2em 0.8em */
+        }
+
+        #topmenu li a{
+            border: 1px solid grey;
+            background-color: darkcyan;
+            float: left;
+            display: block;
+            /* padding: 0 0 1em 0; */
+            padding: 0.8em 2em;
+           /* min-width: 100px;*/
+           text-decoration: none;
+           color: lightgray;
+
+        }
+        #topmenu li a:hover {
+          background-color: rgb(3, 161, 161);
+          color: burlywood
+
+        }
+        .content {
+            margin-top: 1em; 
+            margin-left: 5px;
+            align-content: center
+        }
+
+/*==================menu============================*/
