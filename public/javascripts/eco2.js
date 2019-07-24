@@ -45,6 +45,6 @@ $(function() {
         //     $('#dataEco1').append(getAiRow(ai, data.eco1[ai], "Eco1"));
         // }
         // $('#data').text(data.parameters.eco1[0]);
-        // $('#data').val((data.eco1);
+ 
     });
 });
