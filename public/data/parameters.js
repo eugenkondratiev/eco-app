@@ -39,8 +39,7 @@ class ParametersLists {
                         new1[el].description = eco1[el].description;
                         new1[el].units = eco1[el].units;
                         new1[el].index = eco1[el].index === undefined ? -1 : eco1[el].index;
-                    });
-                    
+                    });                   
                     parameters.eco2.forEach( el => {
                         new2[el] = {};
                         new2[el].description = eco2[el].description;
@@ -51,18 +50,11 @@ class ParametersLists {
                     this._lists.parameters = parameters;
                     this._lists.eco1 = new1;
                     this._lists.eco2 = new2;
-
-                     //console.log("eco1 : \n", eco1);
-                    //  console.log("===============new parameters 1 =======================: \n", new1);
-                    //  console.log("===============new parameters 2 =======================: \n", new2);
-                    // console.log("===============parameters 1 =======================: \n", parameters);
-                    //  console.log("T_1 ------------------: \n", t1);
                      ;   
                 } catch (error) {
                     console.log(error.message);
                     
                 }      
-                // console.log("dataAis : \n",dataAis);
             });
         });
         
