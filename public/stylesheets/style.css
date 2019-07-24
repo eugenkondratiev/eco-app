@@ -107,6 +107,7 @@ p {
         #topmenu ul {
           padding: 0;
           margin: 0;
+		  display: inline-block;
           
         }
         #topmenu li {
@@ -133,10 +134,15 @@ p {
           color: burlywood
 
         }
-        .content {
+
+.content {
             margin-top: 1em; 
             margin-left: 5px;
             align-content: center
-        }
+}
 
+.content p{
+            margin-left: 3em;
+          /*  align-content: center*/
+}
 /*==================menu============================*/

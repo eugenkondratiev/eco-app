@@ -1,7 +1,7 @@
 const fs = require('fs');
-const  PARAMS_PATH = './parameters.json';
-const  LIST_PATH ='./socket-parameters-list.json';
-const AIS_PATH ='./ais.json';
+const  PARAMS_PATH = './public/data/parameters.json';
+const  LIST_PATH = './public/data/socket-parameters-list.json';
+const AIS_PATH ='./public/data/ais.json';
 
 let lists;
 
@@ -53,6 +53,7 @@ function updateLists() {
                      new2[el] = {};
                      new2[el].description = eco2[el].description;
                      new2[el].units = eco2[el].units;
+                     new2[el].index = eco2[el].num;
                  });
                  lists = {};
                  lists.parameters = parameters;
@@ -60,6 +61,7 @@ function updateLists() {
                  lists.eco2 = new2;
                  fs.writeFile(AIS_PATH, JSON.stringify(lists) , (err) => {
                      if (err) console.log(err.message);
+                     console.log("ais updated");
                      
                  });
                  resolve(lists);
