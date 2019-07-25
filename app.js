@@ -10,7 +10,8 @@ var usersRouter = require('./routes/users');
 var eco1Router = require('./routes/route-eco1');
 var eco2Router = require('./routes/route-eco2');
 
-var daysRouter = require('./routes/day-report');
+var daysRouter = require('./routes/route-day-report');
+var monthRouter = require('./routes/route-month-report');
 
 var app = express();
 
@@ -28,10 +29,11 @@ app.use(express.static(path.join(__dirname, 'views')));
 
 app.use('/', indexRouter);
 
-//app.use('/1', eco1Router);
-//app.use('/2', eco2Router);
+app.use('/1', eco1Router);
+app.use('/2', eco2Router);
 
 app.use('/reports/day', daysRouter);
+app.use('/reports/month', monthRouter);
 app.use('/users', usersRouter);
 
 
