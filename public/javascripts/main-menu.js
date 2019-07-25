@@ -1,10 +1,13 @@
+const MotherOfReports = "http://95.158.47.15:3001/";
 
 const menuItems =  [
-    { text :"Главная", href: "http://95.158.47.15:3001/" },
-    { text :"Котельная 1", href: "eco1.html" },
-    { text :"Котельная 2", href: "eco2.html" },
-    { text :"Суточный отчет", href: "reports/day" },
-    { text :"Месячный отчет", href: "reports/month" },
+    { text :"Главная", href: MotherOfReports },
+//    { text :"Котельная 1", href: "eco1.html" },
+//    { text :"Котельная 2", href: "eco2.html" },
+    { text :"Котельная 1", href: MotherOfReports + "1" },
+    { text :"Котельная 2", href: MotherOfReports+ "2" },
+    { text :"Суточный отчет", href:  MotherOfReports + "reports/day" },
+    { text :"Месячный отчет", href: MotherOfReports + "reports/month" },
 ];
 
 $(function() {

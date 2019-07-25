@@ -3,7 +3,7 @@ var router = express.Router();
 const views = require('./abs-routes').views;
 
 router.use(function( req,res,next) {
-  console.log("req.path", req.path);  
+  console.log(" route-eco1 req.path", req.path);  
   //console.log("req", req);
   next();
 });
