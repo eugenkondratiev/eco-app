@@ -75,13 +75,13 @@ function getDayReport(_con, reportDay = 15, reportMonth = 7, reportYear = 2019) 
 }
 
 
-getDayReport(con, 15, 7, 2019).then((result) => {
-    console.log("result table: \n" , result);
+// getDayReport(con, 15, 7, 2019).then((result) => {
+//     console.log("result table: \n" , result);
     
-})
-.catch((err) => {
-    console.log(err)
-});
+// })
+// .catch((err) => {
+//     console.log(err)
+// });
 
 module.exports = getDayReport;
 

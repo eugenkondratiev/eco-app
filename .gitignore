@@ -1,3 +1,5 @@
 node_modules
 connection.js
 *test.*
+nodemon.json
+pm2-process.json
