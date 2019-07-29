@@ -10,6 +10,8 @@ class Eco1DayReport extends base {
 
         this.HEADER = ["Дата", "Тепло, Гкал", "Расход воды, м3", "Темп. на город, С", "Темп. оборотной, С",  "Давление после котла, МПа", "Давление до котла, МПа", "Темп. дымовых до ЭКО, С", "Разрежение в топке, Па" ];
         this.getTitle = this.getDayTitle;
+        this.eco = 1;
+
     }
     //-----------------------------------------------------------------
     tableHeader() {
@@ -57,6 +59,7 @@ class Eco1DayReport extends base {
                             }                                            
                     } catch (e) {
                         console.log("SQL access problem : " + e.message );
+                        reject(e);
                         //self.con.end();
                     }
                 });
@@ -64,7 +67,9 @@ class Eco1DayReport extends base {
                 try {               
                 performQuery(dd, mm, year);
                 } catch(e) {
+                    
                     console.log("SQL access problem : " + e.message );
+                    reject(e);
                 } finally {
                     ;
                 }
@@ -107,7 +112,8 @@ class Eco1DayReport extends base {
                     };                           
                 })
                 .catch(function(e) {
-                    console.log(e.message); 
+                    console.log("catch in getDayReport -> self.con.connect :", e, e.message); 
+                    reject({err: "\nДанные за этот период отсутствуют или ошибочны"});
                 })
                 .finally( function(result) {
                     //forEachHour(hoursArray);
@@ -119,14 +125,16 @@ class Eco1DayReport extends base {
                         // self.con.end();    
                                 if (hoursArray.length < 1) {
                                     console.log("\nДанные за этот период отсутствуют или ошибочны");
-                                    reject("\nДанные за этот период отсутствуют или ошибочны");
+                                    reject({err: "\nДанные за этот период отсутствуют или ошибочны"});
                                     // return "\nДанные за этот период отсутствуют или ошибочны";
                                 } else {
                                     // console.log("hours array 2 = ", hoursArray);
                                     const answer = {};
-                                        answer.tytle = self.getTitle();
+                                        answer.tytle = self.getTitle(reportDay , reportMonth, reportYear);
+                                        answer.eco = self.eco;
+
                                     answer.data = self.tableHeader() + self.arrToTableRow(hoursArray);
-                                    console.log("answer", answer);
+                                    // console.log("answer", answer);
 
                                     // console.log("resolve(self.arrToTableRow(hoursArray)); ", answer);
                                     // console.log(result);
@@ -139,7 +147,7 @@ class Eco1DayReport extends base {
                                 }
                             } catch (e) {
                                         console.log(e.message); 
-                                        reject(e.message)
+                                        reject({err: e.message});
                             } finally {
                                 console.log("self.con.stat - ", self.con.state);
                                 
@@ -152,9 +160,10 @@ class Eco1DayReport extends base {
         });
 
         self.con.on('error', function(err) {
-            console.log('con.on BD error: ' + err.message);
+            const error = 'con.on BD error: ' + err.message
+            console.log(error);
             console.log(" err BD state = "+ self.con.state);
-            reject('con.on BD error: ' + err.message)
+            reject({err: error});
         });
         {
         // //==============================================================================

@@ -42,7 +42,11 @@ router.get('/test', function(req, res, next) {
       res.setHeader('content-type', 'text/html');
       res.status(200).send(result);
     })
-
+    .catch(err => {
+      console.log("getDayReport rejected :", err);
+      res.setHeader('content-type', 'text/html');
+      res.status(200).send(err);
+    });
     // res.setHeader('content-type', 'text/html');
     // res.status(200).send(randomResponse);
 
@@ -74,12 +78,16 @@ router.get('/test2', function(req, res, next) {
     console.log("randomResponse  " , randomResponse);
     
     const dayrep = new dayReport2();
-    dayrep.getDayReport()
+    dayrep.getDayReport(12, 7, 2019)
     .then(result => {
      // console.log("Eco2 querty result = ", result)
       res.setHeader('content-type', 'text/html');
       res.status(200).send(result);
     })
+    .catch(err => {
+      console.log("getDayReport rejected :", err)
+      res.status(501);
+    });
 
     // res.setHeader('content-type', 'text/html');
     // res.status(200).send(randomResponse);
@@ -122,6 +130,9 @@ router.get('/:ecoId/', function(req, res, next) {
       res.setHeader('content-type', 'text/html');
       res.status(200).send(result);
     })
+    .catch(err => {
+      console.log("getDayReport rejected :", err)
+    });
 
   } catch (error) {
     res.status(501);

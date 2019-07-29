@@ -6,16 +6,47 @@
         <link rel="icon" href="../images/faviconka_ru_412.ico" type="image/x-icon" />
         <link rel="shortcut icon" href= "../images/faviconka_ru_412.ico" type="image/x-icon" /> 
          <link rel="stylesheet" type="text/css" href="../stylesheets/style.css">
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
+        
+
+
     </head>
  
     <body>
         <div class="content">
+        <div id="formsContainer">
+        <form class = "dateform" id="Eco1ReqForm" action="http://95.158.47.15:3001/reports/day/1/">
+            <!-- Котельная 1. Выбор дня -->
+            <p>Выбор отчетного дня. Котельная 1: <input type="text" id="datepicker1" size="100 px"></p>
+                <input type="text" name="day" value="11" placeholder="День" required>
+                <input type="text" name="month" value="6"placeholder="Месяц"required>
+                <input type="text" name="year" value="2019" placeholder="Год" required>
+
+                <input type="submit" name="submit" placeholder="Получить отчет">
+
+        </form>
+
+        <form class = "dateform" id="Eco2ReqForm" action="http://95.158.47.15:3001/reports/day/2/">
+            
+            <p>Выбор отчетного дня. Котельная 2: <input type="text" id="datepicker2" size="100 px"></p>
+                        <input type="text" name="day" value="8" placeholder="День" required>
+            <input type="text" name="month" value="7"placeholder="Месяц"required>
+            <input type="text" name="year" value="2019" placeholder="Год" required>
+
+            <input type="submit" name="submit" placeholder="Получить отчет">
+        </div>
+    </form>  
+        <button id="testbutton">test Eco1 15.07.19</button>
+        <button id="testbutton2">test Eco2 12.07.19</button>
+        <button id="testbutton3">test3 Eco1 22.05.19</button>
+        <button id="testbutton4">test4 Eco1 05.02.19</button>
+        <button id="todayRepEco1">Кот.1 Сегодня</button>
+        <button id="yesterdayRepEco1">Кот.1 Вчера</button>
+
         <h1>Суточные отчеты</h1>
         <h2 id="ecounit"></h2>
-        <button id="testbutton">test button</button>
-        <button id="testbutton2">test Eco2</button>
-        <button id="testbutton3">test3 Eco1</button>
-        <button id="testbutton4">test4 Eco1</button>
+        <p id="errorLabel"></p>
+        
         <div> <p id="testPar"></p></div>
                 <table class="datatable" id="dayreport">
 
@@ -23,7 +54,13 @@
 
         </div>
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/i18n/jquery-ui-i18n.min.js">
+        </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+        <!-- <script src="i18n/datepicker-ua.js"></script>
+        <script src="i18n/datepicker-ru.js"></script> -->
+        
         <script src="../javascripts/day-reports.js"></script>
         <!-- <script src="scripts/client-eco2.js"></script> -->
         <script src="../javascripts/test.js"></script>
