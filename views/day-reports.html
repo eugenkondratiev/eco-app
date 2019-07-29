@@ -17,31 +17,36 @@
         <div id="formsContainer">
         <form class = "dateform" id="Eco1ReqForm" action="http://95.158.47.15:3001/reports/day/1/">
             <!-- Котельная 1. Выбор дня -->
-            <p>Выбор отчетного дня. Котельная 1: <input type="text" id="datepicker1" size="100 px"></p>
+            <p>Выбор отчетного дня. Котельная 1:   <input type="text" id="datepicker1" autocomplete="off"></p>
+            <div class="hideIt">
                 <input type="text" name="day" value="11" placeholder="День" required>
                 <input type="text" name="month" value="6"placeholder="Месяц"required>
                 <input type="text" name="year" value="2019" placeholder="Год" required>
-
-                <input type="submit" name="submit" placeholder="Получить отчет">
+            </div>
+                <input type="submit" name="submit" value="Получить отчет">
 
         </form>
 
         <form class = "dateform" id="Eco2ReqForm" action="http://95.158.47.15:3001/reports/day/2/">
             
-            <p>Выбор отчетного дня. Котельная 2: <input type="text" id="datepicker2" size="100 px"></p>
+            <p>Выбор отчетного дня. Котельная 2:   <input type="text" id="datepicker2" autocomplete="off"></p>
+            <div class="hideIt">
                         <input type="text" name="day" value="8" placeholder="День" required>
             <input type="text" name="month" value="7"placeholder="Месяц"required>
             <input type="text" name="year" value="2019" placeholder="Год" required>
-
-            <input type="submit" name="submit" placeholder="Получить отчет">
+            </div>
+            <input type="submit" name="submit" value="Получить отчет">
         </div>
     </form>  
-        <button id="testbutton">test Eco1 15.07.19</button>
+        <!-- <button id="testbutton">test Eco1 15.07.19</button>
         <button id="testbutton2">test Eco2 12.07.19</button>
         <button id="testbutton3">test3 Eco1 22.05.19</button>
-        <button id="testbutton4">test4 Eco1 05.02.19</button>
-        <button id="todayRepEco1">Кот.1 Сегодня</button>
-        <button id="yesterdayRepEco1">Кот.1 Вчера</button>
+        <button id="testbutton4">test4 Eco1 05.02.19</button> -->
+
+        <button id="todayRepEco1">Котельная 1 Сегодня</button>
+        <button id="yesterdayRepEco1">Котельная 1 Вчера</button>
+        <button id="todayRepEco2">Котельная 2 Сегодня</button>
+        <button id="yesterdayRepEco2">Котельная 2 Вчера</button>
 
         <h1>Суточные отчеты</h1>
         <h2 id="ecounit"></h2>

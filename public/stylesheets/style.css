@@ -165,6 +165,7 @@ button {
   text-align:right;
   margin: 0em 3em 0.5em 0.5em;
   float: right;
+  align-content: flex-end
 }
 
 .dateform input[type=text]{
@@ -172,9 +173,21 @@ button {
   width:3em;
   color: darkblue;
   text-align:right;
+  display: inline-block;
 }
+
 #Eco1ReqForm {
   float: left;
 }
 
+.dateform input[id^=datepick] {
+  width:5.8em;
+  color: darkolivegreen;
+  text-align:right;
+}
+
+.hideIt {
+  display: none;
+
+}
 /*==================form============================*/
