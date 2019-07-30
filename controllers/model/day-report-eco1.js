@@ -12,7 +12,9 @@ class Eco1DayReport extends base {
         this.getTitle = this.getDayTitle;
         this.eco = 1;
 
+
     }
+    
     //-----------------------------------------------------------------
     tableHeader() {
         return "<tr>" + this.HEADER.map(el => "<th>" + el + "</th>").join("") + "</tr>";
@@ -113,7 +115,11 @@ class Eco1DayReport extends base {
                 })
                 .catch(function(e) {
                     console.log("catch in getDayReport -> self.con.connect :", e, e.message); 
-                    reject({err: "\nДанные за этот период отсутствуют или ошибочны"});
+                            const answer = {};
+                            answer.tytle = self.getTitle(reportDay , reportMonth, reportYear);
+                            answer.eco = self.eco;
+                            answer.err = "Ощибка подключения к базе данных";
+                    reject(answer);
                 })
                 .finally( function(result) {
                     //forEachHour(hoursArray);
@@ -124,9 +130,14 @@ class Eco1DayReport extends base {
                     try {   
                         // self.con.end();    
                                 if (hoursArray.length < 1) {
-                                    console.log("\nДанные за этот период отсутствуют или ошибочны");
-                                    reject({err: "\nДанные за этот период отсутствуют или ошибочны"});
-                                    // return "\nДанные за этот период отсутствуют или ошибочны";
+                                    console.log("Данные за этот период отсутствуют или ошибочны");
+                                    const answer = {};
+                                    
+                                    answer.tytle = self.getTitle(reportDay , reportMonth, reportYear);
+                                    answer.eco = self.eco;
+                                    answer.err = "Данные за этот период отсутствуют или ошибочны";
+                            reject(answer);
+                                             // return "Данные за этот период отсутствуют или ошибочны";
                                 } else {
                                     // console.log("hours array 2 = ", hoursArray);
                                     const answer = {};

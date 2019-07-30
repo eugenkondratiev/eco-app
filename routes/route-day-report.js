@@ -131,7 +131,12 @@ router.get('/:ecoId/', function(req, res, next) {
       res.status(200).send(result);
     })
     .catch(err => {
-      console.log("getDayReport rejected :", err)
+      const resResponse =  err; 
+      resResponse.____tytle = "getDayReport rejected";
+      console.log(resResponse);
+
+      res.setHeader('content-type', 'text/html');
+      res.status(200).send(JSON.stringify(resResponse));
     });
 
   } catch (error) {
