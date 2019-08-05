@@ -39,6 +39,7 @@ $(function() {
         menuItems.forEach(item => {
             menu.children(0).append(getMenuItem(item));
         });
+        
         return menu;
 
     };

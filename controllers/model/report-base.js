@@ -17,11 +17,11 @@ class ReportBaseUtils {
         ];
     return monthNames[month - 1];
     }//==============================================================================
-    getMonthTitle(reportMonth = 6, reportYear = 2019) {
-        return `Oтчет за ${this.monthName(reportMonth)} ${reportYear}`;
+    getMonthTitle(reportMonth, reportYear) {
+        return `Oтчет за ${this.monthName(reportMonth ||  this.reportMonth || 7)} ${reportYear || this.reportYear || 2019}`;
     }
-    getDayTitle(reportDay = 20, reportMonth = 6, reportYear = 2019) {
-        return `Oтчет за ${reportDay} ${this.monthString(reportMonth)} ${reportYear}`;;
+    getDayTitle(reportDay, reportMonth, reportYear) {
+        return `Oтчет за ${reportDay || this.reportDay || 14} ${this.monthString(reportMonth ||  this.reportMonth || 7 )} ${reportYear || this.reportYear || 2019}`;
     }    
     //==========================================================================
 
@@ -96,7 +96,26 @@ class ReportBaseUtils {
             return row.join('');
         }
     }
-    //==============================================================================
+    //==============================================================================.
+    //================================================
+    calcMonthData(allData) {
+        const days = allData.length;
+        //console.log(days);
+        const sumRow = ["", 0,0,0,0,0,0,0,0];
+        allData.map(function (dayRow){
+            dayRow.forEach((e, i) => {
+                if (i >= 1 && i < 3 ) {
+                    sumRow[i] += parseFloat(e);
+                } else if (i === 0){
+                } else {
+                    sumRow[i] += (parseFloat(e) / days);
+                }; 
+            })
+        });
+        return sumRow.map((e, i) => i > 0 ? e.toFixed(3) : "Всего/\nсреднее" );
+    }
+
+//==============================================================================
 }
 
 module.exports = ReportBaseUtils;

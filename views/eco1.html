@@ -19,47 +19,7 @@
 
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
-        <!-- <script src="/scripts/client.js" ></script> -->
         <script src="javascripts/eco1.js"></script>
-
-        <!-- <script>
-
-                    // пока так. потом с express сделаю удаенное подключение скриптов и css
-                       // console.log("clinet.js added");
-                        //........
-                       // var socket = io.connect('http://95.158.47.15:3001');
-                       var socket = io.connect();
-                        var username = "testuser" + (Math.random * 10000.0).toFixed(3);
-                       socket.emit('little_newbie', username);
-                        socket.on('message', function(message) {
-                            console.log('The server has a message for you: ' + message);
-                            //alert('The server has a message for you: ' + message);
-                        });
-
-                        //$(document).ready(function() {
-                            
-                            socket.on('newdata', function(message) {
-                                const dataM340 = JSON.parse(message);
-
-                                document.getElementById('Eco1_LastDayW38').innerText = dataM340[48];
-                                document.getElementById('Eco1_T_10').innerText = dataM340[47];
-                                document.getElementById('Eco1_P_22').innerText = dataM340[46];
-                                document.getElementById('Eco1_P_21').innerText = dataM340[45];
-                                document.getElementById('Eco1_P_34').innerText = dataM340[44];
-                                document.getElementById('Eco1_T_41').innerText = dataM340[43];
-                                document.getElementById('Eco1_T_42').innerText = dataM340[42];
-                                document.getElementById('Eco1_P_36').innerText = dataM340[41];
-                                document.getElementById('Eco1_W_38').innerText = dataM340[40];
-                                document.getElementById('Eco1_Q_39').innerText = dataM340[39];
-                                document.getElementById('Eco1_EI_86').innerText = dataM340[38];
-                                document.getElementById('Eco1_P_19').innerText = dataM340[37];
-                                document.getElementById('Eco1_EI_82').innerText = dataM340[36];
-                            
-                           // $('#value3').text(dataM340[35]);
-                            })
-       </script> -->
-        <!-- <script src="scripts/client-eco2.js"></script> -->
-        <script src="javascripts/test.js"></script>
         <script src="javascripts/main-menu.js"></script>
 
     </body>

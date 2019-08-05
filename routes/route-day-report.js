@@ -13,103 +13,62 @@ router.use(function( req,res,next) {
 
 router.get('/', function(req, res, next) {
   //res.render('index', { title: 'Express' }); 
-  console.log(' get index.html');
+  console.log(' get day-reports.html');
 
   res.sendFile('/day-reports.html',{ root : views},(err) => {   
     if (err) {
-      console.log(err)
+      console.log(err);
     } else {
-      console.log(" day-report index is sended");
-      console.log("__dirname", __dirname);
+      // console.log(" day-report index is sended");
       
     }
   });
 });
 
 
-
-router.get('/test', function(req, res, next) {
-  //res.render('index', { title: 'Express' }); 
-   console.log(' the test 1 reached');
-  try {
-    const randomResponse = `<tr> <td>-------</td> <td>=_=_=_=_=_ </td><td>xxxxxx</td><td>${(Math.random() * 100.0).toFixed(3)}</td></tr>`;
-    console.log("randomResponse  " , randomResponse);
+{
+// router.get('/test', function(req, res, next) {
+//   //res.render('index', { title: 'Express' }); 
+//    console.log(' the test 1 reached');
+//   try {
+//     const randomResponse = `<tr> <td>-------</td> <td>=_=_=_=_=_ </td><td>xxxxxx</td><td>${(Math.random() * 100.0).toFixed(3)}</td></tr>`;
+//     console.log("randomResponse  " , randomResponse);
     
-    const dayrep = new dayReport1();
-    dayrep.getDayReport()
-    .then(result => {
-     // console.log("Eco1 querty result = ", result)
-      res.setHeader('content-type', 'text/html');
-      res.status(200).send(result);
-    })
-    .catch(err => {
-      console.log("getDayReport rejected :", err);
-      res.setHeader('content-type', 'text/html');
-      res.status(200).send(err);
-    });
-    // res.setHeader('content-type', 'text/html');
-    // res.status(200).send(randomResponse);
+//     const dayrep = new dayReport1();
+//     dayrep.getDayReport()
+//     .then(result => {
+//      // console.log("Eco1 querty result = ", result)
+//       res.setHeader('content-type', 'text/html');
+//       res.status(200).send(result);
+//     })
+//     .catch(err => {
+//       console.log("getDayReport rejected :", err);
+//       res.setHeader('content-type', 'text/html');
+//       res.status(200).send(err);
+//     });
+//     // res.setHeader('content-type', 'text/html');
+//     // res.status(200).send(randomResponse);
 
 
-  } catch (error) {
-    res.status(501);
-    console.log(error.message);
+//   } catch (error) {
+//     res.status(501);
+//     console.log(error.message);
     
-  }
+//   }
   
-  // res.sendFile('/day-reports.html',{ root : views},(err) => {   
-  //   if (err) {
-  //     console.log(err)
-  //   } else {
-  //     console.log(" day-report index is sended");
-  //     console.log("__dirname", __dirname);
+//   // res.sendFile('/day-reports.html',{ root : views},(err) => {   
+//   //   if (err) {
+//   //     console.log(err)
+//   //   } else {
+//   //     console.log(" day-report index is sended");
+//   //     console.log("__dirname", __dirname);
       
-  //   }
-  // });
+//   //   }
+//   // });
 
-});
+// });
+}
 
-
-router.get('/test2', function(req, res, next) {
-  //res.render('index', { title: 'Express' }); 
-  console.log(' test2 works');
-  try {
-    const randomResponse = `<tr> <td>2222222222222</td> <td>xxxxxxxxxxxxx </td><td>ECO2</td><td>${(Math.random() * 1000.0).toFixed(3)}</td></tr>`;
-    console.log("randomResponse  " , randomResponse);
-    
-    const dayrep = new dayReport2();
-    dayrep.getDayReport(12, 7, 2019)
-    .then(result => {
-     // console.log("Eco2 querty result = ", result)
-      res.setHeader('content-type', 'text/html');
-      res.status(200).send(result);
-    })
-    .catch(err => {
-      console.log("getDayReport rejected :", err)
-      res.status(501);
-    });
-
-    // res.setHeader('content-type', 'text/html');
-    // res.status(200).send(randomResponse);
-
-
-  } catch (error) {
-    res.status(501);
-    console.log(error.message);
-    
-  }
-  
-  // res.sendFile('/day-reports.html',{ root : views},(err) => {   
-  //   if (err) {
-  //     console.log(err)
-  //   } else {
-  //     console.log(" day-report index is sended");
-  //     console.log("__dirname", __dirname);
-      
-  //   }
-  // });
-
-});
 
 
 router.get('/:ecoId/', function(req, res, next) {
@@ -121,8 +80,8 @@ router.get('/:ecoId/', function(req, res, next) {
     const month = parseInt(req.query.month) || 5;
     const day = parseInt(req.query.day) || 22;
 
-    const dayrep = eco === 2 ? new dayReport2() : new dayReport1();
-    console.log(eco, year, month, day);
+    const dayrep = eco === 2 ? new dayReport2(day, month, year) : new dayReport1(day, month, year);
+    // console.log(eco, year, month, day);
 
     dayrep.getDayReport(day, month, year)
     .then(result => {
@@ -133,7 +92,7 @@ router.get('/:ecoId/', function(req, res, next) {
     .catch(err => {
       const resResponse =  err; 
       resResponse.____tytle = "getDayReport rejected";
-      console.log(resResponse);
+      // console.log(resResponse);
 
       res.setHeader('content-type', 'text/html');
       res.status(200).send(JSON.stringify(resResponse));

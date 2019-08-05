@@ -96,7 +96,7 @@ button {
   /* text-transform: uppercase; */
   background-color: darkcyan;
   text-align: center;
-  line-height: 20px;
+  line-height: 0.8em;
   overflow: hidden;
   align-content: center;
    /*position: fixed;  */
@@ -190,4 +190,8 @@ button {
   display: none;
 
 }
+.navigationFooter {
+  clear: both;
+}
+
 /*==================form============================*/

@@ -2,8 +2,12 @@ const base = require('./report-base');
 // const mysqlConnection = require('./connection');
 
 class Eco1DayReport extends base {
-    constructor() {
+    constructor(reportDay , reportMonth, reportYear) {
         super();
+        this.reportDay = reportDay;
+        this.reportMonth = reportMonth;
+        this.reportYear = reportYear;
+
         //this.con = _con; // db connection
         this.con = require('./connection')();
         // this.con = require('./connection');
@@ -14,7 +18,13 @@ class Eco1DayReport extends base {
 
 
     }
-    
+    formErrorResponse(err) {
+        const answer = {};
+        answer.tytle = this.getTitle();
+        answer.eco = this.eco;
+        answer.err = "" + err;
+    return answer;  
+    }
     //-----------------------------------------------------------------
     tableHeader() {
         return "<tr>" + this.HEADER.map(el => "<th>" + el + "</th>").join("") + "</tr>";
@@ -115,11 +125,13 @@ class Eco1DayReport extends base {
                 })
                 .catch(function(e) {
                     console.log("catch in getDayReport -> self.con.connect :", e, e.message); 
-                            const answer = {};
-                            answer.tytle = self.getTitle(reportDay , reportMonth, reportYear);
-                            answer.eco = self.eco;
-                            answer.err = "Ощибка подключения к базе данных";
-                    reject(answer);
+                    //         const answer = {};
+                    //         answer.tytle = self.getTitle();
+                    //         // answer.tytle = self.getTitle(reportDay , reportMonth, reportYear);
+                    //         answer.eco = self.eco;
+                    //         answer.err = "Ощибка подключения к базе данных";
+                    // reject(answer);
+                     reject(self.formErrorResponse.call(self, "Ошибка подключения к базе данных"));
                 })
                 .finally( function(result) {
                     //forEachHour(hoursArray);
@@ -133,15 +145,20 @@ class Eco1DayReport extends base {
                                     console.log("Данные за этот период отсутствуют или ошибочны");
                                     const answer = {};
                                     
-                                    answer.tytle = self.getTitle(reportDay , reportMonth, reportYear);
-                                    answer.eco = self.eco;
-                                    answer.err = "Данные за этот период отсутствуют или ошибочны";
-                            reject(answer);
-                                             // return "Данные за этот период отсутствуют или ошибочны";
+                            //         answer.tytle = self.getTitle(reportDay , reportMonth, reportYear);
+                            //         answer.eco = self.eco;
+                            //         answer.err = "Данные за этот период отсутствуют или ошибочны";
+                            // reject(answer);
+
+                            reject(self.formErrorResponse.call(self, "Данные за этот период отсутствуют или ошибочны"));                                           
+                            
+                            // return "Данные за этот период отсутствуют или ошибочны";
                                 } else {
                                     // console.log("hours array 2 = ", hoursArray);
                                     const answer = {};
-                                        answer.tytle = self.getTitle(reportDay , reportMonth, reportYear);
+                                    answer.tytle = self.getTitle();
+                                    
+                                    // answer.tytle = self.getTitle(reportDay , reportMonth, reportYear);
                                         answer.eco = self.eco;
 
                                     answer.data = self.tableHeader() + self.arrToTableRow(hoursArray);

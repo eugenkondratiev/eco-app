@@ -19,6 +19,7 @@ $(function() {
 
                     $("#dayreport").html("");
                 } else {
+                    $("#errorLabel").text("");
                      $("#dayreport").html(message.data);        
                 };
             } catch (error) {

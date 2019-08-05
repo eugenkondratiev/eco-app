@@ -23,48 +23,6 @@
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
         <script src="javascripts/eco2.js"></script>
-
-        <!-- <script src="/scripts/client.js" ></script> -->
-        <!-- <script>
-
-                    // пока так. потом с express сделаю удаенное подключение скриптов и css
-                       // console.log("clinet.js added");
-                        //........
-                        var socket = io.connect('http://95.158.47.15:3001');
-                       var username = "testuser";
-                       socket.emit('little_newbie', username);
-                       socket.on('message', function(message) {
-                            console.log('The server has a message for you: ' + message);
-                         });
-
-                        //$(document).ready(function() {
-                            
-                            socket.on('newdata', function(message) {
-                                 const dataM340 = JSON.parse(message);
-
-                                document.getElementById('Eco2_W_38').innerText = dataM340[25];
-                                document.getElementById('Eco2_Q_39').innerText = dataM340[26];
-                                document.getElementById('Eco2_P_21').innerText = dataM340[35];
-                                document.getElementById('Eco2_P_34').innerText = dataM340[32];
-                                document.getElementById('Eco2_EI_86').innerText = dataM340[17];
-                                document.getElementById('Eco2_EI_83').innerText = dataM340[16];
-                                document.getElementById('Eco2_EI_74').innerText = dataM340[14];
-                                document.getElementById('Eco2_P_32').innerText = dataM340[31];
-                                document.getElementById('Eco2_P_31').innerText = dataM340[30];
-                                document.getElementById('Eco2_P_19').innerText = dataM340[34];
-                                document.getElementById('Eco2_T_5').innerText = dataM340[5];
-                                document.getElementById('Eco2_T_3').innerText = dataM340[3];
-                                document.getElementById('Eco2_T_4').innerText = dataM340[19];
-                                document.getElementById('Eco2_T_10').innerText = dataM340[8];
-                                document.getElementById('Eco2_LastDayW38').innerText = dataM340[49];
-                            
-                           // $('#value3').text(dataM340[35]);
-                            // $('#value3').innerText = dataM340;
-                            });
-         </script> -->
-
-        <!-- <script src="scripts/client-eco2.js"></script> -->
-        <script src="javascripts/test.js"></script>
 		<script src="javascripts/main-menu.js"></script>
     </body>
 </html>
