@@ -2,14 +2,17 @@ const base = require('./report-base');
 // const mysqlConnection = require('./connection');
 
 class Eco1MonthReport extends base {
-    constructor() {
+    constructor(reportMonth, reportYear) {
         super();
+        this.reportMonth = reportMonth;
+        this.reportYear = reportYear;
+        
         //this.con = self.con; // db connection
         this.con = require('./connection')();
         // this.con = require('./connection');
 
         this.HEADER = ["Дата", "Тепло, Гкал", "Расход воды, м3", "Темп. на город, С", "Темп. оборотной, С",  "Давление после котла, МПа", "Давление до котла, МПа", "Темп. дымовых до ЭКО, С", "Разрежение в топке, Па" ];
-        this.getTitle = this.getDayTitle;
+        this.getTitle = this.getMonthTitle;
         this.eco = 1;
 
     }
@@ -22,8 +25,13 @@ class Eco1MonthReport extends base {
 //========================================================================================
     getDayReportSql(day) {
         return  `SELECT dt, sum(w_38), sum(q_39),  avg(T_41), avg(T_42), avg(P_19), avg(P_18), avg(T_10), avg(P_36)
-        FROM eco2.hr3 where dt between '${day}' and DATE_ADD('${day}', INTERVAL 23 hour);`
+        FROM eco.hourseco1 where dt between '${day}' and DATE_ADD('${day}', INTERVAL 23 hour);`
         ;
+    }
+    //========================================================================================
+    monthDatesSql(month , year) {
+        const mm = this.getNiceMonth(month);
+        return `select distinct DATE_ADD(DATE(dt), INTERVAL 8 hour) as dtm  from eco.hourseco1 where month(dt) ='${mm}' and year(dt) = '${year}' `;//order by dt asc` ; 
     }
 
  //========================================================================================
@@ -48,9 +56,11 @@ class Eco1MonthReport extends base {
                         //throw err;
                         } else {
                             console.log("Connected!  BD state = "+ self.con.state);
-                            getDaysList(self.con, reportMonth, reportYear)
+                            self.getDaysList(/*self.con,*/ reportMonth, reportYear)
                             .then(function(result){ 
-                                DaysArray = this.arrFromObjectArrray(result, "dtm");
+                                console.log("getDaysList . then ->", result);
+
+                                DaysArray = self.arrFromObjectArrray(result, "dtm");
                                 const daysInMonth = DaysArray[DaysArray.length - 1].slice(8, 10);
                                 console.log(daysInMonth);   
                                 return   new Promise((res,  rej) => {
@@ -63,14 +73,15 @@ class Eco1MonthReport extends base {
                                     console.log("\nДанные за этот период отсутствуют или ошибочны"); 
                                      
                                 }
+                                console.log(e.message);
                                 self.con.end();
                                 // reject("\nДанные за этот период отсутствуют или ошибочны");
                                 reject(self.formErrorResponse.call(self, "Данные за этот период отсутствуют или ошибочны"));                                
                             })
                             .finally( function(){                                
-                                forEachDay(DaysArray/*, con*/)
+                                self.forEachDay(DaysArray/*, con*/)
                                 .then(table => {
-                                    // console.log(table);
+                                    console.log(table);
                                     resolve(table);
                                 });
                                 
@@ -102,12 +113,15 @@ class Eco1MonthReport extends base {
 
         return new Promise( function(resolve, reject){
             function performQuery(mm , year){
-                const sql = this.monthDatesSql(mm , year);
+                const sql = self.monthDatesSql(mm , year);
+                console.log("getDaysList sql ", sql);
+                
                 let query = self.con.query(sql,  [], function (err, result, fields) {
                     if (err) {
                         console.log(err.message);
                         reject(err);
                     } else {
+                        console.log(" getDaysList result ", result);                        
                         resolve(result);
                     }
                 });
@@ -174,7 +188,7 @@ class Eco1MonthReport extends base {
             return new Promise(function(resolve, reject){
                 function performQuery(day) {
                     const sql = self.getDayReportSql(day );
-                // console.log(sql);            
+                console.log(` getDayRow ${day} - ${sql}`);            
                     let query = self.con.query(sql,  [], function (err, result, fields) {
                         if (err) {
                             console.log(err.message);
@@ -206,11 +220,6 @@ class Eco1MonthReport extends base {
                 };
             });
         };
-    //========================================================================================
-     monthDatesSql(month , year) {
-        const mm = this.getNiceMonth(month);
-        return `select distinct DATE_ADD(DATE(dt), INTERVAL 8 hour) as dtm  from eco.eco.hourseco1 where month(dt) ='${mm}' and year(dt) = '${year}' `;//order by dt asc` ; 
-    }
 
 
 }

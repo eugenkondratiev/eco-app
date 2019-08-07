@@ -72,7 +72,7 @@ class ReportBaseUtils {
             const queryFields = Object.values(result[0]);
 
                             queryFields.map((el, index) => {
-                                queryDays.push(el.toString().match(/[TZ]/) ? dtUtils.getDateTimeFromMySql(el).slice(0, 10) : parseFloat(el).toFixed(3));
+                                queryDays.push(el.toString().match(/[TZ]/) ? this.getDateTimeFromMySql(el).slice(0, 10) : parseFloat(el).toFixed(3));
                             });    
         } catch (error) {
             console.log(error.message); 
@@ -81,7 +81,16 @@ class ReportBaseUtils {
         }
 
     }
+
     //==============================================================================
+    formErrorResponse(err) {
+        const answer = {};
+        answer.tytle = this.getTitle();
+        answer.eco = this.eco;
+        answer.err = "" + err;
+    return answer;  
+    }
+
     //==============================================================================
     arrToTableRow(arr) {
         let row = [];

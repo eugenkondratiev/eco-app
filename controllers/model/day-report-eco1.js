@@ -18,13 +18,7 @@ class Eco1DayReport extends base {
 
 
     }
-    formErrorResponse(err) {
-        const answer = {};
-        answer.tytle = this.getTitle();
-        answer.eco = this.eco;
-        answer.err = "" + err;
-    return answer;  
-    }
+
     //-----------------------------------------------------------------
     tableHeader() {
         return "<tr>" + this.HEADER.map(el => "<th>" + el + "</th>").join("") + "</tr>";
