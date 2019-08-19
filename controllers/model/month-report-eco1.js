@@ -25,8 +25,8 @@ class Eco1MonthReport extends base {
 //========================================================================================
     getDayReportSql(day) {
         return  `SELECT dt, sum(w_38), sum(q_39),  avg(T_41), avg(T_42), avg(P_19), avg(P_18), avg(T_10), avg(P_36)
-        FROM eco.hourseco1 where dt between '${day}' and DATE_ADD('${day}', INTERVAL 23 hour);`
-        ;
+        FROM eco.hourseco1 where dt between '${day}' and DATE_ADD('${day}', INTERVAL 23 hour);`;
+        
     }
     //========================================================================================
     monthDatesSql(month , year) {

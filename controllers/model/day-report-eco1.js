@@ -115,7 +115,7 @@ class Eco1DayReport extends base {
                             // console.log("finally hours array 1 = ", hoursArray);
                             res(hoursArray);
                         });            
-                    };                           
+                    };                          
                 })
                 .catch(function(e) {
                     console.log("catch in getDayReport -> self.con.connect :", e, e.message); 

@@ -87,7 +87,7 @@
         "P_24" : {  "description" : "Разрежение перед дымососом", "units": "Па", "num": 23 , "offset":44},
         "P_35" : {  "description" : "Разрежение перед экономайзером", "units": "Па", "num": 24 , "offset":46},
         "W_38" : {  "description" : "Произведенное тепло", "units": "Гкал/час", "num": 25 , "offset":48},
-        "Q_39" : {  "description" : "Расход воды", "units": "м3/час", "num": 26 , "offset":50},
+        "Q_39" : {  "description" : "Расход воды на город", "units": "м3/час", "num": 26 , "offset":50},
         "P_36" : {  "description" : "Давление воздуха перед воздухоподогревателем", "units": "Па", "num": 27 , "offset":52},
         "P_25" : {  "description" : "Давление вторичного воздуха", "units": "Па", "num": 28 , "offset":54},
         "P_30" : {  "description" : "Давление воздуха зона 3", "units": "Па", "num": 29 , "offset":56},
@@ -98,6 +98,9 @@
         "P_19" : {  "description" : "Давление воды в котле", "units": "МПа", "num": 34 , "offset":66},
         "P_21" : {  "description" : "Разрежение в топке №1", "units": "Па", "num": 35 , "offset":68},
         "T_42" : {  "description" : "Температура воды из города.Обратка", "units": "°C", "num": 36 , "offset":70},
+        "Q_49" : {  "description" : "Расход воды по внутреннему контуру", "units": "м3/час", "num": 37 , "offset":72},
+        "T_40" : {  "description" : "Температура окружающей среды", "units": "°C", "num": 38 , "offset":74},
+        "P_17" : {  "description" : "Давление воды на город", "units": "МПа", "num": 39 , "offset":76},
        
         "LastDayW38" : {  "description" : "Произведенное тепло за прошлые сутки", "units": "Гкал", "num": 49 , "offset":0, "index" : 0}
 

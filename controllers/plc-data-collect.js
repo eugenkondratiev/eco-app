@@ -57,7 +57,7 @@ function dataCollect(server){
             const floats = m340.getFloatsFromMOdbusCoils(_answer);
             m340data = floats;
             eco1.forEach((el, index) => {
-                m340data[48 - index] = parseFloat(el);
+                m340data[50 + index] = parseFloat(el);
             });
            // console.log("eco1", eco1.length, eco1);
         const socketMessage = JSON.stringify(floats.map(el => 

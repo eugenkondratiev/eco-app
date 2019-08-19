@@ -39,12 +39,6 @@ $(function() {
             } catch (error) {
                 console.log(error.message);
             }
-     });
-
-        // for (ai in data.eco1) {
-        //     $('#dataEco1').append(getAiRow(ai, data.eco1[ai], "Eco1"));
-        // }
-        // $('#data').text(data.parameters.eco1[0]);
- 
+        });
     });
 });

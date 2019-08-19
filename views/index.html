@@ -14,14 +14,16 @@
             Текущие данные</h1>
 
         <p ><span class="aiLabel">Производимое тепло, Гкал/ч </span><span class="value" id="W_38"> NaN </span></p>
-        <p ><span class="aiLabel">Температура горячей воды, °С    </span><span class="value" id="T_3"> NaN </span></p>
+        <p ><span class="aiLabel">Температура горячей воды на город, °С    </span><span class="value" id="T_41"> NaN </span></p>
+        <p ><span class="aiLabel">Температура обротной воды, °С    </span><span class="value" id="T_42"> NaN </span></p>
          <p ><span class="aiLabel">Тепло за прошлые сутки, Гкал.   </span><span class="value" id="lastDayW_38"> NaN </span></p>
  
         <h1>Котельная 1. Текущие данные</h1>
-        <p ><span class="aiLabel">Тепло за прошлые сутки, Гкал.   </span><span class="value" id="Eco1_lastDayW_38"> NaN </span></p>
         <p ><span class="aiLabel">Производимое тепло, Гкал/ч </span><span class="value" id="Eco1_W_38"> NaN </span></p>
          <p ><span class="aiLabel">Температура воды на город, °С    </span><span class="value" id="Eco1_T_41"> NaN </span></p>
-        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+         <p ><span class="aiLabel">Температура обротной воды, °С    </span><span class="value" id="Eco1_T_42"> NaN </span></p>
+         <p ><span class="aiLabel">Тепло за прошлые сутки, Гкал.   </span><span class="value" id="Eco1_lastDayW_38"> NaN </span></p>
+         <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
         <script>
                         var socket = io.connect('http://95.158.47.15:3001');
@@ -34,15 +36,17 @@
                              
                          socket.on('newdata', function(message) {
                                  const dataM340 = JSON.parse(message);
- 
+                                console.table(dataM340);
                                 document.getElementById('W_38').innerText = dataM340[25];
-                                document.getElementById('T_3').innerText = dataM340[3];
-                                 document.getElementById('lastDayW_38').innerText = dataM340[49];
+                                document.getElementById('T_41').innerText = dataM340[33];
+                                document.getElementById('T_42').innerText = dataM340[36];
+                                document.getElementById('lastDayW_38').innerText = dataM340[49];
 
-                                document.getElementById('Eco1_lastDayW_38').innerText = dataM340[48];
-                                document.getElementById('Eco1_W_38').innerText = dataM340[40];
-                                document.getElementById('Eco1_T_41').innerText = dataM340[43];
-                            })
+                                document.getElementById('Eco1_lastDayW_38').innerText = dataM340[50];
+                                document.getElementById('Eco1_W_38').innerText = dataM340[58];
+                                document.getElementById('Eco1_T_41').innerText = dataM340[55];
+                                document.getElementById('Eco1_T_42').innerText = dataM340[56];
+                            });
          </script>
         <script src="javascripts/main-menu.js"></script>
     </div>

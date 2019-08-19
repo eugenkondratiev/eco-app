@@ -25,10 +25,6 @@ router.get('/', function(req, res, next) {
   });
 });
 
-
-
-
-
 router.get('/:ecoId/', function(req, res, next) {
   //res.render('index', { title: 'Express' }); 
    console.log(' parse route');
@@ -39,7 +35,6 @@ router.get('/:ecoId/', function(req, res, next) {
     const day = parseInt(req.query.day) || 22;
 
     const dayrep = eco === 2 ? new dayReport2(day, month, year) : new dayReport1(day, month, year);
-    // console.log(eco, year, month, day);
 
     dayrep.getDayReport(day, month, year)
     .then(result => {
@@ -50,7 +45,6 @@ router.get('/:ecoId/', function(req, res, next) {
     .catch(err => {
       const resResponse =  err; 
       resResponse.____tytle = "getDayReport rejected";
-      // console.log(resResponse);
 
       res.setHeader('content-type', 'text/html');
       res.status(200).send(JSON.stringify(resResponse));
