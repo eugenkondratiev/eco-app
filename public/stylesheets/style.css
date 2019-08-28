@@ -38,10 +38,6 @@ body {
   font-size: 1.5em
 }
 
-
-
-
-
 .datatable th {
   border: 1px solid grey;
   padding-top: 5px;
@@ -67,6 +63,12 @@ button {
   margin: 0.3em;
 }
 
+#lastDataTimestamp {
+  font-size: x-small;
+  color: midnightblue;
+  align-content: center
+}
+
 .datatable  tr td[class=value] {
   font-family: Arial, Helvetica, sans-serif;
   font-size: larger;
@@ -76,6 +78,7 @@ button {
   /* align: right; */
   padding-right: 0.5em;
 }
+
 .datatable  tr td[class=aiLabel]{
   border: 1px solid grey;
   padding: 1px;
@@ -84,6 +87,14 @@ button {
   /* align:left; */
   padding-left: 0.5em
 }
+
+#monthreport tr td:nth-child(2) {
+  color: darkred;
+  font-size: larger;
+  font-style: italic;
+  background-color: lightsteelblue  
+}
+
 #dayreport tr td:nth-child(2) {
   color: darkred;
   font-size: larger;

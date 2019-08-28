@@ -35,8 +35,8 @@
                         });
                              
                          socket.on('newdata', function(message) {
-                                 const dataM340 = JSON.parse(message);
-                                console.table(dataM340);
+                                 const dataM340 = JSON.parse(message.data);
+                                // console.table(dataM340);
                                 document.getElementById('W_38').innerText = dataM340[25];
                                 document.getElementById('T_41').innerText = dataM340[33];
                                 document.getElementById('T_42').innerText = dataM340[36];

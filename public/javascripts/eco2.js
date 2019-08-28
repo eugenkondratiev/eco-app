@@ -29,13 +29,14 @@ $(function() {
         }
      
         socket.on('newdata', function(message) {
-            const dataM340 = JSON.parse(message);
+            const dataM340 = JSON.parse(message.data);
             // console.log(data.parameters);
             try {
                 data.parameters.eco2.forEach(el => {
                     const elName ="#Eco2_" + el;
                     $(elName).text(dataM340[data.eco2[el].index]);
-                });               
+                });   
+                $("#lastDataTimestamp").text("Обновлено : " + JSON.parse(message.timestamps)[1]);             
             } catch (error) {
                 console.log(error.message);
             }

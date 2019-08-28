@@ -1,3 +1,5 @@
+const timestamps = [];
+
 function dataCollect(server){
 //:TODO divide to 2-3 modules
     var TcpPort = require("modbus-serial").TcpPort;
@@ -31,8 +33,9 @@ function dataCollect(server){
         ws.on('message', function(message) {;
             try {
                 const jsonMessage = JSON.parse(JSON.parse(JSON.stringify(message)));
-                // console.log("_jsonMessage", jsonMessage);
+                //  console.log("_jsonMessage", jsonMessage);
                 eco1 = jsonMessage.eco1;
+                timestamps[0] =jsonMessage.timestamp;
                 // console.log("eco1LastDayW38", eco1);
             } catch (error) {
                 console.log(error.message);           
@@ -60,9 +63,15 @@ function dataCollect(server){
                 m340data[50 + index] = parseFloat(el);
             });
            // console.log("eco1", eco1.length, eco1);
-        const socketMessage = JSON.stringify(floats.map(el => 
+        const socketMessage = {};
+        socketMessage.data = JSON.stringify(floats.map(el => 
             isFinite(Number(el)) ? el.toFixed(3) : "NaN")
             );
+
+            timestamps[1] =  (new Date()).toISOString();
+            // console.log(timestamps);
+            socketMessage.timestamps = JSON.stringify(timestamps.map(tm => getDateTimeStringCurrent (tm)));
+
             io.sockets.emit('newdata', socketMessage);
         });
         } catch (error) {
@@ -91,6 +100,11 @@ function dataCollect(server){
 
     });
 
+}
+
+function getDateTimeStringCurrent (dt) {
+    //return dt.toISOString().slice(0, 19).replace('T', ' ');
+    return (new Date ((new Date((new Date(new Date(dt))).toISOString() )).getTime() - ((new Date()).getTimezoneOffset()*60000))).toISOString().slice(0, 19).replace('T', ' ');
 }
 
 module.exports = dataCollect;
