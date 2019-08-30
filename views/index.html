@@ -23,8 +23,11 @@
          <p ><span class="aiLabel">Температура воды на город, °С    </span><span class="value" id="Eco1_T_41"> NaN </span></p>
          <p ><span class="aiLabel">Температура обротной воды, °С    </span><span class="value" id="Eco1_T_42"> NaN </span></p>
          <p ><span class="aiLabel">Тепло за прошлые сутки, Гкал.   </span><span class="value" id="Eco1_lastDayW_38"> NaN </span></p>
+         <button id="restart"></button>
          <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+        <script src="javascripts/diagnostic-utils.js"></script>
+        
         <script>
                         var socket = io.connect('http://95.158.47.15:3001');
                         // var socket = io.connect();

@@ -22,6 +22,12 @@ router.get('/', function(req, res, next) {
   });
 });
 
+router.post('/restart', function(req, res, next) {
+  console.log(' restart request', req.param.reason );
+  process.exit();
+  ;
+});
+
 // router.get('/1', function(req, res, next) {
 //   //res.render('index', { title: 'Express' });
 //   //res.send(req.path);

@@ -39,7 +39,7 @@ $(function() {
                     const elName ="#Eco1_" + el;
                     $(elName).text(dataM340[ECO1_MESSAGE_BORDER + data.eco1[el].index]);
                 });     
-                $("#lastDataTimestamp").text("Обновлено" + JSON.parse(message.timestamps)[0]);          
+                $("#lastDataTimestamp").text("Обновлено : " + JSON.parse(message.timestamps)[0]);          
             } catch (error) {
                 console.log(error.message);
             }

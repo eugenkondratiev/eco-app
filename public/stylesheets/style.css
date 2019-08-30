@@ -2,6 +2,7 @@ body {
   padding: 0;
   margin : 0;
   font:"Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: whitesmoke;
 }
 
 .datatable {
@@ -206,3 +207,10 @@ button {
 }
 
 /*==================form============================*/
+
+#restart {
+  background-color: whitesmoke;
+  width: 3em;
+  height: 2em;
+  border: none;
+}
