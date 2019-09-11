@@ -4,8 +4,8 @@ const base = require('./report-base');
 class Eco1MonthReport extends base {
     constructor(reportMonth, reportYear) {
         super();
-        this.reportMonth = reportMonth;
-        this.reportYear = reportYear;
+        this.reportMonth = reportMonth || 8;
+        this.reportYear = reportYear || 2019;
         
         //this.con = self.con; // db connection
         this.con = require('./connection')();
@@ -56,7 +56,7 @@ class Eco1MonthReport extends base {
                         //throw err;
                         } else {
                             console.log("Connected!  BD state = "+ self.con.state);
-                            self.getDaysList(/*self.con,*/ reportMonth, reportYear)
+                            self.getDaysList(/*self.con,*/ self.reportMonth, self.reportYear)
                             .then(function(result){ 
                                 console.log("getDaysList . then ->", result);
 
@@ -82,7 +82,13 @@ class Eco1MonthReport extends base {
                                 self.forEachDay(DaysArray/*, con*/)
                                 .then(table => {
                                     console.log(table);
-                                    resolve(table);
+                                    const answer = {};
+                                    answer.tytle = self.getTitle();
+                                    
+                                    // answer.tytle = self.getTitle(reportDay , reportMonth, reportYear);
+                                        answer.eco = self.eco;
+                                        answer.data = table
+                                    resolve(answer);
                                 });
                                 
                                 
@@ -114,14 +120,14 @@ class Eco1MonthReport extends base {
         return new Promise( function(resolve, reject){
             function performQuery(mm , year){
                 const sql = self.monthDatesSql(mm , year);
-                console.log("getDaysList sql ", sql);
+                // console.log("getDaysList sql ", sql);
                 
                 let query = self.con.query(sql,  [], function (err, result, fields) {
                     if (err) {
                         console.log(err.message);
                         reject(err);
                     } else {
-                        console.log(" getDaysList result ", result);                        
+                        // console.log(" getDaysList result ", result);                        
                         resolve(result);
                     }
                 });
@@ -188,7 +194,7 @@ class Eco1MonthReport extends base {
             return new Promise(function(resolve, reject){
                 function performQuery(day) {
                     const sql = self.getDayReportSql(day );
-                console.log(` getDayRow ${day} - ${sql}`);            
+                // console.log(` getDayRow ${day} - ${sql}`);            
                     let query = self.con.query(sql,  [], function (err, result, fields) {
                         if (err) {
                             console.log(err.message);

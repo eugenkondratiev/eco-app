@@ -34,7 +34,7 @@ router.get('/:ecoId/', function(req, res, next) {
   try {
     const eco = parseInt(req.params.ecoId);
     const year = parseInt(req.query.year) || 2019;
-    const month = parseInt(req.query.month) || 7;
+    const month = parseInt(req.query.month) || 9;
 
 
     const monthrep =  new monthReport1(month, year);
@@ -51,7 +51,6 @@ router.get('/:ecoId/', function(req, res, next) {
       const resResponse =  err; 
       resResponse.____tytle = "getMonthReport rejected";
       console.log("resResponse ", resResponse  );
-
       res.setHeader('content-type', 'text/html');
       res.status(200).send(JSON.stringify(resResponse));
     });
