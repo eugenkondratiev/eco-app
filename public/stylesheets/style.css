@@ -95,6 +95,13 @@ button {
   font-style: italic;
   background-color: lightsteelblue  
 }
+
+#monthreport tr:last-child {
+  color: rgb(0, 61, 0);
+  font-size: larger;
+  font-style: bold;
+ 
+}
 /* 
 #dayreport tr td:nth-child(2) {
   color: darkred;
@@ -190,7 +197,7 @@ button {
 
 .monthform  select{
   display: block;
-  width:7em;
+  width:6.3em;
   color: darkblue;
   text-align:right;
   display: inline-block;
@@ -201,9 +208,20 @@ button {
 }
 
 .dateform input[id^=datepick] {
-  width:5.8em;
+  width:4.8em;
   color: darkolivegreen;
   text-align:right;
+}
+
+.monthform select[id^=year] {
+  width:4em;
+  color: darkolivegreen;
+  /* text-align:right; */
+}
+.monthform select[id^=month] {
+  width:6.3em;
+  color: darkolivegreen;
+  /* text-align:right; */
 }
 
 .hideIt {
