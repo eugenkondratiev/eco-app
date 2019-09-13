@@ -41,7 +41,8 @@ class Eco1MonthReport extends base {
         // const reportYear = _reportYear  || 2019 ;
         let DaysArray = [];
         const self = this;
-        
+        console.log("reportMonth, reportYear - ", this.reportMonth, this.reportYear, reportMonth, reportYear);
+
         return new Promise((resolve, reject) => {
                     
             self.con.connect(function(err) {
@@ -62,7 +63,7 @@ class Eco1MonthReport extends base {
 
                                 DaysArray = self.arrFromObjectArrray(result, "dtm");
                                 const daysInMonth = DaysArray[DaysArray.length - 1].slice(8, 10);
-                                console.log(daysInMonth);   
+                                // console.log(daysInMonth);   
                                 return   new Promise((res,  rej) => {
                                     res(DaysArray);
                                 });    
@@ -81,7 +82,7 @@ class Eco1MonthReport extends base {
                             .finally( function(){                                
                                 self.forEachDay(DaysArray/*, con*/)
                                 .then(table => {
-                                    console.log(table);
+                                    // console.log(table);
                                     const answer = {};
                                     answer.tytle = self.getTitle();
                                     

@@ -40,6 +40,7 @@ $(function() {
  
     });
 
+    
     $("#Eco2ReqForm").on('submit', function(e) {
         getReport.call($(this), e, 2);
     });

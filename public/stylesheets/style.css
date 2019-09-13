@@ -198,6 +198,7 @@ button {
 .monthform  select{
   display: block;
   width:6.3em;
+  height:1.4em;
   color: darkblue;
   text-align:right;
   display: inline-block;
@@ -214,6 +215,7 @@ button {
 }
 
 .monthform select[id^=year] {
+
   width:4em;
   color: darkolivegreen;
   /* text-align:right; */

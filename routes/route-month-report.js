@@ -3,13 +3,13 @@ var router = express.Router();
 const views = require('./abs-routes').views;
 
 const monthReport1 = require('../controllers/model/month-report-eco1');
-// const monthReport2 = require('../controllers/model/month-report-eco2');
+const monthReport2 = require('../controllers/model/month-report-eco2');
 
 
 /* GET home page. */
 router.use(function( req,res,next) {
   console.log("month-reports req.path", req.path);  
-  //console.log("req", req);
+  // console.log("req", req);
   next();
 });
 
@@ -37,9 +37,11 @@ router.get('/:ecoId/', function(req, res, next) {
     const month = parseInt(req.query.month) || 9;
 
 
-    const monthrep =  new monthReport1(month, year);
+    // const monthrep =  new monthReport1(month, year);
+    
     // const monthrep = eco === 2 ? new monthReport2(month, year) : new monthReport1(month, year);
-    // console.log(eco, year, month, day);
+     console.log("PARAMS = ", eco, year, month);
+    const monthrep = eco === 2 ? new monthReport2( month, year) : new monthReport1(month, year);
 
     monthrep.getMonthReport(month, year)
     .then(result => {
@@ -54,6 +56,7 @@ router.get('/:ecoId/', function(req, res, next) {
       res.setHeader('content-type', 'text/html');
       res.status(200).send(JSON.stringify(resResponse));
     });
+
 
   } catch (error) {
     res.status(501);
