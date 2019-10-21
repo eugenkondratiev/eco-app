@@ -7,26 +7,13 @@ const dayReport2 = require('../controllers/model/day-report-eco2');
 /* GET home page. */
 router.use(function( req,res,next) {
   console.log("req.path", req.path);  
-  //console.log("req", req);
   next();
 });
 
-router.get('/', function(req, res, next) {
-  //res.render('index', { title: 'Express' }); 
-  console.log(' get day-reports.html');
 
-  res.sendFile('/day-reports.html',{ root : views},(err) => {   
-    if (err) {
-      console.log(err);
-    } else {
-      ;
-      // console.log(" day-report index is sended");
-    }
-  });
-});
 
 router.get('/:ecoId/', function(req, res, next) {
-  //res.render('index', { title: 'Express' }); 
+
    console.log(' parse route');
   try {
     const eco = parseInt(req.params.ecoId);
@@ -59,4 +46,15 @@ router.get('/:ecoId/', function(req, res, next) {
 
 });
 
+router.get('/', function(req, res, next) {
+  console.log(' get day-reports.html');
+
+  res.sendFile('/day-reports.html',{ root : views},(err) => {   
+    if (err) {
+      console.log(err);
+    } else {
+      ;
+    }
+  });
+});
 module.exports = router;

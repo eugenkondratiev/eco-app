@@ -2,8 +2,8 @@ const Eco1DayReport = require('./day-report-eco1');
 // const mysqlConnection = require('./connection');
 
 class Eco2DayReport extends Eco1DayReport {
-    constructor() {
-        super();
+    constructor(reportDay , reportMonth, reportYear) {
+        super(reportDay , reportMonth, reportYear);
         this.eco = 2;
 
         //this.con = _con; // db connection

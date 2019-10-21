@@ -9,37 +9,15 @@ const monthReport2 = require('../controllers/model/month-report-eco2');
 /* GET home page. */
 router.use(function( req,res,next) {
   console.log("month-reports req.path", req.path);  
-  // console.log("req", req);
   next();
 });
 
-router.get('/', function(req, res, next) {
-  //res.render('index', { title: 'Express' }); 
-  console.log(' get index.html');
-
-  res.sendFile('/month-reports.html',{ root : views},(err) => {   
-    if (err) {
-      console.log(err)
-    } else {
-      console.log(" month-report index is sended");
-      console.log("__dirname", __dirname);
-      
-    }
-  });
-});
 
 router.get('/:ecoId/', function(req, res, next) {
-  //res.render('index', { title: 'Express' }); 
-   console.log(' parse route');
   try {
     const eco = parseInt(req.params.ecoId);
     const year = parseInt(req.query.year) || 2019;
     const month = parseInt(req.query.month) || 9;
-
-
-    // const monthrep =  new monthReport1(month, year);
-    
-    // const monthrep = eco === 2 ? new monthReport2(month, year) : new monthReport1(month, year);
      console.log("PARAMS = ", eco, year, month);
     const monthrep = eco === 2 ? new monthReport2( month, year) : new monthReport1(month, year);
 
@@ -68,11 +46,8 @@ router.get('/:ecoId/', function(req, res, next) {
 });
 //=============================================================================================
 router.get('/test', function(req, res, next) {
-  //res.render('index', { title: 'Express' }); 
-  // console.log(' get index.html');
   try {
     const randomResponse = `<tr> <td>--2019---</td> <td>MONTH </td><td>xxxxxx</td><td>${(Math.random() * 100.0).toFixed(3)}</td></tr>`;
-    // console.log("randomResponse  " , randomResponse);
     
   res.setHeader('content-type', 'text/html');
   res.status(200).send(randomResponse);
@@ -82,17 +57,20 @@ router.get('/test', function(req, res, next) {
     
   }
   
-  // res.sendFile('/day-reports.html',{ root : views},(err) => {   
-  //   if (err) {
-  //     console.log(err)
-  //   } else {
-  //     console.log(" day-report index is sended");
-  //     console.log("__dirname", __dirname);
-      
-  //   }
-  // });
-  //-0------------------------------------------------------------------------------
 });
 
+router.get('/', function(req, res, next) {
+  console.log(' get index.html');
+
+  res.sendFile('/month-reports.html',{ root : views},(err) => {   
+    if (err) {
+      console.log(err)
+    } else {
+      console.log(" month-report index is sended");
+      console.log("__dirname", __dirname);
+      
+    }
+  });
+});
 
 module.exports = router;

@@ -33,8 +33,6 @@ $(function() {
         return `Котельная ${parseInt(_eco)}. `;
     };
 
-
-
     $("#Eco1ReqForm").on('submit', function(e) {
         getReport.call($(this), e, 1);
  
@@ -94,10 +92,7 @@ $(function() {
       $( "#datepicker2" ).val(currentDate);
 
       $( "#datepicker1" ).on('change', function(e) {
-        // const dt = $(this).val().split(".");
         const dt = $(this).val().split(/\.|\//);
-        // console.log($(this).val(), "      ", dt);
-        // console.log(dt[0], "-", dt[1], "-", dt[2]);
         $("#Eco1ReqForm").find("input[name=day").val(dt[0]);
         $("#Eco1ReqForm").find("input[name=month").val(dt[1]);
         $("#Eco1ReqForm").find("input[name=year").val(dt[2]);
@@ -106,14 +101,10 @@ $(function() {
 
     $( "#datepicker2" ).on('change', function(e) {
         const dt = $(this).val().split(/\.|\//);
-        // console.log($(this).val(), "      ", dt);
-        // console.log(dt[0], "-", dt[1], "-", dt[2]);
         $("#Eco2ReqForm").find("input[name=day").val(dt[0]);
         $("#Eco2ReqForm").find("input[name=month").val(dt[1]);
         $("#Eco2ReqForm").find("input[name=year").val(dt[2]);
-        // alert($(this).val());
-        // alert($(this).val());
-    });
+     });
 
     function getReport(e, _eco = 1, _dd , _mn, _yy) {
         e.preventDefault();

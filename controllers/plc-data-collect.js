@@ -15,9 +15,7 @@ function dataCollect(server){
     bits.addBinFunctions();
     let handler = 0;
 
-    //let m340data = [];
     let m340data = require('../public/data/m340data');
-    //const logIt = require('./logger');
 
     let eco1 = [];
 
@@ -33,10 +31,8 @@ function dataCollect(server){
         ws.on('message', function(message) {;
             try {
                 const jsonMessage = JSON.parse(JSON.parse(JSON.stringify(message)));
-                //  console.log("_jsonMessage", jsonMessage);
                 eco1 = jsonMessage.eco1;
                 timestamps[0] =jsonMessage.timestamp;
-                // console.log("eco1LastDayW38", eco1);
             } catch (error) {
                 console.log(error.message);           
             }
@@ -103,7 +99,6 @@ function dataCollect(server){
 }
 
 function getDateTimeStringCurrent (dt) {
-    //return dt.toISOString().slice(0, 19).replace('T', ' ');
     return (new Date ((new Date((new Date(new Date(dt))).toISOString() )).getTime() - ((new Date()).getTimezoneOffset()*60000))).toISOString().slice(0, 19).replace('T', ' ');
 }
 

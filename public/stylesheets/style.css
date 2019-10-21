@@ -62,7 +62,12 @@ p {
 }
 button {
   margin: 0.3em;
+  
 }
+
+/* .buttons {
+  float: left;
+} */
 
 #lastDataTimestamp {
   font-size: x-small;
@@ -189,7 +194,7 @@ button {
 
 .dateform input[type=text]{
   display: block;
-  width:3em;
+  width:4em;
   color: darkblue;
   text-align:right;
   display: inline-block;
@@ -209,14 +214,14 @@ button {
 }
 
 .dateform input[id^=datepick] {
-  width:4.8em;
+  width:5.8em;
   color: darkolivegreen;
   text-align:right;
 }
 
 .monthform select[id^=year] {
 
-  width:4em;
+  width:5em;
   color: darkolivegreen;
   /* text-align:right; */
 }
@@ -233,7 +238,9 @@ button {
 .navigationFooter {
   clear: both;
 }
-
+/* .hasDatepicker {
+  width: 5em;
+} */
 /*==================form============================*/
 
 #restart {

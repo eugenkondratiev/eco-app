@@ -28,22 +28,5 @@ router.post('/restart', function(req, res, next) {
   ;
 });
 
-// router.get('/1', function(req, res, next) {
-//   //res.render('index', { title: 'Express' });
-//   //res.send(req.path);
-//   res.sendFile('/eco1.html', { root : views},(err) => { 
-//     if (err) console.log(err);
-//     ;
-//   });
-// });
-
-// router.get('/2', function(req, res, next) {
-//   //res.render('index', { title: 'Express' });
-//   //res.send(req.path);
-//   res.sendFile('/eco2.html', { root : views},(err) => { 
-//     if (err) console.log(err);
-//     ;
-//   });
-// });
 
 module.exports = router;
