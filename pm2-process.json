@@ -1,7 +1,7 @@
 {
     "script" : "www.js",
     "watch": true,
-    "ignore_watch" : ["node_modules", "public/data", ".git"],
+    "ignore_watch" : ["node_modules", "public/data", ".git","logs", "src"],
     "watch_options" : {
         "followSymlinks" : false
     },

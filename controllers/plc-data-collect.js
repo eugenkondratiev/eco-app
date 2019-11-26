@@ -1,18 +1,24 @@
 const timestamps = [];
 
 function dataCollect(server){
+
+    const client = require('./plc-client')();
+
 //:TODO divide to 2-3 modules
-    var TcpPort = require("modbus-serial").TcpPort;
-    var tcpPort = new TcpPort("192.168.1.225");
-    var ModbusRTU = require("modbus-serial");
-    var client = new ModbusRTU(tcpPort);
+    // var TcpPort = require("modbus-serial").TcpPort;
+    // var tcpPort = new TcpPort("192.168.1.225");
+    // var ModbusRTU = require("modbus-serial");
+   
+   
+    // client = new ModbusRTU(tcpPort);
 
     const BLOCK_START = 3200;
     const BLOCK_SIZE = 100;
 
     const m340 = require('./m340read');
-    const bits = require('./bit-operations');
-    bits.addBinFunctions();
+    // const bits = require('./bit-operations');
+    // bits.addBinFunctions();
+
     let handler = 0;
 
     let m340data = require('../public/data/m340data');
@@ -43,10 +49,9 @@ function dataCollect(server){
         })
     });
 
-
-    client.connectTCP("95.158.47.15", { port: 502 });
-    //client.connectTCP(tcpPort, { port: 502 });
-    client.setID(1);
+    // client.connectTCP("95.158.47.15", { port: 502 });
+    // //client.connectTCP(tcpPort, { port: 502 });
+    // client.setID(1);
 
     let periodicPollingHandler = setInterval(function() {
         //PromiseAPI
