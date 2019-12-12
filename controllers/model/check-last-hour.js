@@ -2,12 +2,12 @@ const dbQuery = require('./db-local').dbQuery;
 
 
 function checkLastHour(_eco) {
-//==============================================================================
-        function getDateTimeFromMySql (dt) {
-            //return dt.toISOString().slice(0, 19).replace('T', ' ');
-            return (new Date ((new Date((new Date(new Date(dt))).toISOString() )).getTime() - ((new Date()).getTimezoneOffset()*60000))).toISOString().slice(0, 19).replace('T', ' ');
-        }
-//==============================================================================
+    //==============================================================================
+    function getDateTimeFromMySql(dt) {
+        //return dt.toISOString().slice(0, 19).replace('T', ' ');
+        return (new Date((new Date((new Date(new Date(dt))).toISOString())).getTime() - ((new Date()).getTimezoneOffset() * 60000))).toISOString().slice(0, 19).replace('T', ' ');
+    }
+    //==============================================================================
 
     //---------------------------------------------------------------
     // function getCurrentHourString() {
@@ -23,51 +23,71 @@ function checkLastHour(_eco) {
     const fs = require('fs');
 
     return new Promise((res, rej) => {
-        const curDateTime = new Date(); 
-        
+        const curDateTime = new Date();
+
         // const curHourCutted = getDateTimeFromMySql(curHour).slice(0,-6);
-        const lastHour = getDateTimeFromMySql(curDateTime).slice(0,-6).concat(':00:00');
+        const lastHour = getDateTimeFromMySql(curDateTime).slice(0, -6).concat(':00:00');
         const curHour = curDateTime.getHours();
-         console.log(curHour, typeof curHour);
+        // console.log(curHour, typeof curHour);
         // const lastHour = testHour;
-        
+
         const _sql = `SELECT * FROM eco.hourseco${eco} where dt = '${lastHour}';`;
         dbQuery(_sql)
-        .then(response => {
-            // console.log(response.rows);
-            if (response.rows < 1) {
-            const logRecord = new Date() +  'last hour data missing found \n\r';
-             fs.appendFile('./logs/dbconnectrerrors.txt', logRecord, err=>{if (err) console.error('file error - ',err)});
-             res({missed : true, hour : curHour})
-            }
-            res({missed : false, hour : curHour})
-        })
-        .catch(err => {
-             console.log('sql err -', err);
-             
-             const logRecord = new Date() +  ' db connection error\n\r';
-             fs.appendFile('./logs/dbconnectrerrors.txt', logRecord, err=>{if (err) console.error('file error - ',err)});
+            .then(response => {
+                // console.log(response.rows);
+                if (response.rows < 1) {
+                    const logRecord = new Date() + 'last hour data missing found \n\r';
+                    fs.appendFile('./logs/dbconnectrerrors.txt', logRecord, err => { if (err) console.error('file error - ', err) });
+                    res({ missed: true, hour: curHour })
+                }
+                res({ missed: false, hour: curHour })
+            })
+            .catch(err => {
+                console.log('sql err -', err);
 
-            rej(err)
-        })
+                const logRecord = new Date() + ' db connection error\n\r';
+                fs.appendFile('./logs/dbconnectrerrors.txt', logRecord, err => { if (err) console.error('file error - ', err) });
+
+                rej(err)
+            })
     })
 }
 
 
 checkLastHour(2).
-then(resp => {
-    if (resp.missed) {
-        console.log('no last hour data - ',resp.hour);
-    } else {
-        console.log('OK')
-        // console.log(resp)
-    }
-})
-.catch(err => { 
-    if (err) { 
-        console.log('err sql - ', err);
-    }
-})
-.finally(() => {
-    require('./connection-pool-eco')().end();
-})
+    then(resp => {
+        if (resp.missed) {
+            console.log('no last hour data - Eco2', resp.hour);
+        } else {
+            console.log('Eco2 OK')
+            console.log(resp)
+        }
+    })
+    .catch(err => {
+        if (err) {
+            console.log('err sql - Eco1', err);
+        }
+    })
+    .then(() => {
+        // setTimeout(function () {
+            checkLastHour(1).
+                then(resp => {
+                    if (resp.missed) {
+                        console.log('no last hour data - Eco1 ', resp.hour);
+                    } else {
+                        console.log('Eco1 OK ')
+                        // console.log(resp)
+                    }
+                })
+                .catch(err => {
+                    if (err) {
+                        console.log('err sql - Eco1', err);
+                    }
+                }).finally(()=>{
+                    require('./connection-pool-eco')().end();
+                })
+        // }, 0)
+    })
+    .finally(() => {
+        ;
+    })

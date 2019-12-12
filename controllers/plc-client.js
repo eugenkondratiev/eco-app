@@ -9,7 +9,8 @@ function createm340client() {
 
     const bits = require('./bit-operations');
     bits.addBinFunctions();
-    client.connectTCP("95.158.47.15", { port: 502 });
+    client.connectTCP("192.168.1.225", { port: 502 });
+    // client.connectTCP("95.158.47.15", { port: 502 });
     //client.connectTCP(tcpPort, { port: 502 });
     client.setID(1);
 

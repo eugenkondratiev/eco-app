@@ -36,7 +36,7 @@ $(function() {
                     const elName ="#Eco2_" + el;
                     $(elName).text(dataM340[data.eco2[el].index]);
                 });   
-                $("#lastDataTimestamp").text("Обновлено : " + JSON.parse(message.timestamps)[1]);             
+                $("#last-data-timestamp").text("Обновлено : " + JSON.parse(message.timestamps)[1]);             
             } catch (error) {
                 console.log(error.message);
             }

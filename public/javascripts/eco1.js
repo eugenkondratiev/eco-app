@@ -26,20 +26,14 @@ $(function() {
         for (ai in data.eco1) {
             $('#dataEco1').append(getAiRow(ai, data.eco1[ai], "Eco1"));
         }
-
         socket.on('newdata', function(message) {
-            // console.log(message);
-
             const dataM340 = JSON.parse(message.data);
-
-            //console.log(data.parameters);
-
             try {
                 data.parameters.eco1.forEach(el => {
                     const elName ="#Eco1_" + el;
                     $(elName).text(dataM340[ECO1_MESSAGE_BORDER + data.eco1[el].index]);
                 });     
-                $("#lastDataTimestamp").text("Обновлено : " + JSON.parse(message.timestamps)[0]);          
+                $("#last-data-timestamp").text("Обновлено : " + JSON.parse(message.timestamps)[0]);          
             } catch (error) {
                 console.log(error.message);
             }

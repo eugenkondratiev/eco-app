@@ -1,38 +1,45 @@
-body {
+* {
+  box-sizing: border-box;
   padding: 0;
-  margin : 0;
-  font:"Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 0;
+}
+
+body {
+  font: "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: whitesmoke;
 }
 
 .datatable {
   border: 1px solid darkgrey;
-  margin: auto ;
-  
+  margin: auto;
+
   align-content: center;
   /* width: max-content */
 }
 
-.datatable td, th {
+.datatable td,
+th {
   border: 1px solid grey;
   padding: 1px;
   text-align: center;
-  margin-block-start: 0.5em;
-  margin-block-end: 0.5em
+  margin-block-start: 0.2em;
+  margin-block-end: 0.2em
 }
 
 .reportDiv {
-             margin-top: 4em; 
-            margin-left: 10px;
-            align-content: center
-
+  margin-top: 4em;
+  margin-left: 10px;
+  align-content: center
 }
+
 .datatable tr:nth-child(even) {
   background-color: rgb(231, 231, 231);
 }
+
 .datatable tr:hover {
-  background-color:darkkhaki;
+  background-color: darkkhaki;
 }
+
 .datatable tr:nth-last-child() {
   background-color: grey;
   font-style: italic;
@@ -60,22 +67,26 @@ p {
   margin-block-start: 0.5em;
   margin-block-end: 0.5em
 }
+
 button {
-  margin: 0.3em;
-  
+  margin: 0.3em 0.5em;
+
 }
 
-/* .buttons {
-  float: left;
-} */
+.buttons {
+  flex-grow: 1;
+  order:2;
+  display:flex;
+}
 
-#lastDataTimestamp {
+#last-data-timestamp {
   font-size: x-small;
   color: midnightblue;
-  align-content: center
+  text-align: center;
+
 }
 
-.datatable  tr td[class=value] {
+.datatable tr td[class=value] {
   font-family: Arial, Helvetica, sans-serif;
   font-size: larger;
   font-style: bold;
@@ -85,28 +96,30 @@ button {
   padding-right: 0.5em;
 }
 
-.datatable  tr td[class=aiLabel]{
+.datatable tr td[class=aiLabel] {
   border: 1px solid grey;
   padding: 1px;
- color: darkblue;
+  color: darkblue;
   text-align: left;
   /* align:left; */
   padding-left: 0.5em
 }
 
-#monthreport tr td:nth-child(2), #dayreport tr td:nth-child(2) {
+#monthreport tr td:nth-child(2),
+#dayreport tr td:nth-child(2) {
   color: darkred;
   font-size: larger;
   font-style: italic;
-  background-color: lightsteelblue  
+  background-color: lightsteelblue
 }
 
 #monthreport tr:last-child {
   color: rgb(0, 61, 0);
   font-size: larger;
   font-style: bold;
- 
+
 }
+
 /* 
 #dayreport tr td:nth-child(2) {
   color: darkred;
@@ -123,121 +136,139 @@ button {
   line-height: 0.8em;
   overflow: hidden;
   align-content: center;
-   /*position: fixed;  */
+  /*position: fixed;  */
   /* top: 0;  */
-  width: 100%; 
+  width: 100%;
 }
 
 #topmenu.fixed {
-    position:fixed;
-    top:0; left:0;
-    width:100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
+
 #topmenu.ecoMenu {
-    width:100%;
-    /* width: 920px; */
+  width: 100%;
+  /* width: 920px; */
 }
 
-        #topmenu ul {
-          padding: 0;
-          margin: 0;
-		  display: inline-block;
-          
-        }
-        #topmenu li {
-          display: inline;
-          list-style: none;
-            margin: 0;
-          /* margin: 0.2em 0.8em */
-        }
+#topmenu ul {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
 
-        #topmenu li a{
-            border: 1px solid grey;
-            background-color: darkcyan;
-            float: left;
-            display: block;
-            /* padding: 0 0 1em 0; */
-            padding: 0.8em 2em;
-           /* min-width: 100px;*/
-           text-decoration: none;
-           color: lightgray;
+}
 
-        }
-        #topmenu li a:hover {
-          background-color: rgb(3, 161, 161);
-          color: burlywood
+#topmenu li {
+  display: inline;
+  list-style: none;
+  margin: 0;
+}
 
-        }
+#topmenu li a {
+  border: 1px solid grey;
+  background-color: darkcyan;
+  display: block;
+  padding: 1.2em 2em;
+  min-width: 100px;
+  text-decoration: none;
+  color: lightgray;
+
+}
+
+#topmenu li a:hover {
+  background-color: rgb(3, 161, 161);
+  color: burlywood
+}
 
 .content {
-            margin-top: 1em; 
-            margin-left: 5px;
-            align-content: center
+  margin-top: 1em;
+  margin-left: 5px;
+  align-content: center
 }
 
-.content p{
-            margin-left: 3em;
-          /*  align-content: center*/
+.content p {
+  margin-left: 3em;
+  /*  align-content: center*/
 }
+
 /*==================menu============================*/
 
 /*==================form============================*/
-.dateform, .monthform {
-  display:block;
+.forms-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.dateform,
+.monthform {
+  display: block;
   color: darkblue;
-  width:30%;
-  text-align:right;
+  width: 30%;
+  text-align: right;
   margin: 0em 3em 0.5em 0.5em;
-  float: right;
-  align-content: flex-end
+  /* float: right; */
+  align-content: flex-end;
+  flex-grow: 1;
 }
 
-.dateform input[type=text]{
+.dateform input[type=text] {
   display: block;
-  width:4em;
+  width: 4em;
   color: darkblue;
-  text-align:right;
+  text-align: right;
   display: inline-block;
 }
 
-.monthform  select{
+.monthform select {
   display: block;
-  width:6.3em;
-  height:1.4em;
+  width: 6.3em;
+  height: 1.4em;
   color: darkblue;
-  text-align:right;
+  text-align: right;
   display: inline-block;
 }
-
+/* 
 #Eco1ReqForm {
   float: left;
-}
+} */
 
 .dateform input[id^=datepick] {
-  width:5.8em;
+  width: 5.8em;
   color: darkolivegreen;
-  text-align:right;
+  text-align: right;
 }
 
 .monthform select[id^=year] {
 
-  width:5em;
+  width: 5em;
   color: darkolivegreen;
   /* text-align:right; */
 }
+
 .monthform select[id^=month] {
-  width:6.3em;
+  width: 6.3em;
   color: darkolivegreen;
   /* text-align:right; */
+}
+#Eco2ReqForm {
+  order:3;
 }
 
 .hideIt {
   display: none;
-
 }
+
 .navigationFooter {
   clear: both;
 }
+
 /* .hasDatepicker {
   width: 5em;
 } */

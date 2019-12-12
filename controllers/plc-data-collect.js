@@ -39,6 +39,7 @@ function dataCollect(server){
                 const jsonMessage = JSON.parse(JSON.parse(JSON.stringify(message)));
                 eco1 = jsonMessage.eco1;
                 timestamps[0] =jsonMessage.timestamp;
+                // console.log(eco1);
             } catch (error) {
                 console.log(error.message);           
             }

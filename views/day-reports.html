@@ -1,52 +1,56 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Суточные отчеты</title>
-        <link rel="icon" href="../images/faviconka_ru_412.ico" type="image/x-icon" />
-        <link rel="shortcut icon" href= "../images/faviconka_ru_412.ico" type="image/x-icon" /> 
-         <link rel="stylesheet" type="text/css" href="../stylesheets/style.css">
-         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
-        
+
+<head>
+    <meta charset="utf-8" />
+    <title>Суточные отчеты</title>
+    <link rel="icon" href="../images/faviconka_ru_412.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="../images/faviconka_ru_412.ico" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="../stylesheets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
 
 
-    </head>
- 
-    <body>
-        <div class="content">
-        <div id="formsContainer">
-        <form class = "dateform" id="Eco1ReqForm" action="http://95.158.47.15:3001/reports/day/1/">
-            <!-- Котельная 1. Выбор дня -->
-            <p>Выбор отчетного дня. Котельная 1:   <input type="text" id="datepicker1" autocomplete="off"></p>
-            <div class="hideIt">
-                <input type="text" name="day" value="11" placeholder="День" required>
-                <input type="text" name="month" value="6"placeholder="Месяц"required>
-                <input type="text" name="year" value="2019" placeholder="Год" required>
-            </div>
+
+</head>
+
+<body>
+    <div class="content">
+        <div class="forms-container">
+            <form class="dateform" id="Eco1ReqForm" action="http://95.158.47.15:3001/reports/day/1/">
+                <!-- Котельная 1. Выбор дня -->
+                <p>Выбор отчетного дня. Котельная 1: <input type="text" id="datepicker1" autocomplete="off"></p>
+                <div class="hideIt">
+                    <input type="text" name="day" value="11" placeholder="День" required>
+                    <input type="text" name="month" value="6" placeholder="Месяц" required>
+                    <input type="text" name="year" value="2019" placeholder="Год" required>
+                </div>
                 <input type="submit" name="submit" value="Получить отчет">
 
-        </form>
+            </form>
+            <div class="buttons">
+                <button id="todayRepEco1">Котельная1 Сегодня</button>
+                <button id="yesterdayRepEco1">Котельная1 Вчера</button>
+                <button id="todayRepEco2">Котельная2 Сегодня</button>
+                <button id="yesterdayRepEco2">Котельная2 Вчера</button>
 
-        <form class = "dateform" id="Eco2ReqForm" action="http://95.158.47.15:3001/reports/day/2/">
-            
-            <p>Выбор отчетного дня. Котельная 2:   <input type="text" id="datepicker2" autocomplete="off"></p>
-            <div class="hideIt">
-                        <input type="text" name="day" value="8" placeholder="День" required>
-            <input type="text" name="month" value="7"placeholder="Месяц"required>
-            <input type="text" name="year" value="2019" placeholder="Год" required>
             </div>
-            <input type="submit" name="submit" value="Получить отчет">
-        </div>
-        <div class="buttons">
-            <button id="todayRepEco1">Котельная 1 Сегодня</button>
-            <button id="yesterdayRepEco1">Котельная 1 Вчера</button>
-            <button id="todayRepEco2">Котельная 2 Сегодня</button>
-            <button id="yesterdayRepEco2">Котельная 2 Вчера</button>
-            
-        </div>
-        <div class="navigationFooter"> </div>
+            <form class="dateform" id="Eco2ReqForm" action="http://95.158.47.15:3001/reports/day/2/">
 
-    </form>  
+                <p>Выбор отчетного дня. Котельная 2: <input type="text" id="datepicker2" autocomplete="off"></p>
+                <div class="hideIt">
+                    <input type="text" name="day" value="8" placeholder="День" required>
+                    <input type="text" name="month" value="7" placeholder="Месяц" required>
+                    <input type="text" name="year" value="2019" placeholder="Год" required>
+                </div>
+                <input type="submit" name="submit" value="Получить отчет">
+
+            </form>
+
+
+            <div class="navigationFooter"> </div>
+        </div>
+
+
         <!-- <button id="testbutton">test Eco1 15.07.19</button>
         <button id="testbutton2">test Eco2 12.07.19</button>
         <button id="testbutton3">test3 Eco1 22.05.19</button>
@@ -55,20 +59,23 @@
         <h1>Суточные отчеты</h1>
         <h2 id="ecounit"></h2>
         <p id="errorLabel"></p>
-        
-        <div> <p id="testPar"></p></div>
-                <table class="datatable" id="dayreport">
 
-                </table>
-
+        <div>
+            <p id="testPar"></p>
         </div>
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/i18n/jquery-ui-i18n.min.js">
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
-        <script src="../javascripts/day-reports.js"></script>
-        <script src="../javascripts/main-menu.js"></script>
+        <table class="datatable" id="dayreport">
 
-    </body>
+        </table>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/i18n/jquery-ui-i18n.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+    <script src="../javascripts/day-reports.js"></script>
+    <script src="../javascripts/main-menu.js"></script>
+
+</body>
+
 </html>

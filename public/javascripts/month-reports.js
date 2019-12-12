@@ -84,24 +84,24 @@ $(function() {
     $(`#yearPicker2 option[value=${currentYear}]`).attr("selected", "selected");
     $(`#monthPicker2 option[value=${currentMonth}]`).attr("selected", "selected");
 
-    $("#testbutton").click(function(){
-        $.get("http://95.158.47.15:3001/reports/month/test", function(data, status) {
-            try {
-                const message = JSON.parse(data);
-                $('h1').text(getEcoName(message.eco) + message.tytle);
-                if (message.err) {
-                    $("#errorLabel").text(message.err);
-                    $("#monthreport").html("");     
-                } else {
-                    $("#monthreport").html(message.data);
-                    $("#errorLabel").text('');
-                }
+    // $("#testbutton").click(function(){
+    //     $.get("http://95.158.47.15:3001/reports/month/test", function(data, status) {
+    //         try {
+    //             const message = JSON.parse(data);
+    //             $('h1').text(getEcoName(message.eco) + message.tytle);
+    //             if (message.err) {
+    //                 $("#errorLabel").text(message.err);
+    //                 $("#monthreport").html("");     
+    //             } else {
+    //                 $("#monthreport").html(message.data);
+    //                 $("#errorLabel").text('');
+    //             }
 
-            } catch (error) {
-                console.log(error.message);
-            }   
-        })  
-    });
+    //         } catch (error) {
+    //             console.log(error.message);
+    //         }   
+    //     })  
+    // });
 
 
     $("#Eco1ReqForm").on('submit', function(e) {
@@ -141,28 +141,28 @@ $(function() {
         getMonthReport.call($(this),e, 2, dt.getMonth() + 1, dt.getFullYear())
     });
 
-    $("#testbutton2").click(function(){
-        console.log("testbutton 2");
-        $.get("http://95.158.47.15:3001/reports/month/1/", function(data, status) {
-            try {
-                console.log("status - " , status);
-                console.log("response" , data);
+    // $("#testbutton2").click(function(){
+    //     console.log("testbutton 2");
+    //     $.get("http://95.158.47.15:3001/reports/month/1/", function(data, status) {
+    //         try {
+    //             console.log("status - " , status);
+    //             console.log("response" , data);
                 
-                const message = JSON.parse(data);
-                $('h1').text(getEcoName(message.eco) + message.tytle);
-                if (message.err) {
-                    $("#errorLabel").text(message.err);
-                    $("#monthreport").html("");     
-                } else {
-                    $("#monthreport").html(message.data);
-                    $("#errorLabel").text('');
-                }
+    //             const message = JSON.parse(data);
+    //             $('h1').text(getEcoName(message.eco) + message.tytle);
+    //             if (message.err) {
+    //                 $("#errorLabel").text(message.err);
+    //                 $("#monthreport").html("");     
+    //             } else {
+    //                 $("#monthreport").html(message.data);
+    //                 $("#errorLabel").text('');
+    //             }
 
-            } catch (error) {
-                console.log(error.message);
-            }   
-        })
-    });
+    //         } catch (error) {
+    //             console.log(error.message);
+    //         }   
+    //     })
+    // });
 
     function getMonthReport(e, _eco = 1, _mn, _yy) {
         e.preventDefault();
