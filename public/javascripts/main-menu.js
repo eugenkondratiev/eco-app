@@ -39,7 +39,7 @@ $(function() {
         menuItems.forEach(item => {
             menu.children(0).append(getMenuItem(item));
         });
-        
+        menu.addClass("sticky");
         return menu;
 
     };
@@ -64,18 +64,21 @@ $(function() {
     // $('header').append(getMenu());
     // $('body').prepend(getMenu());
     //let menu;
+
+
+
     try {
       $('body').prepend(getMenu());
-      
-      $(window).scroll(function() {
-        const menu = $("#topmenu");
+          /**sticky menu better? */
+    //   $(window).scroll(function() {
+    //     const menu = $("#topmenu");
 
-        if ( $(this).scrollTop() > 30  && menu.hasClass("ecoMenu")) {
-            menu.removeClass("ecoMenu").addClass("fixed");
-        } else if ( $(this).scrollTop() <= 30  && menu.hasClass("fixed")) {
-            menu.removeClass("fixed").addClass("ecoMenu");
-        };
-    })
+    //     if ( $(this).scrollTop() > 30  && menu.hasClass("ecoMenu")) {
+    //         menu.removeClass("ecoMenu").addClass("fixed");
+    //     } else if ( $(this).scrollTop() <= 30  && menu.hasClass("fixed")) {
+    //         menu.removeClass("fixed").addClass("ecoMenu");
+    //     };
+    // })
     } catch (error) {
         console.log(error.message);
         
