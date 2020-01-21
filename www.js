@@ -27,7 +27,7 @@ ais.getLists()
   console.log(err);
 })
 .finally( list => {
- 
+  require('./scheduler')();
 
 })
  

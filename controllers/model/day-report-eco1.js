@@ -18,7 +18,7 @@ class Eco1DayReport extends base {
 
 
     }
-
+    /// TODO "second header with pars mnemonic"
     //-----------------------------------------------------------------
     tableHeader() {
         return "<tr>" + this.HEADER.map(el => "<th>" + el + "</th>").join("") + "</tr>";
