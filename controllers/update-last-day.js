@@ -101,7 +101,7 @@ async function main() {
 
         const lastDayHours = (await dbQuery(sqlLastDayHours)).rows[0][0];
         console.log(lastDayHours);
-       if (lastDayHours<24) return;
+       if (lastDayHours===24) return;
 
         const answer = [];
         for (let i = 0; i < 24; i++) {

@@ -8,7 +8,7 @@ function getCurrentDayString() {
 }
 
 function getHourString(_lastDay) {
-    console.log(_lastDay);
+    // console.log(_lastDay);
 
     return _hour => {
         return `${_lastDay} ${_hour > 9 ? _hour : "0" + _hour}:00:00`

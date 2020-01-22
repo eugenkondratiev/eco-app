@@ -1,5 +1,5 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const views = require('./abs-routes').views;
 
 const monthReport1 = require('../controllers/model/month-report-eco1');
@@ -18,6 +18,7 @@ router.get('/:ecoId/', function(req, res, next) {
     const eco = parseInt(req.params.ecoId);
     const year = parseInt(req.query.year) || 2019;
     const month = parseInt(req.query.month) || 9;
+    
      console.log("PARAMS = ", eco, year, month);
     const monthrep = eco === 2 ? new monthReport2( month, year) : new monthReport1(month, year);
 

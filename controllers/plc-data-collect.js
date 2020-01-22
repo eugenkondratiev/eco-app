@@ -1,6 +1,9 @@
 const timestamps = [];
 const fs= require('fs');
 
+//it`s consciously global
+wsClients = {};
+
 function dataCollect(server) {
 
     const client = require('./plc-client')();
@@ -28,7 +31,7 @@ function dataCollect(server) {
 
 
     const WebSocketServer = new require('ws');
-    const wsClients = {};
+    //const wsClients = {};
     const webSocketServer = new WebSocketServer.Server({
         port: 8081
     });
