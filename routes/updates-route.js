@@ -1,9 +1,11 @@
 const updateLastDay2 = require('../controllers/update-last-day');
-
+const sendUpdateMessageEco1 = require('../controllers/send-update-message');
 const express = require('express');
 const router = express.Router();
 const fs = require('fs');
 const views = require('./abs-routes').views;
+
+const logTask = require('../tasklog');
 
 router.use(function (req, res, next) {
     console.log("update last day request", req.path);
@@ -23,34 +25,29 @@ router.get("/:ecoId/", async (req, res, next) => {
                 if (err) console.error
             });
             // console.log(wsClients);
+            try {
+                const ans1 = await require('../controllers/model/eco1-check-last-day')();
+                logTask(1, ("  day checked. result : " + ans1 + "\n"));
+                if (parseInt(ans1) < 24) {
+                    sendUpdateMessageEco1();
+                  logTask(1, ("  update message sended\n"));
+                }
+              } catch (error) {
+                logTask(1, ("  day checked. error : " + error.message + "\n"));
+          
+              }
 
-            for (ws in wsClients) {
-                console.log(ws);
+            // sendUpdateMessageEco1();
 
-                try {
-                    const msgToEco1 = JSON.stringify({
-                        lastDayUpdate: true
-                    });
-                    console.log(msgToEco1);
-
-                    wsClients[ws].send(msgToEco1);
-                } catch (error) {
-                    console.log(error.messsage);
-                    const logRecord = new Date() + " Message Error " + error.messsage + ' \n';
-
-                    fs.appendFile('logs/update_day_eco1.txt', logRecord, err => {
-                        if (err) console.error
-                    });
-
-                };
-            }
         } else if (eco === 2) {
             const logRecord = new Date() + " " + ' have a request on last day Eco2 update\n';
-            fs.appendFile('../logs/update_day_eco2.txt', logRecord, err => {
-                if (err) console.error
-            });
+            fs.appendFile('logs/update_day_eco2.txt', logRecord, err => {
+                if (err) console.error;
 
-            await updateLastDay2();
+                
+            });
+            updateLastDay2();
+
         } else {
             ;
         }

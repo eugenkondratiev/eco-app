@@ -3,6 +3,7 @@ const fs= require('fs');
 
 //it`s consciously global
 wsClients = {};
+const updateEco1 = require('./model/eco1-update-last-day');
 
 function dataCollect(server) {
 
@@ -40,7 +41,7 @@ function dataCollect(server) {
         let id = Math.random();
         wsClients[id] = ws;
 
-        ws.on('message', function (message) {
+        ws.on('message', async function (message) {
             ;
             try {
                 const jsonMessage = JSON.parse(JSON.parse(JSON.stringify(message)));
@@ -49,10 +50,12 @@ function dataCollect(server) {
                     timestamps[0] = jsonMessage.timestamp;
                 }
                 if (jsonMessage.lastDayEco1) {
-                    const logRecord = new Date() + " " + ' reseived last day array message\n';
-                    fs.appendFile('../logs/update_day_eco1.txt', logRecord, err => {
+                    const logRecord = new Date() + " " + ' reseived last day array message\n' + (typeof jsonMessage.lastDayEco1) + " _ " + jsonMessage.lastDayEco1 + '\n';
+                    fs.appendFile('logs/update_day_eco1.txt', logRecord, err => {
                         if (err) console.error
                     });
+                    
+                   // updateEco1(jsonMessage.lastDayEco1);
                 }
                 // console.log(eco1);
             } catch (error) {

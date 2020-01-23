@@ -1,6 +1,13 @@
 const schedule = require('node-schedule');
 //   const getPlayers = require('./model/get-players-base');
 
+// function logTask(eco, msg) {
+//   const logRecord = new Date() + "Eco" + eco + " " + msg;
+//   require('fs').appendFile('./logs/update_day_eco' + eco + '.txt', logRecord, err => {
+//     if (err) console.error
+//   });
+// }
+const logTask = require('./tasklog');
 
 const ruleEveryHour = {
   hour: 9,
@@ -14,11 +21,25 @@ const ruleEveryHour = {
 
 module.exports = function () {
   const schGetPlayers = schedule.scheduleJob(ruleEveryHour, async function () {
-    const ans1 = await require('./controllers/update-last-day')();
-    const logRecord = new Date() + " " + ' day checked\n';
-    require('fs').appendFile('./logs/update_day_eco2.txt', logRecord, err => {
-      if (err) console.error
-    });
+    try {
+      const ans2 = await require('./controllers/update-last-day')();
+      logTask(2, ("  day checked. result : " + ans2 + "\n"));
+    } catch (error) {
+      logTask(2, ("  day checked. error : " + error.message + "\n"));
+
+    }
+    try {
+      const ans1 = await require('./controllers/model/eco1-check-last-day')();
+      logTask(1, ("  day checked. result : " + ans1 + "\n"));
+      if (parseInt(ans1) < 24) {
+        require('./controllers/send-update-message')();
+        logTask(1, ("  update message sended\n"));
+      }
+    } catch (error) {
+      logTask(1, ("  day checked. error : " + error.message + "\n"));
+
+    }
+
     // require('fs').appendFile('./logs/update_day_eco2.json', JSON.stringify(logRecord, ' '), err => { if (err) console.error });
 
   });

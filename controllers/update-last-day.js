@@ -1,4 +1,4 @@
-/**
+﻿/**
  * 
  * TODO
  * сделать проверку "за вчера"  и проверку "прошлого часа"
@@ -9,6 +9,7 @@
 const _client = require('./plc-client')();
 const LAST_DAY = true;
 const dbQuery = require('./model/db-local').dbQuery;
+
 // const dbExecute = require('./model/db-local').dbExecute;
 // const con = require('./model/connection')();
 
@@ -101,7 +102,7 @@ async function main() {
 
         const lastDayHours = (await dbQuery(sqlLastDayHours)).rows[0][0];
         console.log(lastDayHours);
-       if (lastDayHours===24) return;
+       if (lastDayHours===24) return lastDayHours;
 
         const answer = [];
         for (let i = 0; i < 24; i++) {
@@ -111,7 +112,7 @@ async function main() {
             answer.push(resp)
         }
         const logRecord = new Date() + " " +   ' last  day UPDATED\n';
-        require('fs').appendFile('../logs/update_day_eco2.txt', logRecord, err => { if (err) console.error });
+        require('fs').appendFile('logs/update_day_eco2.txt', logRecord, err => { if (err) console.error });
         
         // require('fs').appendFile('logs/update_day_eco2.json', JSON.stringify(getLastDay(), ' '), err => { if (err) console.error });
 
@@ -119,7 +120,7 @@ async function main() {
         const rlt = await dbQuery(_sql, answer);
 
         // console.log("rlt - ", rlt);
-
+	return ` ${lastDayHours} hours updated`
 
     } catch (err) {
         console.log("Main problem", err)
