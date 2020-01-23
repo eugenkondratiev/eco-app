@@ -9,7 +9,7 @@
 const _client = require('./plc-client')();
 const LAST_DAY = true;
 const dbQuery = require('./model/db-local').dbQuery;
-
+const logTask = require('../tasklog');
 // const dbExecute = require('./model/db-local').dbExecute;
 // const con = require('./model/connection')();
 
@@ -112,8 +112,8 @@ async function main() {
             answer.push(resp)
         }
         const logRecord = new Date() + " " +   ' last  day UPDATED\n';
-        require('fs').appendFile('logs/update_day_eco2.txt', logRecord, err => { if (err) console.error });
-        
+        // require('fs').appendFile('logs/update_day_eco2.txt', logRecord, err => { if (err) console.error });
+        logTask(2, logRecord);
         // require('fs').appendFile('logs/update_day_eco2.json', JSON.stringify(getLastDay(), ' '), err => { if (err) console.error });
 
         const _sql = getDuplicateUpadateString([], ROWS_ARRAY);
