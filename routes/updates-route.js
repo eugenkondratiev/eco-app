@@ -69,5 +69,56 @@ router.get("/:ecoId/", async (req, res, next) => {
 })
 
 
+router.post("/:ecoId/", async (req, res, next) => {
+    let answer = 0;
+    try {
+        ;
+
+        const eco = parseInt(req.params.ecoId);
+        if (eco === 1) {
+            ; //message
+
+            logTask(1, (" have a request on last day Eco1 update\n"));
+
+            // console.log(wsClients);
+            try {
+                answer = await require('../controllers/model/eco1-check-last-day')();
+                logTask(1, ("  day checked. result : " + answer + "\n"));
+                if (parseInt(answer) < 24) {
+                    sendUpdateMessageEco1();
+                    logTask(1, ("  update message sended\n"));
+                }
+            } catch (error) {
+                logTask(1, ("  day checked. error : " + error.message + "\n"));
+
+            }
+
+            // sendUpdateMessageEco1();
+
+        } else if (eco === 2) {
+            // const logRecord = new Date() + " " + ' have a request on last day Eco2 update\n';
+            // fs.appendFile('logs/update_day_eco2.txt', logRecord, err => {
+            //     if (err) console.error;
+
+
+            // });
+            logTask(2, (" have a request on last day Eco2 update\n"));
+
+            answer = await updateLastDay2();
+
+        } else {
+            ;
+        }
+    } catch (error) {
+        res.status(501);
+        console.log(error.message);
+    }
+    // res.sendStatus(200);
+    res.setHeader('content-type', 'text/html');
+    res.status(200).send(JSON.stringify(answer));
+        // temporary 
+
+
+})
 
 module.exports = router;
