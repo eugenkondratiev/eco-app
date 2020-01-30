@@ -99,10 +99,10 @@ const sqlLastDayHours = `select count(dt) as hours FROM eco.hourseco2 where date
 async function main() {
 
     try {
-
+        logTask(2, (new Date() + " db request " + sqlLastDayHours + '\n'));
         const lastDayHours = (await dbQuery(sqlLastDayHours)).rows[0][0];
         console.log(lastDayHours);
-       if (lastDayHours===24) return lastDayHours;
+       if (parseInt(lastDayHours)===24) return lastDayHours;
 
         const answer = [];
         for (let i = 0; i < 24; i++) {
@@ -111,7 +111,7 @@ async function main() {
             // console.log("resp " + i + " ", resp);
             answer.push(resp)
         }
-        const logRecord = new Date() + " " +   ' last  day UPDATED\n';
+        const logRecord = new Date() + " " +   ' last  day data UPLOADED from PLC\n';
         // require('fs').appendFile('logs/update_day_eco2.txt', logRecord, err => { if (err) console.error });
         logTask(2, logRecord);
         // require('fs').appendFile('logs/update_day_eco2.json', JSON.stringify(getLastDay(), ' '), err => { if (err) console.error });
@@ -119,8 +119,8 @@ async function main() {
         const _sql = getDuplicateUpadateString([], ROWS_ARRAY);
         const rlt = await dbQuery(_sql, answer);
 
-        // console.log("rlt - ", rlt);
-	return ` ${lastDayHours} hours updated`
+        console.log("rlt - ", rlt);
+	return ` ${24 - lastDayHours} hours INSERTED, ${lastDayHours} UPDATED`;
 
     } catch (err) {
         console.log("Main problem", err)

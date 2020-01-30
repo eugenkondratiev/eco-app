@@ -19,8 +19,20 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+const fs = require('fs');
 
-app.use(logger('dev'));
+const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' });
+
+//app.use(logger('combined', { stream: accessLogStream }));
+//app.use(logger('common', { stream: accessLogStream })));
+app.use(logger('common'));
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "http://127.0.0.1:5500") ;//"*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // app.use(express.urlencoded({ extended: false }));

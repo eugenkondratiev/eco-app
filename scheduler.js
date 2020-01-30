@@ -31,7 +31,7 @@ module.exports = function () {
     try {
       const ans1 = await require('./controllers/model/eco1-check-last-day')();
       logTask(1, ("  day checked. result : " + ans1 + "\n"));
-      if (parseInt(ans1) < 24) {
+      if ((parseInt(ans1) < 24)  || !ans1) {
         require('./controllers/send-update-message')();
         logTask(1, ("  update message sended\n"));
       }

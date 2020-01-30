@@ -11,6 +11,13 @@ router.use(function (req, res, next) {
     console.log("update last day request", req.path);
     next();
 });
+/*
+router.use(function(req, res, next) {
+	res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+*/
 
 router.get("/:ecoId/", async (req, res, next) => {
     try {
@@ -26,7 +33,7 @@ router.get("/:ecoId/", async (req, res, next) => {
             try {
                 const ans1 = await require('../controllers/model/eco1-check-last-day')();
                 logTask(1, ("  day checked. result : " + ans1 + "\n"));
-                if (parseInt(ans1) < 24) {
+                if (parseInt(ans1) < 24 || !ans1) {
                     sendUpdateMessageEco1();
                     logTask(1, ("  update message sended\n"));
                 }
@@ -46,7 +53,7 @@ router.get("/:ecoId/", async (req, res, next) => {
             // });
             logTask(2, (" have a request on last day Eco2 update\n"));
 
-            updateLastDay2();
+            const ans2  = await updateLastDay2();
 
         } else {
             ;
@@ -114,7 +121,13 @@ router.post("/:ecoId/", async (req, res, next) => {
         console.log(error.message);
     }
     // res.sendStatus(200);
-    res.setHeader('content-type', 'text/html');
+  //  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+   //    res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//	res.setHeader('Access-Control-Allow-Origin', '*');
+	//res.setHeader('Access-Control-Allow-Headers', 'origin, content-type');
+//res.setHeader('Access-Control-Allow-Headers', 'origin, content-type, accept');
+
+   // res.setHeader('Content-type', 'text/plain');
     res.status(200).send(JSON.stringify(answer));
         // temporary 
 

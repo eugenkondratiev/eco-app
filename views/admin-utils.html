@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Утилиты</title>
+    <link rel="icon" href="../images/faviconka_ru_412.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="../images/faviconka_ru_412.ico" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="../stylesheets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
+    <!-- <meta name="viewport" content="width=device-width,initial-scale=1"> -->
+
+
+</head>
+
+<body>
+    <div class="content">
+
+
+        <div class="forms-container">
+            <form class="dateform" id="Eco1ReqForm" action="http://95.158.47.15:3001/update-last-day/1/" method="POST">
+                <!-- Котельная 1. Выбор дня -->
+                <p>ОБновить данные прошлого дня. Котельная 1: </p>
+
+                <button type="submit" class="flex-button">Обновить</button>
+
+            </form>
+            <!-- <div class="buttons">
+                <button id="yesterdayRepEco1">Котельная1 Вчера</button>
+                <button id="todayRepEco2">Котельная2 Сегодня</button>
+                <button id="yesterdayRepEco2">Котельная2 Вчера</button>
+
+            </div> -->
+            <form class="dateform" id="Eco2ReqForm" action="http://95.158.47.15:3001/update-last-day/2/" method="POST">
+
+                <p>ОБновить данные прошлого дня. Котельная 2: </p>
+
+                <button type="submit" class="flex-button">Обновить</button>
+
+
+            </form>
+
+
+            <div class="navigationFooter"> </div>
+        </div>
+
+        <!-- <h1>Суточные отчеты</h1>
+        <h2 id="ecounit"></h2>
+        <p id="errorLabel"></p>
+
+        <div>
+            <p id="testPar"></p>
+        </div>
+        <table class="datatable" id="dayreport">
+
+        </table> -->
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/i18n/jquery-ui-i18n.min.js">
+    </script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script> -->
+    <script src="../javascripts/main-menu.js"></script>
+
+</body>
+
+</html>
