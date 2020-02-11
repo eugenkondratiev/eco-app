@@ -5,17 +5,54 @@
 }
 
 body {
-  font: "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   background-color: whitesmoke;
+  min-height: 100vh;
 }
 
+html {
+  font-size: 14px;
+}
+
+@media screen and (max-device-width: 480px) {
+  html {
+    font-size: 12px;
+  }
+}
+
+/*-------------------------------------------*/
+h1 {
+  text-align: center;
+  color: darkblue
+}
+
+a {
+  color: rgb(11, 102, 138);
+}
+
+p {
+  margin-block-start: 0.5em;
+  margin-block-end: 0.5em
+}
+
+button {
+  margin: 0.3rem 0.5rem;
+
+}
+
+.buttons {
+  flex-grow: 1;
+  order: 2;
+  display: flex;
+}
+
+/*----------------datatable-----------*/
 .datatable {
   border: 1px solid darkgrey;
   margin: auto;
-
   align-content: center;
-  /* width: max-content */
-    width: 98%;
+  width: max-content;
+  /* width: 98%; */
 
 }
 
@@ -24,8 +61,8 @@ th {
   border: 1px solid grey;
   padding: 1px;
   text-align: center;
-  margin-block-start: 0.2em;
-  margin-block-end: 0.2em
+  margin-block-start: 0.2rem;
+  margin-block-end: 0.2rem
 }
 
 .reportDiv {
@@ -45,7 +82,7 @@ th {
 .datatable tr:nth-last-child() {
   background-color: grey;
   font-style: italic;
-  font-size: 1.5em
+  font-size: 1.5rem
 }
 
 .datatable th {
@@ -56,33 +93,58 @@ th {
   color: rgb(245, 245, 245);
 }
 
-h1 {
-  text-align: center;
-  color: darkblue
+@media screen and (max-device-width: 769px) {
+
+  .datatable {
+    /* width: max-content */
+    width: 90%;
+  }
+
+  .datatable td,
+  .datatable.th {
+    font-size: 1.2rem;
+  }
+
+  .datatable tr td[class=value] {
+    font-size: 1.6rem;
+    padding-right: 0.5rem;
+  }
+
+  .datatable tr td[class=aiLabel] {
+    padding: 1px;
+    font-size: 1.4rem;
+    padding-left: 0.5rem
+  }
 }
 
-a {
-  color: rgb(11, 102, 138);
+@media screen and (max-device-width: 480px) {
+  .datatable {
+    /* width: max-content; */
+
+    width: 95%;
+  }
+
+  .datatable td,
+  .datatable.th {
+    font-size: 1.1rem;
+  }
+
+  .datatable tr td[class=value] {
+    font-size: 2.5rem;
+    padding-right: 0.2rem;
+  }
+
+  .datatable tr td[class=aiLabel] {
+    padding: 1px;
+    font-size: .9rem;
+    padding-left: 0.3rem
+  }
+
 }
 
-p {
-  margin-block-start: 0.5em;
-  margin-block-end: 0.5em
-}
-
-button {
-  margin: 0.3em 0.5em;
-
-}
-
-.buttons {
-  flex-grow: 1;
-  order: 2;
-  display: flex;
-}
 
 #last-data-timestamp {
-  font-size: x-small;
+  font-size: 0.8rem;
   color: midnightblue;
   text-align: center;
 
@@ -90,11 +152,9 @@ button {
 
 .datatable tr td[class=value] {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: larger;
+  font-size:0.95rem;
   font-style: bold;
-  /* background-color: rgb(189, 193, 196) */
   text-align: right;
-  /* align: right; */
   padding-right: 0.5em;
 }
 
@@ -103,44 +163,33 @@ button {
   padding: 1px;
   color: darkblue;
   text-align: left;
-  /* align:left; */
   padding-left: 0.5em
 }
 
 #monthreport tr td:nth-child(2),
 #dayreport tr td:nth-child(2) {
   color: darkred;
-  font-size: larger;
+  font-size: 1.4rem;
   font-style: italic;
   background-color: lightsteelblue
 }
 
 #monthreport tr:last-child {
   color: rgb(0, 61, 0);
-  font-size: larger;
+  font-size: 1.5rem;
   font-style: bold;
 
 }
 
-/* 
-#dayreport tr td:nth-child(2) {
-  color: darkred;
-  font-size: larger;
-  font-style: italic;
-  background-color: lightsteelblue  git
-} */
 /*==================menu============================*/
 #topmenu {
-  /* width: 920px; */
-  /* text-transform: uppercase; */
   background-color: darkcyan;
   text-align: center;
   line-height: 0.8em;
   overflow: hidden;
   align-content: center;
-  /*position: fixed;  */
-  /* top: 0;  */
   width: 100%;
+  font-family: "Times New Roman";
 }
 
 #topmenu.fixed {
@@ -152,7 +201,6 @@ button {
 
 #topmenu.ecoMenu {
   width: 100%;
-  /* width: 920px; */
 }
 
 #topmenu ul {
@@ -175,7 +223,7 @@ button {
   border: 1px solid grey;
   background-color: darkcyan;
   display: block;
-  padding: 1.2em 2em;
+  padding: 1.8rem 2rem;
   min-width: 100px;
   text-decoration: none;
   color: lightgray;
@@ -187,10 +235,35 @@ button {
   color: burlywood
 }
 
+@media screen and (max-device-width: 769px) {
+  #topmenu li a {
+    padding: 1.8rem .4rem;
+    min-width: 64px;
+    font-size: 1.3rem;
+  }
+}
+
+@media screen and (max-device-width: 480px) {
+
+
+  #topmenu li a {
+    padding: 1.8rem .1rem;
+    font-size: .91rem;
+  }
+}
+
+@media screen and (max-device-width: 350px) {
+
+
+  #topmenu li a {
+    padding: 1.8rem .1rem;
+    font-size: .67rem;
+  }
+}
+
 .sticky {
   position: sticky;
-  /* position: fixed; */
-   top: 0; 
+  top: 0;
 }
 
 .content {
@@ -200,7 +273,7 @@ button {
 }
 
 .content p {
-  margin-left: 2em;
+  margin-left: 2rem;
   font-size: 1.2rem;
 }
 
@@ -208,6 +281,7 @@ button {
   font-size: 1.5rem;
   color: midnightblue;
 }
+
 /*==================menu============================*/
 
 /*==================form============================*/
@@ -225,7 +299,6 @@ button {
   width: 30%;
   text-align: right;
   margin: 0em 3em 0.5em 0.5em;
-  /* float: right; */
   align-content: flex-end;
   flex-grow: 1;
 }
@@ -247,11 +320,6 @@ button {
   display: inline-block;
 }
 
-/* 
-#Eco1ReqForm {
-  float: left;
-} */
-
 .dateform input[id^=datepick] {
   width: 5.8rem;
   color: darkolivegreen;
@@ -262,13 +330,11 @@ button {
 
   width: 5rem;
   color: darkolivegreen;
-  /* text-align:right; */
 }
 
 .monthform select[id^=month] {
   width: 6.3rem;
   color: darkolivegreen;
-  /* text-align:right; */
 }
 
 #Eco2ReqForm {
@@ -283,9 +349,6 @@ button {
   clear: both;
 }
 
-/* .hasDatepicker {
-  width: 5em;
-} */
 /*==================form============================*/
 
 #restart {
@@ -293,67 +356,4 @@ button {
   width: 3em;
   height: 2em;
   border: none;
-}
-
-
-@media screen and (max-device-width: 769px) {
-  #topmenu li a {
-    padding: 1.2em 0.4em;
-    min-width: 80px;
-    font-size: 1.2rem;
-  }
-
-  .datatable {
-    /* width: max-content */
-    width: 90%;
-  }
-
-  .datatable td,
-  .datatable.th {
-    font-size: 1.2rem;
-  }
-
-  .datatable tr td[class=value] {
-    font-size: 1.6rem;
-    padding-right: 0.5rem;
-  }
-
-  .datatable tr td[class=aiLabel] {
-    padding: 1px;
-    font-size: 1.4rem;
-    padding-left: 0.5em
-  }
-}
-
-@media screen and (max-device-width: 480px) {
-html {
-  font-size: 14px;
-}
-
-  #topmenu li a {
-    padding: 1.2em 0.2em;
-    font-size: 2rem;
-  }
-  .datatable {
-    /* width: max-content; */
-
-    width: 95%;
-  }
-  
-  .datatable td,
-  .datatable.th {
-    font-size: 1.4rem;
-  }
-
-  .datatable tr td[class=value] {
-    font-size: 2.5rem;
-    padding-right: 0.2rem;
-  }
-
-  .datatable tr td[class=aiLabel] {
-    padding: 1px;
-    font-size: 1.6rem;
-    padding-left: 0.5rem
-  }
-
 }

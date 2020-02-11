@@ -3,6 +3,10 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var multer = require('multer');
+var upload = multer(); 
+// var session = require('express-session');
+const key = require('./controllers/question')._key;
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -36,7 +40,10 @@ app.use(function(req, res, next) {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // app.use(express.urlencoded({ extended: false }));
+//app.use(upload.array());
 app.use(cookieParser());
+//app.use(session({secret: key}));
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'views')));
 
@@ -50,8 +57,6 @@ app.use('/reports/month', monthRouter);
 app.use('/users', usersRouter);
 app.use('/update-last-day', updateRouter);
 
-
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -62,7 +67,6 @@ app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-
   // render the error page
   res.status(err.status || 500);
   res.render('error');

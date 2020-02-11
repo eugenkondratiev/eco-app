@@ -94,13 +94,13 @@ function getDuplicateUpadateString(rec, rows) {
 // const getLastDayHourString = (i) => `2019-12-26 ${i}:00:00`;
 const getLastDayHourString = require('./get-last-day').getLastDayHourString;
 const getLastDay = require('./get-last-day').getLastDayString;
-const sqlLastDayHours = `select count(dt) as hours FROM eco.hourseco2 where date(dt)='${getLastDay()}'`;
+const sqlLastDayHours = _lastDay => `select count(dt) as hours FROM eco.hourseco2 where date(dt)='${_lastDay}'`;
 
 async function main() {
 
     try {
-        logTask(2, (new Date() + " db request " + sqlLastDayHours + '\n'));
-        const lastDayHours = (await dbQuery(sqlLastDayHours)).rows[0][0];
+        logTask(2, (new Date() + " db request " + sqlLastDayHours(getLastDay()) + '\n'));
+        const lastDayHours = (await dbQuery(sqlLastDayHours(getLastDay()))).rows[0][0];
         console.log(lastDayHours);
        if (parseInt(lastDayHours)===24) return lastDayHours;
 
@@ -111,11 +111,9 @@ async function main() {
             // console.log("resp " + i + " ", resp);
             answer.push(resp)
         }
-        const logRecord = new Date() + " " +   ' last  day data UPLOADED from PLC\n';
-        // require('fs').appendFile('logs/update_day_eco2.txt', logRecord, err => { if (err) console.error });
-        logTask(2, logRecord);
-        // require('fs').appendFile('logs/update_day_eco2.json', JSON.stringify(getLastDay(), ' '), err => { if (err) console.error });
-
+        const logRecord = ' last  day data UPLOADED from PLC\n';
+               logTask(2, logRecord);
+  
         const _sql = getDuplicateUpadateString([], ROWS_ARRAY);
         const rlt = await dbQuery(_sql, answer);
 

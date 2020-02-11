@@ -5,4 +5,5 @@ nodemon.json
 pm2-process.json
 logs
 data/ais.json
+question*.js
 
