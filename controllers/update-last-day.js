@@ -65,7 +65,7 @@ function getMainParameters(hourRow) {
     //(`id`, `dt`, `Q_39`, `T_41`, `T_42`, `P_19`, `P_18`, `P_21`, `T_10`, `P_34`, `T_7`, `T_3`, `T_5`, `W_38`) 
     //VALUES ('', '2019-10-25 11:00:00', '117.58', '64.0159', '53.4747', '0.345991', '0.380945', '-20.0209', '174.791', '1.98299', '68.6284', '72.7956', '61.6206', '1.18059');
     const arr = hourRow.slice(0, 7);
-    arr.push(hourRow[11]);//P_34
+    arr.push(hourRow[11]); //P_34
     arr.push(hourRow[7]); // T_7
     arr.push(hourRow[9]); // T_3
     arr.push(hourRow[10]); // T_5
@@ -99,10 +99,11 @@ const sqlLastDayHours = _lastDay => `select count(dt) as hours FROM eco.hourseco
 async function main() {
 
     try {
-        logTask(2, (new Date() + " db request " + sqlLastDayHours(getLastDay()) + '\n'));
-        const lastDayHours = (await dbQuery(sqlLastDayHours(getLastDay()))).rows[0][0];
+        logTask(2, (" db request " + sqlLastDayHours(getLastDay()) + '\n'));
+        const dbAnswer = await dbQuery(sqlLastDayHours(getLastDay()));
+        const lastDayHours = dbAnswer.rows[0][0];
         console.log(lastDayHours);
-       if (parseInt(lastDayHours)===24) return lastDayHours;
+        if (parseInt(lastDayHours) === 24) return lastDayHours;
 
         const answer = [];
         for (let i = 0; i < 24; i++) {
@@ -112,16 +113,17 @@ async function main() {
             answer.push(resp)
         }
         const logRecord = ' last  day data UPLOADED from PLC\n';
-               logTask(2, logRecord);
-  
+        logTask(2, logRecord);
+
         const _sql = getDuplicateUpadateString([], ROWS_ARRAY);
         const rlt = await dbQuery(_sql, answer);
 
         console.log("rlt - ", rlt);
-	return ` ${24 - lastDayHours} hours INSERTED, ${lastDayHours} UPDATED`;
+        return ` ${24 - lastDayHours} hours INSERTED, ${lastDayHours} UPDATED`;
 
     } catch (err) {
-        console.log("Main problem", err)
+        console.log("Main problem", err);
+        return err.message;
 
     }
 }

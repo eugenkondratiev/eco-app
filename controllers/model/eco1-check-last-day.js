@@ -3,7 +3,7 @@ const dbQuery = require('./db-local').dbQuery;
 
 const getLastDay = require('../get-last-day').getLastDayString;
 
-const sqlLastDayHours = `select count(dt) as hours FROM eco.hourseco1 where date(dt)='${getLastDay()}'`;
+const sqlLastDayHours = _lastDay => `select count(dt) as hours FROM eco.hourseco1 where date(dt)='${_lastDay}'`;
 
 const logTask = require('../../tasklog');
 
@@ -27,8 +27,8 @@ const logTask = require('../../tasklog');
 module.exports = function() {
     return new Promise(async (res, rej)=> {
         try {
-		logTask(1, "\"" + sqlLastDayHours + "\"\n");
-            const lastDayHours = (await dbQuery(sqlLastDayHours)).rows[0][0];
+		logTask(1, "\"" + sqlLastDayHours(getLastDay()) + "\"\n");
+            const lastDayHours = (await dbQuery(sqlLastDayHours(getLastDay))).rows[0][0];
             console.log(lastDayHours);
             res(lastDayHours);
     

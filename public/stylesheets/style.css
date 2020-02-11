@@ -101,8 +101,15 @@ th {
   }
 
   .datatable td,
-  .datatable.th {
-    font-size: 1.2rem;
+  .datatable th {
+    font-size: 1.1rem;
+    /* max-width: 10vw; */
+  }
+
+  
+  .datatable th:nth-child(n + 3) {
+    /* font-size: 1.1rem; */
+    max-width: 10vw;
   }
 
   .datatable tr td[class=value] {
@@ -121,16 +128,19 @@ th {
   .datatable {
     /* width: max-content; */
 
-    width: 95%;
+    width: 100%;
   }
 
-  .datatable td,
-  .datatable.th {
-    font-size: 1.1rem;
+  .datatable td {
+    font-size: .8rem;
+  }  
+
+  .datatable th {
+    font-size: .58rem;
   }
 
   .datatable tr td[class=value] {
-    font-size: 2.5rem;
+    font-size: 1.9rem;
     padding-right: 0.2rem;
   }
 
@@ -251,6 +261,20 @@ th {
     font-size: .91rem;
   }
 }
+@media screen and (max-device-width: 390px) {
+
+
+  #topmenu li a {
+    padding: 1.8rem .1rem;
+    font-size: .77rem;
+  }
+  .content {
+    margin-top: 1em;
+    /* margin-left: 5px; */
+    align-content: center
+  }
+  
+}
 
 @media screen and (max-device-width: 350px) {
 
@@ -266,11 +290,7 @@ th {
   top: 0;
 }
 
-.content {
-  margin-top: 1em;
-  margin-left: 5px;
-  align-content: center
-}
+
 
 .content p {
   margin-left: 2rem;
@@ -289,7 +309,7 @@ th {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
 }
 
 .dateform,
@@ -298,7 +318,7 @@ th {
   color: darkblue;
   width: 30%;
   text-align: right;
-  margin: 0em 3em 0.5em 0.5em;
+  margin: 0rem 1rem 0.5rem 0.5rem;
   align-content: flex-end;
   flex-grow: 1;
 }
