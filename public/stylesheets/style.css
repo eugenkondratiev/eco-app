@@ -91,6 +91,7 @@ th {
   padding-bottom: 5px;
   background-color: darkcyan;
   color: rgb(245, 245, 245);
+  font-size: 0.7rem;
 }
 
 @media screen and (max-device-width: 769px) {
@@ -273,7 +274,7 @@ th {
     /* margin-left: 5px; */
     align-content: center
   }
-  
+
 }
 
 @media screen and (max-device-width: 350px) {

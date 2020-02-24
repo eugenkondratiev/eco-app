@@ -6,4 +6,7 @@ pm2-process.json
 logs
 data/ais.json
 question*.js
+access.log
+*.log
+
 

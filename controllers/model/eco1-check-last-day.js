@@ -28,7 +28,11 @@ module.exports = function() {
     return new Promise(async (res, rej)=> {
         try {
 		logTask(1, "\"" + sqlLastDayHours(getLastDay()) + "\"\n");
-            const lastDayHours = (await dbQuery(sqlLastDayHours(getLastDay))).rows[0][0];
+        const sqlAnswer = await dbQuery(sqlLastDayHours(getLastDay()));
+        console.log(sqlAnswer);
+		logTask(1, "\"" + JSON.stringify(sqlAnswer) + "\"\n");
+
+        const lastDayHours = sqlAnswer.rows[0][0];
             console.log(lastDayHours);
             res(lastDayHours);
     
