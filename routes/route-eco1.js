@@ -1,5 +1,5 @@
-var express = require('express');
-var router = express.Router();
+// var express = require('express');
+const router = require('express').Router();
 const views = require('./abs-routes').views;
 
 router.use(function( req,res,next) {

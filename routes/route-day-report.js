@@ -1,5 +1,5 @@
-var express = require('express');
-var router = express.Router();
+// var express = require('express');
+const router = require('express').Router();
 const views = require('./abs-routes').views;
 const dayReport1 = require('../controllers/model/day-report-eco1');
 const dayReport2 = require('../controllers/model/day-report-eco2');
