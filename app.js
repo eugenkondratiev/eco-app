@@ -59,7 +59,7 @@ logger.format('iplog', function (req, res) {
 });
 
 const accessLogStream =  rfs.createStream('access.log', {
-  interval: '1d',
+  interval: '3d',
   path: path.join(__dirname, 'logs')
 });
 

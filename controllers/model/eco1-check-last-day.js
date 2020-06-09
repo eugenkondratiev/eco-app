@@ -30,7 +30,7 @@ module.exports = function() {
 		logTask(1, "\"" + sqlLastDayHours(getLastDay()) + "\"\n");
         const sqlAnswer = await dbQuery(sqlLastDayHours(getLastDay()));
         console.log(sqlAnswer);
-		logTask(1, "\"" + JSON.stringify(sqlAnswer) + "\"\n");
+		// logTask(1, "\"" + JSON.stringify(sqlAnswer) + "\"\n");
 
         const lastDayHours = sqlAnswer.rows[0][0];
             console.log(lastDayHours);
