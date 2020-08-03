@@ -12,7 +12,7 @@ router.use(function( req,res,next) {
 router.get('/', function(req, res, next) {
   //res.render('index', { title: 'Express' });
   //res.send(req.path);
-  res.sendFile('/eco2.html', { root : views},(err) => { 
+  res.sendFile('/eco3.html', { root : views},(err) => { 
     if (err) console.log(err);
     ;
   });
@@ -22,7 +22,7 @@ router.get('/report', function(req, res, next) {
   //res.render('index', { title: 'Express' });
  // res.send("Eco1 report");
 //  res.sendFile('/eco1.html',(err) => {
-  res.sendFile('/eco2.html', { root : views}, (err) => {
+  res.sendFile('/eco3.html', { root : views}, (err) => {
      if (err) console.log(err);
      ;
    });

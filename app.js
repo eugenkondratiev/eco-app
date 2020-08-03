@@ -1,25 +1,26 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var multer = require('multer');
-var upload = multer();
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const multer = require('multer');
+const upload = multer();
 // var session = require('express-session');
 const key = require('./controllers/question')._key;
-var rfs = require('rotating-file-stream');
+const rfs = require('rotating-file-stream');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
 
-var eco1Router = require('./routes/route-eco1');
-var eco2Router = require('./routes/route-eco2');
+const eco1Router = require('./routes/route-eco1');
+const eco2Router = require('./routes/route-eco2');
+const eco3Router = require('./routes/route-eco3');
 
-var daysRouter = require('./routes/route-day-report');
-var monthRouter = require('./routes/route-month-report');
-var updateRouter = require('./routes/updates-route');
+const daysRouter = require('./routes/route-day-report');
+const monthRouter = require('./routes/route-month-report');
+const updateRouter = require('./routes/updates-route');
 
-var app = express();
+const app = express();
 
 app.set('trust proxy', true);
 // view engine setup
@@ -83,6 +84,7 @@ app.use('/', indexRouter);
 
 app.use('/1', eco1Router);
 app.use('/2', eco2Router);
+app.use('/3', eco3Router);
 
 app.use('/reports/day', daysRouter);
 app.use('/reports/month', monthRouter);

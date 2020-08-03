@@ -93,7 +93,7 @@ function dataCollect(server) {
                 eco1.forEach((el, index) => {
                     m340data[50 + index] = parseFloat(el);
                 });
-                console.log("eco3", eco3.length, eco3);
+                // console.log(" #### plc-data-collect.js eco3", eco3.length, eco3);
                 eco3.forEach((el, index) => {
                     m340data[100 + index] = (index < 30 ) ? parseFloat(el) : parseInt(el);
                 });

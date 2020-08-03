@@ -11,8 +11,8 @@ $(function() {
 
     console.log("start");
                    // var socket = io.connect('http://95.158.47.15:3001');
-                   var socket = io.connect();
-                   var username = "testuser" + (Math.random * 10000.0).toFixed(3);
+                   const socket = io.connect();
+                   const username = "testuser" + (Math.random * 10000.0).toFixed(3);
                   socket.emit('little_newbie', username);
                    socket.on('message', function(message) {
                        console.log('The server has a message for you: ' + message);
@@ -28,6 +28,7 @@ $(function() {
         }
         socket.on('newdata', function(message) {
             const dataM340 = JSON.parse(message.data);
+console.log( " #eco1   data.parameters.eco1 " , data.parameters.eco1);
             try {
                 data.parameters.eco1.forEach(el => {
                     const elName ="#Eco1_" + el;

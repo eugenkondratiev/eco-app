@@ -15,28 +15,34 @@ $(function() {
         })           
     };
     
-    var socket = io.connect('http://95.158.47.15:3001');
-    var username = "testuser";
+    const socket = io.connect('http://95.158.47.15:3001');
+    const username = "testuser";
     socket.emit('little_newbie', username);
     socket.on('message', function(message) {
          console.log('The server has a message for you: ' + message);
       });
 
     console.log("start");
+	const ECO3_MESSAGE_BORDER = 99;
+
     $.getJSON('data/ais.json',data => {
-        for (ai in data.eco2) {
-            $('#dataEco2').append(getAiRow(ai, data.eco2[ai], "Eco2"));
-        }
-     
+	// console.log( " #### Eco3  data " , data);
+
+        for (ai in data.eco3) {
+            $('#dataEco3').append(getAiRow(ai, data.eco3[ai], "Eco3"));
+        }   
         socket.on('newdata', function(message) {
-            const dataM340 = JSON.parse(message.data);
+            // const dataM340 = JSON.parse(message.data);
             // console.log(data.parameters);
+ 		// console.table(" #### Eco3   ",dataM340);
+		
             try {
-                data.parameters.eco2.forEach(el => {
-                    const elName ="#Eco2_" + el;
-                    $(elName).text(dataM340[data.eco2[el].index]);
+                data.parameters.eco3.forEach(el => {
+                    const elName ="#Eco3_" + el;
+			// console.log(" #eco3 ",el, data.eco3[el].index, data.eco3[el]);
+                    $(elName).text(dataM340[ECO3_MESSAGE_BORDER + data.eco3[el].index]);
                 });   
-                $("#last-data-timestamp").text("Обновлено : " + JSON.parse(message.timestamps)[1]);             
+                $("#last-data-timestamp").text("Обновлено : " + JSON.parse(message.timestamps)[2]);             
             } catch (error) {
                 console.log(error.message);
             }

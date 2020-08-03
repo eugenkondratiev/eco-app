@@ -15,8 +15,8 @@ $(function() {
         })           
     };
     
-    var socket = io.connect('http://95.158.47.15:3001');
-    var username = "testuser";
+    const socket = io.connect('http://95.158.47.15:3001');
+    const username = "testuser";
     socket.emit('little_newbie', username);
     socket.on('message', function(message) {
          console.log('The server has a message for you: ' + message);
