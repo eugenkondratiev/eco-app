@@ -30,7 +30,7 @@ function dataCollect(server) {
     let m340data = require('../public/data/m340data');
 
     let eco1 = [];
-
+    let eco3 = [];
 
     const WebSocketServer = new require('ws');
     //const wsClients = {};
@@ -50,6 +50,11 @@ function dataCollect(server) {
                     eco1 = jsonMessage.eco1;
                     timestamps[0] = jsonMessage.timestamp;
                 }
+                if (jsonMessage.eco3) {
+                    eco3 = jsonMessage.eco3;
+                    timestamps[2] = jsonMessage.timestamp;
+                }
+
                 if (jsonMessage.lastDayEco1) {
                     // const logRecord = new Date() + " " +  + '\n';
                     logTask(1, (' reseived last day array message\n' + + jsonMessage.lastDayEco1.length + " rows \n"));
@@ -81,13 +86,17 @@ function dataCollect(server) {
         //PromiseAPI
         try {
             client.readHoldingRegisters(BLOCK_START, BLOCK_SIZE).then(data => {
+		try{
                 const _answer = data.data;
                 const floats = m340.getFloatsFromMOdbusCoils(_answer);
                 m340data = floats;
                 eco1.forEach((el, index) => {
                     m340data[50 + index] = parseFloat(el);
                 });
-                // console.log("eco1", eco1.length, eco1);
+                console.log("eco3", eco3.length, eco3);
+                eco3.forEach((el, index) => {
+                    m340data[100 + index] = (index < 30 ) ? parseFloat(el) : parseInt(el);
+                });
                 const socketMessage = {};
                 socketMessage.data = JSON.stringify(floats.map(el =>
                     isFinite(Number(el)) ? el.toFixed(3) : "NaN"));
@@ -97,6 +106,9 @@ function dataCollect(server) {
                 socketMessage.timestamps = JSON.stringify(timestamps.map(tm => getDateTimeStringCurrent(tm)));
 
                 io.sockets.emit('newdata', socketMessage);
+		} catch (e) {
+			console.log("#### readHoldingRegisters results handle Error ", e)	
+		}
             });
         } catch (error) {
             console.log(error.message);
