@@ -241,6 +241,13 @@ th {
 
 }
 
+#topmenu input {
+  display: none;
+} 
+#topmenu label {
+  display: none;
+} 
+
 #topmenu li a:hover {
   background-color: rgb(3, 161, 161);
   color: burlywood
@@ -256,11 +263,47 @@ th {
 
 @media screen and (max-device-width: 480px) {
 
+  #topmenu{
+    background-color: darkcyan;
+    text-align: center;
+    line-height: 0.8em;
+    overflow: hidden;
+    align-content: center;
+    width: 100%;
+    font-family: "Times New Roman";
+  }
+  #topmenu ul{
+    padding: 1.8rem .1rem;
+    font-size: .91rem;
+  }
+  #topmenu li {
+    display: inline;
+    list-style: none;
+    margin: 0;
+  }
+  #topmenu input {
+    display: none;
+  } 
+  #topmenu label {
+    display: none;
+  } 
 
   #topmenu li a {
     padding: 1.8rem .1rem;
     font-size: .91rem;
   }
+
+  #topmenu.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+  
+  #topmenu.ecoMenu {
+    width: 100%;
+  }
+
 }
 @media screen and (max-device-width: 390px) {
 

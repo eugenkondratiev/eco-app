@@ -32,7 +32,7 @@ $(function() {
             $('#dataEco3').append(getAiRow(ai, data.eco3[ai], "Eco3"));
         }   
         socket.on('newdata', function(message) {
-            // const dataM340 = JSON.parse(message.data);
+            const dataM340 = JSON.parse(message.data);
             // console.log(data.parameters);
  		// console.table(" #### Eco3   ",dataM340);
 		
