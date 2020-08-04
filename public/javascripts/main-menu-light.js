@@ -20,18 +20,22 @@ const menuItemsList = [
                         tag: "li", classList: ["topmenu__item"], siblings: [{
                             tag: "a", classList: ["topmenu__item__ref"], properties: { href: MotherOfReports + "1" }, siblings: [{ text: "Котельная 1" }]
                         }]
-
-                    }, {
+                    }, 
+                    {
                         tag: "li", classList: ["topmenu__item"], siblings: [{
                             tag: "a", classList: ["topmenu__item__ref"], properties: { href: MotherOfReports + "2" }, siblings: [{ text: "Котельная 2" }]
                         }]
-
-                    }, {
+                    }, 
+                    {
+                        tag: "li", classList: ["topmenu__item"], siblings: [{
+                            tag: "a", classList: ["topmenu__item__ref"], properties: { href: MotherOfReports + "3" }, siblings: [{ text: "Котельная 3" }]
+                        }]
+                    },                    {
                         tag: "li", classList: ["topmenu__item"], siblings: [{
                             tag: "a", classList: ["topmenu__item__ref"], properties: { href: MotherOfReports + "reports/day" }, siblings: [{ text: "Суточный отчет" }]
                         }]
-
-                    }, {
+                    }, 
+                    {
                         tag: "li", classList: ["topmenu__item"], siblings: [{
                             tag: "a", classList: ["topmenu__item__ref"], properties: { href: MotherOfReports + "reports/month" }, siblings: [{ text: "Месячный отчет" }]
                         }]

@@ -26,12 +26,14 @@ class ParametersLists {
                      let ecos = JSON.parse(dataAis);
                      const eco1 = ecos.eco1;
                      const eco2 = ecos.eco2;
+                     const eco3 = ecos.eco3;
                     //  const t1 = eco1["T_1"];
                     // console.log("===============parameters 0 =======================: \n", parameters);
                     const parameters = JSON.parse(dataPars);
                     // const pars1 = parameters.eco1;
                     const new1 = {};
                     const new2 = {};
+                    const new3 = {};
                     // const el = pars1[0];
         
                     parameters.eco1.forEach( el => {
@@ -46,19 +48,24 @@ class ParametersLists {
                         new2[el].units = eco2[el].units;
                         // new2[el].index = eco2[el].index === undefined ? -1 : eco2[el].index;
                     });
+                    parameters.eco3.forEach( el => {
+                        new3[el] = {};
+                        new3[el].description = eco3[el].description;
+                        new3[el].units = eco3[el].units;
+                        new3[el].index = eco3[el].index === undefined ? -1 : eco3[el].index;
+                    }); 
                     this._lists = {};
                     this._lists.parameters = parameters;
                     this._lists.eco1 = new1;
                     this._lists.eco2 = new2;
+                    this._lists.eco3 = new3;
                      ;   
                 } catch (error) {
                     console.log(error.message);
                     
                 }      
             });
-        });
-        
-        
+        });        
     };
 
     // static constructor() {

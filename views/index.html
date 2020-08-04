@@ -25,6 +25,10 @@
          <p ><span class="aiLabel">Температура воды на город, °С   </span><span class="value" id="Eco1_T_41"> NaN </span></p>
          <p ><span class="aiLabel">Температура обротной воды, °С   </span><span class="value" id="Eco1_T_42"> NaN </span></p>
          <p ><span class="aiLabel">Тепло за прошлые сутки, Гкал.   </span><span class="value" id="Eco1_lastDayW_38"> NaN </span></p>
+
+        <h1>Котельная 3. Текущие данные</h1>
+         <p ><span class="aiLabel">Температура воды на сушки, °С   </span><span class="value" id="Eco3_T_3"> NaN </span></p>
+
          <button id="restart"></button>
          <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
@@ -41,7 +45,7 @@
                              
                          socket.on('newdata', function(message) {
                                  const dataM340 = JSON.parse(message.data);
-                                // console.table(dataM340);
+                                //console.table(dataM340);
                                 document.getElementById('W_38').innerText = dataM340[25];
                                 document.getElementById('T_41').innerText = dataM340[33];
                                 document.getElementById('T_42').innerText = dataM340[36];
@@ -51,6 +55,8 @@
                                 document.getElementById('Eco1_W_38').innerText = dataM340[58];
                                 document.getElementById('Eco1_T_41').innerText = dataM340[55];
                                 document.getElementById('Eco1_T_42').innerText = dataM340[56];
+
+				document.getElementById('Eco3_T_3').innerText = dataM340[107];
                             });
          </script>
         <script src="javascripts/main-menu-light.js"></script>

@@ -104,6 +104,32 @@
        
         "LastDayW38" : {  "description" : "Произведенное тепло за прошлые сутки", "units": "Гкал", "num": 49 , "offset":0, "index" : 0}
 
+    },
+    "eco3" : {
+        "P_6" : {  "description" : "Давление воды в котле", "units": "МПа", "num": 1 , "offset":0},
+"P_8" : {  "description" : "Давление воздуха общего", "units": "Па", "num": 2 , "offset":2},
+"P_9" : {  "description" : "Разрежение в топке", "units": "Па", "num": 3 , "offset":4},
+"KG_21" : {  "description" : "Обратная связь. ИМ зоны 1", "units": "%", "num": 16 , "offset":30},
+"KG_22" : {  "description" : "Обратная связь. ИМ зоны 2", "units": "%", "num": 17 , "offset":32},
+"KG_23" : {  "description" : "Обратная связь. ИМ зоны 3", "units": "%", "num": 18 , "offset":34},
+"KG_28" : {  "description" : "Обратная связь. ИМ вторичного воздуха", "units": "%", "num": 19 , "offset":36},
+
+"T_3" : {  "description" : "Температура горячей воды", "units": "°C", "num": 8 , "offset":14},
+"T_5" : {  "description" : "Температура холодной воды", "units": "°C", "num": 9 , "offset":16},
+"T_7" : {  "description" : "Температура дымовых газов", "units": "°C", "num": 10 , "offset":18},
+"T_18" : {  "description" : "Температура воды в теплоаккумуляторе", "units": "°C", "num": 11 , "offset":20},
+"T_19" : {  "description" : "Температура обратной воды от сушек", "units": "°C", "num": 12 , "offset":22},
+
+
+
+"EI_1" : {  "description" : "Обратная связь. ПЧ дутьевого вентилятора", "units": "%", "num": 13 , "offset":24},
+"EI_2" : {  "description" : "Обратная связь. ПЧ дутьевого вентилятора", "units": "%", "num": 14 , "offset":26},
+"EI_10" : {  "description" : "Обратная связь. Шнек бункера-питателя", "units": "%", "num": 15 , "offset":28},
+"P_11" : {  "description" : "Давление воздуха .Зона 1", "units": "Па", "num": 4 , "offset":6},
+"P_12" : {  "description" : "Давление воздуха .Зона 2", "units": "Па", "num": 5 , "offset":8},
+"P_13" : {  "description" : "Давление воздуха .Зона 3", "units": "Па", "num": 6 , "offset":10},
+"P_30" : {  "description" : "Разрежение перед дымососом", "units": "Па", "num": 7 , "offset":12},
+"Q_39" : {  "description" : "Расход воды через котел", "units": "м3/ч", "num": 20 , "offset":38}
     }
 
 }
