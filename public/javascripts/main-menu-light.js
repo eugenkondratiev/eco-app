@@ -7,6 +7,22 @@ const menuItemsList = [
         properties: { id: "topmenu" },
         siblings: [
             {
+                tag: "input",
+                properties: {
+                    id: "mobile__dropdown",
+                    type: "checkbox"
+                }
+            },
+            {
+                tag: "label",
+                classList: ["topmenu__label"],
+                properties: {
+                    id: "mobile_label",
+                    for: "mobile__dropdown",
+                    onclick: ""
+                }
+            },
+            {
                 tag: "ul",
                 classList: ["topmenu__block", "sticky"],
                 siblings: [
@@ -20,21 +36,21 @@ const menuItemsList = [
                         tag: "li", classList: ["topmenu__item"], siblings: [{
                             tag: "a", classList: ["topmenu__item__ref"], properties: { href: MotherOfReports + "1" }, siblings: [{ text: "Котельная 1" }]
                         }]
-                    }, 
+                    },
                     {
                         tag: "li", classList: ["topmenu__item"], siblings: [{
                             tag: "a", classList: ["topmenu__item__ref"], properties: { href: MotherOfReports + "2" }, siblings: [{ text: "Котельная 2" }]
                         }]
-                    }, 
+                    },
                     {
                         tag: "li", classList: ["topmenu__item"], siblings: [{
                             tag: "a", classList: ["topmenu__item__ref"], properties: { href: MotherOfReports + "3" }, siblings: [{ text: "Котельная 3" }]
                         }]
-                    },                    {
+                    }, {
                         tag: "li", classList: ["topmenu__item"], siblings: [{
                             tag: "a", classList: ["topmenu__item__ref"], properties: { href: MotherOfReports + "reports/day" }, siblings: [{ text: "Суточный отчет" }]
                         }]
-                    }, 
+                    },
                     {
                         tag: "li", classList: ["topmenu__item"], siblings: [{
                             tag: "a", classList: ["topmenu__item__ref"], properties: { href: MotherOfReports + "reports/month" }, siblings: [{ text: "Месячный отчет" }]
@@ -63,8 +79,9 @@ function getNewHtmlNode(newNode) {
         }
         if (newNode.properties) {
             const props = Object.entries(newNode.properties);
+            // console.log("### props  " , props)
             Object.entries(newNode.properties).forEach(prop => {
-                node[prop[0]] = prop[1];
+                node.setAttribute(prop[0],prop[1]);
             });
         }
 
@@ -85,7 +102,7 @@ window.addEventListener('load', () => {
     console.log("menu!!");
     try {
         addAllNodes(menuItemsList);
- 
+
     } catch (error) {
         console.log(error.message);
     }

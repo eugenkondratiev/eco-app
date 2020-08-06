@@ -107,7 +107,7 @@ th {
     /* max-width: 10vw; */
   }
 
-  
+
   .datatable th:nth-child(n + 3) {
     /* font-size: 1.1rem; */
     max-width: 10vw;
@@ -134,7 +134,7 @@ th {
 
   .datatable td {
     font-size: .8rem;
-  }  
+  }
 
   .datatable th {
     font-size: .58rem;
@@ -163,7 +163,7 @@ th {
 
 .datatable tr td[class=value] {
   font-family: Arial, Helvetica, sans-serif;
-  font-size:0.95rem;
+  font-size: 0.95rem;
   font-style: bold;
   text-align: right;
   padding-right: 0.5em;
@@ -212,6 +212,7 @@ th {
 
 #topmenu.ecoMenu {
   width: 100%;
+  min-height: 3em;
 }
 
 #topmenu ul {
@@ -238,32 +239,41 @@ th {
   min-width: 100px;
   text-decoration: none;
   color: lightgray;
+  font-size: 1.2rem;
 
 }
 
-#topmenu input {
+#topmenu input[type=checkbox] {
   display: none;
-} 
+  /* position: absolute;
+  top: -9999px;
+  left: -9999px; */
+}
+
 #topmenu label {
   display: none;
-} 
+  cursor: pointer;
+  user-select: none;
+
+}
 
 #topmenu li a:hover {
   background-color: rgb(3, 161, 161);
   color: burlywood
 }
 
-@media screen and (max-device-width: 769px) {
+@media screen and (max-width: 60em) {
   #topmenu li a {
-    padding: 1.8rem .4rem;
+    padding: 1.8rem .5rem;
     min-width: 64px;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
 }
 
-@media screen and (max-device-width: 480px) {
+/* @media screen and (max-device-width: 480px) { */
+@media screen and (max-width: 44em) {
 
-  #topmenu{
+  #topmenu {
     background-color: darkcyan;
     text-align: center;
     line-height: 0.8em;
@@ -271,26 +281,49 @@ th {
     align-content: center;
     width: 100%;
     font-family: "Times New Roman";
+    z-index: 11
   }
-  #topmenu ul{
-    padding: 1.8rem .1rem;
-    font-size: .91rem;
+
+  #topmenu ul {
+    /* padding: 1.8rem .1rem;
+    font-size: .91rem; */
+    display: none;
+    height: 100%;
+    position: relative;
+    top: 4rem;
+    height: 100vh;
   }
+
   #topmenu li {
     display: inline;
     list-style: none;
     margin: 0;
   }
+
   #topmenu input {
     display: none;
-  } 
+  }
+
+
   #topmenu label {
-    display: none;
-  } 
+    position: relative;
+    float: left;
+    display: block;
+    width: 100%;
+  }
+
+  #topmenu label:after {
+    position: absolute;
+    font-size: 4rem;
+    color: burlywood;
+    content: "\2261";
+    top: .3em;
+    right: .3em;
+  }
 
   #topmenu li a {
     padding: 1.8rem .1rem;
-    font-size: .91rem;
+    font-size: 1.4rem;
   }
 
   #topmenu.fixed {
@@ -299,27 +332,44 @@ th {
     left: 0;
     width: 100%;
   }
-  
+
+  #topmenu input:checked~ul {
+    display: block;
+    height: 100vh;
+  }
+
+  #topmenu input:checked~ul>li {
+    width: 100%;
+
+  }
+
+  #topmenu input:checked~label:after {
+    content: "\2573";
+    top: .5em;
+    font-size: 2.5rem;
+  }
+
   #topmenu.ecoMenu {
     width: 100%;
   }
 
 }
-@media screen and (max-device-width: 390px) {
+
+/* @media screen and (max-device-width: 390px) {
 
 
   #topmenu li a {
     padding: 1.8rem .1rem;
     font-size: .77rem;
   }
+
   .content {
     margin-top: 1em;
-    /* margin-left: 5px; */
     align-content: center
   }
 
-}
-
+} */
+/* 
 @media screen and (max-device-width: 350px) {
 
 
@@ -327,7 +377,7 @@ th {
     padding: 1.8rem .1rem;
     font-size: .67rem;
   }
-}
+} */
 
 .sticky {
   position: sticky;
