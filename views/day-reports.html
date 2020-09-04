@@ -17,14 +17,17 @@
     <div class="content">
         <div class="forms-container">
             <form class="dateform" id="Eco1ReqForm" action="http://95.158.47.15:3001/reports/day/1/">
-                <!-- Котельная 1. Выбор дня -->
-                <p>Выбор отчетного дня. Котельная 1: <input type="text" id="datepicker1" autocomplete="off"></p>
+                <!-- Котельная. Выбор дня -->
+                <h6>Выбор отчетного дня:</h6> <input type="text" id="datepicker1" autocomplete="off">
                 <div class="hideIt">
                     <input type="text" name="day" value="11" placeholder="День" required>
                     <input type="text" name="month" value="6" placeholder="Месяц" required>
                     <input type="text" name="year" value="2019" placeholder="Год" required>
                 </div>
-                <input type="submit" name="submit" value="Получить отчет">
+                <h6>Получить отчет</h6>
+                <input type="submit" name="submit" value="Котельная1">
+                <input type="submit" name="submit"  action="http://95.158.47.15:3001/reports/day/2/" value="Котельная2" >
+                <input type="submit" name="submit" action="http://95.158.47.15:3001/reports/day/3/" value="Котельная3">
 
             </form>
             <div class="buttons">
@@ -32,6 +35,8 @@
                 <button id="yesterdayRepEco1">Котельная1 Вчера</button>
                 <button id="todayRepEco2">Котельная2 Сегодня</button>
                 <button id="yesterdayRepEco2">Котельная2 Вчера</button>
+                <button id="todayRepEco3">Котельная3 Сегодня</button>
+                <button id="yesterdayRepEco3">Котельная3 Вчера</button>
 
             </div>
             <form class="dateform" id="Eco2ReqForm" action="http://95.158.47.15:3001/reports/day/2/">

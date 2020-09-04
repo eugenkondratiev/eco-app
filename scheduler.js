@@ -1,14 +1,27 @@
 const schedule = require('node-schedule');
-
+const dbQuery = require('./controllers/model/db-local').dbQuery;
 const logTask = require('./tasklog');
 
-const ruleEveryHour = {
+const ruleEveryDay = {
   hour: 9,
   minute: 9,
   second: 9
 };
+
+const ruleEveryHour = {minute: 1, second: 4};
+
 module.exports = function () {
-  const schGetPlayers = schedule.scheduleJob(ruleEveryHour, async function () {
+  const schDbPing = schedule.scheduleJob(ruleEveryHour, async function(){
+    try {
+     await dbQuery("SELECT 1");
+    } catch (error) {
+      // console.log(error);
+           logTask("Db", ("  DbPing - error " + error.message + "\n"));
+    } 
+
+   });
+
+  const schGetPlayers = schedule.scheduleJob(ruleEveryDay, async function () {
     try {
       const ans2 = await require('./controllers/update-last-day')();
       logTask(2, ("  day checked. result : " + ans2 + "\n"));
