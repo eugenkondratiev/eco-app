@@ -1,5 +1,5 @@
 const timestamps = [];
-const fs= require('fs');
+const fs = require('fs');
 
 //it`s consciously global
 wsClients = {};
@@ -8,8 +8,13 @@ const logTask = require('../tasklog');
 
 function dataCollect(server) {
 
-    const client = require('./plc-client')();
+    let client = require('./plc-client')();
 
+    setTimeout(() => {
+        if (!client.isOpen) {
+            client = require('./plc-client')();
+        }
+    }, 180000);
     //:TODO divide to 2-3 modules
     // var TcpPort = require("modbus-serial").TcpPort;
     // var tcpPort = new TcpPort("192.168.1.225");
@@ -57,12 +62,12 @@ function dataCollect(server) {
 
                 if (jsonMessage.lastDayEco1) {
                     // const logRecord = new Date() + " " +  + '\n';
-                    logTask(1, (' reseived last day array message\n' + + jsonMessage.lastDayEco1.length + " rows \n"));
+                    logTask(1, (' reseived last day array message\n' + +jsonMessage.lastDayEco1.length + " rows \n"));
                     // logTask(1, (' reseived last day array message\n' + Array.isArray(jsonMessage.lastDayEco1) + " _ " + + jsonMessage.lastDayEco1.length + " _ \n"+ jsonMessage.lastDayEco1));
                     // fs.appendFile('logs/update_day_eco1.txt', logRecord, err => {
                     //     if (err) console.error
                     // });
-                    
+
                     const updateResult = await updateEco1(jsonMessage.lastDayEco1);
                     logTask(1, (' update result : ' + updateResult + " _ \n"));
 
@@ -81,35 +86,42 @@ function dataCollect(server) {
     // client.connectTCP("95.158.47.15", { port: 502 });
     // //client.connectTCP(tcpPort, { port: 502 });
     // client.setID(1);
-
+    let isLastPollingHadProblem = false;
     let periodicPollingHandler = setInterval(function () {
         //PromiseAPI
         try {
-            client.readHoldingRegisters(BLOCK_START, BLOCK_SIZE).then(data => {
-		try{
-                const _answer = data.data;
-                const floats = m340.getFloatsFromMOdbusCoils(_answer);
-                m340data = floats;
-                eco1.forEach((el, index) => {
-                    m340data[50 + index] = parseFloat(el);
-                });
-                // console.log(" #### plc-data-collect.js eco3", eco3.length, eco3);
-                eco3.forEach((el, index) => {
-                    m340data[100 + index] = (index < 30 ) ? parseFloat(el) : parseInt(el);
-                });
-                const socketMessage = {};
-                socketMessage.data = JSON.stringify(floats.map(el =>
-                    isFinite(Number(el)) ? el.toFixed(3) : "NaN"));
+            if (isLastPollingHadProblem && !client.isOpen) return;
+            client.readHoldingRegisters(BLOCK_START, BLOCK_SIZE)
+                .then(data => {
+                    try {
+                        isLastPollinHadProblem = false;
+                        const _answer = data.data;
+                        const floats = m340.getFloatsFromMOdbusCoils(_answer);
+                        m340data = floats;
+                        eco1.forEach((el, index) => {
+                            m340data[50 + index] = parseFloat(el);
+                        });
+                        // console.log(" #### plc-data-collect.js eco3", eco3.length, eco3);
+                        eco3.forEach((el, index) => {
+                            m340data[100 + index] = (index < 30) ? parseFloat(el) : parseInt(el);
+                        });
+                        const socketMessage = {};
+                        socketMessage.data = JSON.stringify(floats.map(el =>
+                            isFinite(Number(el)) ? el.toFixed(3) : "NaN"));
 
-                timestamps[1] = (new Date()).toISOString();
-                // console.log(timestamps);
-                socketMessage.timestamps = JSON.stringify(timestamps.map(tm => getDateTimeStringCurrent(tm)));
+                        timestamps[1] = (new Date()).toISOString();
+                        // console.log(timestamps);
+                        socketMessage.timestamps = JSON.stringify(timestamps.map(tm => getDateTimeStringCurrent(tm)));
 
-                io.sockets.emit('newdata', socketMessage);
-		} catch (e) {
-			console.log("#### readHoldingRegisters results handle Error ", e)	
-		}
-            });
+                        io.sockets.emit('newdata', socketMessage);
+                    } catch (e) {
+                        console.log("#### readHoldingRegisters results handle Error ", e)
+                    }
+                })
+                .catch(err => {
+                    console.log(" ### modbus client problem ", err);
+                    isLastPollingHadProblem = true;
+                });
         } catch (error) {
             console.log(error.message);
 
