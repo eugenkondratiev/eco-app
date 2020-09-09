@@ -12,9 +12,10 @@ function dataCollect(server) {
 
     setTimeout(() => {
         if (!client.isOpen) {
+            console.log("try to reconnect to plc !!")
             client = require('./plc-client')();
         }
-    }, 180000);
+    }, 60000);
     //:TODO divide to 2-3 modules
     // var TcpPort = require("modbus-serial").TcpPort;
     // var tcpPort = new TcpPort("192.168.1.225");
