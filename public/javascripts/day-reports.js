@@ -25,6 +25,10 @@ $(function () {
     };
 
     $("#Eco1ReqForm").on('submit', function (e) {
+        console.log(e.action);
+        
+        console.log(" #Eco1ReqForm submit")
+        console.log(e);
         getReport.call($(this), e, 1);
     });
 

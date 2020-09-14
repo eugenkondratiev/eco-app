@@ -7,7 +7,7 @@
     <link rel="icon" href="../images/faviconka_ru_412.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="../images/faviconka_ru_412.ico" type="image/x-icon" />
     <link rel="stylesheet" type="text/css" href="../stylesheets/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
+    <link rel="stylesheet" href="../cdn/jquery-ui.min.css">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
 
@@ -18,17 +18,20 @@
         <div class="forms-container">
             <form class="dateform" id="Eco1ReqForm" action="http://95.158.47.15:3001/reports/day/1/">
                 <!-- Котельная. Выбор дня -->
-                <h6>Выбор отчетного дня:</h6> <input type="text" id="datepicker1" autocomplete="off">
+                <fieldset>
+                <legend>Выбор отчетного дня:</legend> <input type="text" id="datepicker1" autocomplete="off">
                 <div class="hideIt">
                     <input type="text" name="day" value="11" placeholder="День" required>
                     <input type="text" name="month" value="6" placeholder="Месяц" required>
                     <input type="text" name="year" value="2019" placeholder="Год" required>
                 </div>
-                <h6>Получить отчет</h6>
+            </fieldset>
+            <fieldset>
+                <legend>Получить отчет :</legend>
                 <input type="submit" name="submit" value="Котельная1">
                 <input type="submit" name="submit"  action="http://95.158.47.15:3001/reports/day/2/" value="Котельная2" >
                 <input type="submit" name="submit" action="http://95.158.47.15:3001/reports/day/3/" value="Котельная3">
-
+            </fieldset>
             </form>
             <div class="buttons">
                 <button id="todayRepEco1">Котельная1 Сегодня</button>
@@ -67,11 +70,11 @@
         </table>
 
     </div>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/i18n/jquery-ui-i18n.min.js">
+    <script src="../cdn/jquery-3.4.1.min.js"></script>
+    <script src="../cdn/jquery-ui.min.js"></script>
+    <script src="../cdn/jquery-ui-i18n.min.js">
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+    <script src="../cdn/socket.io.js"></script>
     <script src="../javascripts/day-reports.js"></script>
     <script src="../javascripts/main-menu-light.js"></script>
 

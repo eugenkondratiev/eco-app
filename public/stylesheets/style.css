@@ -77,6 +77,13 @@ button {
   }
 }
 
+@media screen and (min-width: 480px) {
+  .monthform ~ .buttons {
+    max-width: 70ch;
+    /* max-width: 55ch; */
+  }
+}
+
 @media screen and (min-width: 630px) {
   .buttons {
     flex-grow: 1;
@@ -95,6 +102,10 @@ button {
     max-width: 100%;
   }
 
+  
+  .monthform ~ .buttons {
+    max-width: 100%;
+  }
 }
 
 /*----------------datatable-----------*/
@@ -457,39 +468,82 @@ th {
   flex-wrap: wrap;
 }
 
+
+
 .dateform,
 .monthform {
-  display: block;
+  display: flex;
   color: darkblue;
   width: 100%;
   /* width: 30%; */
-  text-align: right;
+  /* text-align: right; */
   margin: 0rem 1rem 0.5rem 0.5rem;
   align-content: flex-end;
   flex-grow: 1;
+  flex-wrap: wrap;
 }
 
-.dateform input[type=text] {
+
+.forms-container fieldset{
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 1em .5em;
+  margin: .5em;
+  border-color: navy;
+  border-radius: 5px;
+  /* min-width: 25ch; */
+  /* width: 100%; */
+  flex-grow: 2;
+  min-width: 40ch;
+}
+
+/* .forms-container fieldset:first-of-type {
+  min-width: 100%;
+} */
+@media screen and (min-width: 650px) {
+
+.forms-container fieldset:first-of-type {
+  max-width: 25ch;
+  min-width: 25ch;
+}
+}
+
+
+.forms-container legend{
+  padding-inline-start: .8rem;
+  padding-inline-end: .5rem;
+}
+
+/* .dateform input[type=text] {
   display: block;
   width: 4em;
   color: darkblue;
-  text-align: right;
-  display: inline-block;
+  text-align: center;
+  /* display: inline-block; */
+} */
+.dateform input[type=submit], 
+.monthform input[type=submit] {
+  display: flex;
+  /* width: 4em; */
+  /* color: darkblue; */
+  text-align: center;
+  /* display: inline-block; */
 }
-
 .monthform select {
-  display: block;
+  display: flex;
   width: 6.3rem;
   height: 1.4rem;
   color: darkblue;
-  text-align: right;
-  display: inline-block;
+  text-align: center;
+  /* display: inline-block; */
 }
 
 .dateform input[id^=datepick] {
   width: 5.8rem;
   color: darkolivegreen;
-  text-align: right;
+  text-align: center;
 }
 
 .monthform select[id^=year] {
