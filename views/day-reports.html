@@ -19,19 +19,26 @@
             <form class="dateform" id="Eco1ReqForm" action="http://95.158.47.15:3001/reports/day/1/">
                 <!-- Котельная. Выбор дня -->
                 <fieldset>
-                <legend>Выбор отчетного дня:</legend> <input type="text" id="datepicker1" autocomplete="off">
-                <div class="hideIt">
-                    <input type="text" name="day" value="11" placeholder="День" required>
-                    <input type="text" name="month" value="6" placeholder="Месяц" required>
-                    <input type="text" name="year" value="2019" placeholder="Год" required>
-                </div>
-            </fieldset>
-            <fieldset>
-                <legend>Получить отчет :</legend>
-                <input type="submit" name="submit" value="Котельная1">
-                <input type="submit" name="submit"  action="http://95.158.47.15:3001/reports/day/2/" value="Котельная2" >
-                <input type="submit" name="submit" action="http://95.158.47.15:3001/reports/day/3/" value="Котельная3">
-            </fieldset>
+                    <legend>Выбор отчетного дня:</legend>
+                    <div class="submit-wrap">
+                        <input type="text" id="datepicker1" autocomplete="off">
+                    </div>
+                    <div class="hideIt">
+                        <input type="text" name="day" value="11" placeholder="День" required>
+                        <input type="text" name="month" value="6" placeholder="Месяц" required>
+                        <input type="text" name="year" value="2019" placeholder="Год" required>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Получить отчет :</legend>
+                    <div class="submit-wrap">
+                        <input class="eco-submit" type="submit" name="submit" value="Котельная1">
+                        <input class="eco-submit" type="submit" name="submit"
+                            action="http://95.158.47.15:3001/reports/day/2/" value="Котельная2">
+                        <input class="eco-submit" type="submit" name="submit"
+                            action="http://95.158.47.15:3001/reports/day/3/" value="Котельная3">
+                    </div>
+                </fieldset>
             </form>
             <div class="buttons">
                 <button id="todayRepEco1">Котельная1 Сегодня</button>
@@ -42,7 +49,8 @@
                 <button id="yesterdayRepEco3">Котельная3 Вчера</button>
 
             </div>
-            <form class="dateform" id="Eco2ReqForm" action="http://95.158.47.15:3001/reports/day/2/" style="display:none">
+            <form class="dateform" id="Eco2ReqForm" action="http://95.158.47.15:3001/reports/day/2/"
+                style="display:none">
 
                 <p>Выбор отчетного дня. Котельная 2: <input type="text" id="datepicker2" autocomplete="off"></p>
                 <div class="hideIt">
