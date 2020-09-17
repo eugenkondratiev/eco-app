@@ -494,43 +494,52 @@ th {
   flex-wrap: wrap;
   padding: 1em .5em;
   margin: .5em;
-  border-color: navy;
+  border: navy solid 1px;
   border-radius: 5px;
   /* min-width: 25ch; */
   /* width: 100%; */
   flex-grow: 2;
   min-width: 40ch;
 }
+@media screen and (min-width: 650px) {
+  .forms-container fieldset:first-of-type {
+    max-width: 32ch;
+    min-width: 32ch;
+  }
+}
+
+@media screen and (min-width: 1281px) {
+  .forms-container fieldset:first-of-type {
+    max-width: 50ch;
+    min-width: 50ch;
+  }
+}
+
 
 .eco-submit {
   display: flex;
-padding: .5em;
+  padding: .5em;
 }
 
 .submit-wrap {
   display: flex;
   height: 100%;
   width: 100%;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
   margin-top: -.5em;
+  text-align: center;
 }
 
 /* .forms-container fieldset:first-of-type {
   min-width: 100%;
 } */
-@media screen and (min-width: 650px) {
-
-  .forms-container fieldset:first-of-type {
-    max-width: 25ch;
-    min-width: 25ch;
-  }
-}
 
 
 .forms-container legend {
   padding-inline-start: .4rem;
-  padding-inline-end: 0.1rem;}
+  padding-inline-end: 0.1rem;
+}
 
 .dateform input[type=submit],
 .monthform input[type=submit] {
@@ -541,24 +550,43 @@ padding: .5em;
   /* display: inline-block; */
 }
 
+/* 
 .monthform select {
   display: flex;
   width: 6.3rem;
   height: 1.4rem;
   color: darkblue;
   text-align: center;
-  /* display: inline-block; */
-}
+} */
 
-.dateform input[id^=datepick] {
+.dateform input[id^=datepick],
+.monthform select[id^=month],
+.monthform select[id^=year] {
   width: 10rem;
+  display: flex;
+  cursor: pointer;
+  justify-content: center;
   color: darkolivegreen;
   text-align: center;
-  padding: .1em;
+  padding: .3em;
   font-size: 1.4rem;
+  margin:0 .5rem
 }
 
+.monthform select[id^=month] {
+  font-size: 1.1rem;
+  min-width: 9rem;
+
+}
+
+
 .monthform select[id^=year] {
+  font-size: 1.1rem;
+  min-width: 6rem;
+
+}
+
+/* .monthform select[id^=year] {
 
   width: 5rem;
   color: darkolivegreen;
@@ -567,7 +595,7 @@ padding: .5em;
 .monthform select[id^=month] {
   width: 6.3rem;
   color: darkolivegreen;
-}
+} */
 
 #Eco2ReqForm {
   order: 3;

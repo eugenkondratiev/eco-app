@@ -73,8 +73,8 @@ $(function () {
     const currentMonth = parseInt(currentDate.getMonth() + 1);
     const currentYear = parseInt(currentDate.getFullYear());
 
-    $("#Eco1ReqForm > fieldset:first-child()").append(getMonthPicker("monthPicker"));
-    $("#Eco1ReqForm > fieldset:first-child()").append(getYearPicker("yearPicker"));
+    $("#Eco1ReqForm > fieldset:first-child() > .submit-wrap").append(getMonthPicker("monthPicker"));
+    $("#Eco1ReqForm > fieldset:first-child() > .submit-wrap").append(getYearPicker("yearPicker"));
 
     $(`#yearPicker option[value=${currentYear}]`).attr("selected", "selected");
     $(`#monthPicker option[value=${currentMonth}]`).attr("selected", "selected");
