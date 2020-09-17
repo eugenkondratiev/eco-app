@@ -16,23 +16,36 @@
     <div class="content">
         <div class="forms-container">
             <form class="monthform" id="Eco1ReqForm" action="http://95.158.47.15:3001/reports/month/1/">
-                <p>Выбор отчетного месяца. Котельная 1:
-                    <!--   <select  id="monthPicker" autocomplete="off"></select> -->
+                <fieldset>
+                    <legend>Выбор отчетного месяца :</legend>
+                    <div class="submit-wrap">
 
-                </p>
-                <input type="submit" name="submit" value="Получить отчет">
-
+                        <!-- <select class="monthPicker" id="monthPicker" autocomplete="off" required="required"></select>
+                        <select class="yearPicker" id="yearPicker" autocomplete="off" required="required"></select> -->
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Получить отчет :</legend>
+                    <div class="submit-wrap">
+                        <input class="eco-submit" data-eco="1" type="submit" name="submit" value="Котельная1">
+                        <input class="eco-submit" data-eco="2" type="submit" name="submit" value="Котельная2"
+                            action="http://95.158.47.15:3001/reports/month/2/">
+                        <input class="eco-submit" data-eco="3" type="submit" name="submit" value="Котельная3"
+                            action="http://95.158.47.15:3001/reports/month/3/">
+                    </div>
+                </fieldset>
             </form>
             <div class="buttons">
-                <button id="curmonth">Текущий месяц. Котельная1 </button>
-                <button id="curmonth2">Текущий месяц. Котельная2 </button>
-                <button id="lastmonth">Прошлый месяц. Котельная1 </button>
-                <button id="lastmonth2">Прошлый месяц. Котельная2 </button>
+                <button data-today="1" data-eco="1" id="curmonth">Текущий месяц. Котельная1 </button>
+                <button data-today="1" data-eco="2" id="curmonth2">Текущий месяц. Котельная2 </button>
+                <button data-today="1" data-eco="3" id="curmonth3">Текущий месяц. Котельная3 </button>
+                <button data-eco="1" id="lastmonth">Прошлый месяц. Котельная1 </button>
+                <button data-eco="2" id="lastmonth2">Прошлый месяц. Котельная2 </button>
+                <button data-eco="3" id="lastmonth3">Прошлый месяц. Котельная3 </button>
             </div>
             <form class="monthform" id="Eco2ReqForm" action="http://95.158.47.15:3001/reports/month/2/">
 
                 <p>Выбор отчетного месяца. Котельная 2:
-                    <!-- <select  id="monthPicker2" autocomplete="off"></select> -->
                 </p>
                 <input type="submit" name="submit" value="Получить отчет">
             </form>
@@ -53,8 +66,8 @@
 
     </div>
     <div class="navigationFooter"> </div>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+    <script src="../cdn/jquery-3.4.1.min.js"></script>
+    <script src="../cdn/socket.io.js"></script>
 
     <script src="../javascripts/month-reports.js"></script>
     <script src="../javascripts/main-menu-light.js"></script>

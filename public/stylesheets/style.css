@@ -466,7 +466,7 @@ th {
 /*==================form============================*/
 .forms-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
 }
@@ -529,19 +529,10 @@ padding: .5em;
 
 
 .forms-container legend {
-  padding-inline-start: .8rem;
-  padding-inline-end: .5rem;
-}
+  padding-inline-start: .4rem;
+  padding-inline-end: 0.1rem;}
 
-/* .dateform input[type=text] {
-  display: block;
-  width: 4em;
-  color: darkblue;
-  text-align: center;
-  /* display: inline-block; */
-}
-
-*/ .dateform input[type=submit],
+.dateform input[type=submit],
 .monthform input[type=submit] {
   display: flex;
   /* width: 4em; */
