@@ -59,7 +59,7 @@ class Eco1MonthReport extends base {
                             console.log("Connected!  BD state = "+ self.con.state);
                             self.getDaysList(/*self.con,*/ self.reportMonth, self.reportYear)
                             .then(function(result){ 
-                                console.log("getDaysList . then ->", result);
+                                console.log("getDaysList . then ->", JSON.stringify(result));
 
                                 DaysArray = self.arrFromObjectArrray(result, "dtm");
                                 const daysInMonth = DaysArray[DaysArray.length - 1].slice(8, 10);
@@ -97,7 +97,7 @@ class Eco1MonthReport extends base {
                             );
                         }             
                 } catch (err) {
-                    console.log(err.message);
+                    console.log("getMonthReport main promise error - ", err.message, err);
                     self.con.end();
                     const error = ' con.connect BD connect error: ' + err.message;
                     reject({err: error});
@@ -121,7 +121,7 @@ class Eco1MonthReport extends base {
         return new Promise( function(resolve, reject){
             function performQuery(mm , year){
                 const sql = self.monthDatesSql(mm , year);
-                // console.log("getDaysList sql ", sql);
+                console.log("getDaysList sql ", sql);
                 
                 let query = self.con.query(sql,  [], function (err, result, fields) {
                     if (err) {

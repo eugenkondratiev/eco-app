@@ -29,7 +29,7 @@ router.get('/:ecoId/', function (req, res, next) {
 
     monthrep.getMonthReport(month, year)
       .then(result => {
-        console.log(`Eco${eco} query result =  ${result}`);
+        console.log(`Eco${eco} query result =  ${JSON.stringify(result)}`);
         res.setHeader('content-type', 'text/html');
         res.status(200).send(result);
       })

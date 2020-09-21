@@ -2,8 +2,7 @@
   "name": "ecoapp",
   "version": "1.1.0",
   "private": true,
-  "node-remote": "127.0.0.1",
-  "node-remote2": "95.158.47.15",
+  "node-remote": "95.158.47.15",
   "scripts": {
     "start": "node www"
   },
