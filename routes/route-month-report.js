@@ -47,8 +47,6 @@ router.get('/:ecoId/', function (req, res, next) {
     console.log(error.message);
 
   }
-
-
 });
 //=============================================================================================
 router.get('/test', function (req, res, next) {

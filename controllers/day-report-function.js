@@ -18,9 +18,7 @@ function getDayReport(_con, reportDay = 15, reportMonth = 7, reportYear = 2019) 
         } else {
             console.log("Connected!  BD state = "+ _con.state);
             getHoursList(con, reportDay, reportMonth, reportYear)
-            // getHoursList(reportDay, reportMonth, reportYear)
             .then(function(result) {
-                ;
                 try {
                     hoursArray = result.map(function(row, i, arr) {
                         return stringTemplates.formHourRow(row);
@@ -28,7 +26,6 @@ function getDayReport(_con, reportDay = 15, reportMonth = 7, reportYear = 2019) 
                 } catch (e) {
                     console.log(e.message);
                 } finally {
-                ;                
                 }
                 return new Promise(function(resolve, reject) {
                     resolve(hoursArray);
@@ -44,11 +41,8 @@ function getDayReport(_con, reportDay = 15, reportMonth = 7, reportYear = 2019) 
                             if (hoursArray.length < 1) {
                                 console.log("\nДанные за этот период отсутствуют или ошибочны");
                                 reject("\nДанные за этот период отсутствуют или ошибочны");
-                                // return "\nДанные за этот период отсутствуют или ошибочны";
                             } else {
-
                                 resolve(stringTemplates.arrToTableRow(hoursArray));
-                                // return dtUtils.arrToTableRow(hoursArray);
                             }
                         } catch (e) {
                                     console.log(e.message); 
@@ -69,19 +63,10 @@ function getDayReport(_con, reportDay = 15, reportMonth = 7, reportYear = 2019) 
     });
     {
     // //==============================================================================
-    //===============================================================================
     }
 });
 }
 
-
-// getDayReport(con, 15, 7, 2019).then((result) => {
-//     console.log("result table: \n" , result);
-    
-// })
-// .catch((err) => {
-//     console.log(err)
-// });
 
 module.exports = getDayReport;
 

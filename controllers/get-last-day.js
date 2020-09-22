@@ -14,9 +14,6 @@ function getHourString(_lastDay) {
     }
 }
 
-//const getLastDayHourString = getHourString(getLastDayString());
-//const getCurrentDayHourString = getHourString(getCurrentDayString());
-
 
 function getLastDayHourString(_hour) {
 	return `${getLastDayString()} ${_hour > 9 ? _hour : "0" + _hour}:00:00`

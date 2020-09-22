@@ -3,9 +3,7 @@
      var ModbusRTU = require("modbus-serial");
 
      function createm340client() {
-
          let client = new ModbusRTU(tcpPort);
-
          const bits = require('./bit-operations');
          bits.addBinFunctions();
          client.connectTCP("192.168.1.225", {
@@ -14,8 +12,6 @@
              client.setID(1);
          }).catch((err) => console.error("192.168.1.225 connect problem \n ", err));
          // client.connectTCP("95.158.47.15", { port: 502 });
-         //client.connectTCP(tcpPort, { port: 502 });
-
          return client;
      }
 

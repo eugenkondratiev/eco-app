@@ -26,7 +26,6 @@ class ReportBaseUtils {
     //==========================================================================
 
     getDateTimeFromMySql(dt) {
-        //return dt.toISOString().slice(0, 19).replace('T', ' ');
         return (new Date((new Date((new Date(new Date(dt))).toISOString())).getTime() - ((new Date()).getTimezoneOffset() * 60000))).toISOString().slice(0, 19).replace('T', ' ');
     }
     //==============================================================================
@@ -62,7 +61,6 @@ class ReportBaseUtils {
         } finally {
             return hourRow;
         }
-
     };
     //==============================================================================
 
@@ -91,7 +89,6 @@ class ReportBaseUtils {
         answer.err = "" + err;
         return answer;
     }
-
     //==============================================================================
     arrToTableRow(arr) {
         let row = [];
@@ -101,7 +98,6 @@ class ReportBaseUtils {
             });
         } catch (error) {
             console.log("arrToTableRow  - ", error.message);
-            //row = ["error", "data"];           
         } finally {
             return row.join('');
         }
@@ -110,7 +106,6 @@ class ReportBaseUtils {
     //================================================
     calcMonthData(allData) {
         const days = allData.length;
-        //console.log(days);
         const sumRow = ["", 0, 0, 0, 0, 0, 0, 0, 0];
         allData.map(function (dayRow) {
             dayRow.forEach((e, i) => {

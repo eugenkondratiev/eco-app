@@ -1,4 +1,3 @@
-// var express = require('express');
 const router = require('express').Router();
 const views = require('./abs-routes').views;
 const dayReport1 = require('../controllers/model/day-report-eco1');
@@ -11,11 +10,8 @@ router.use(function (req, res, next) {
   next();
 });
 
-
-
 router.get('/:ecoId/', function (req, res, next) {
-
-  console.log(' parse route');
+  // console.log(' parse route');
   try {
     const eco = parseInt(req.params.ecoId);
     const year = parseInt(req.query.year) || 2019;

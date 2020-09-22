@@ -39,7 +39,6 @@ $(function () {
         }
         socket.on('newdata', function (message) {
             const dataM340 = JSON.parse(message.data);
-            // console.log(" #eco1   data.parameters.eco1 ", data.parameters.eco1);
             try {
                 data.parameters.eco1.forEach(el => {
                     const elName = "#Eco1_" + el;

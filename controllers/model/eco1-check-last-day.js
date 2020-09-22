@@ -7,23 +7,6 @@ const sqlLastDayHours = _lastDay => `select count(dt) as hours FROM eco.hourseco
 
 const logTask = require('../../tasklog');
 
-// async function main() {
-
-//     try {
-
-//         const lastDayHours = (await dbQuery(sqlLastDayHours)).rows[0][0];
-//         console.log(lastDayHours);
-//         return lastDayHours;
-
-
-//     } catch (err) {
-//         console.log("Check Eco1 last day hours problem", err)
-
-//     }
-// }
-
-
-
 module.exports = function() {
     return new Promise(async (res, rej)=> {
         try {

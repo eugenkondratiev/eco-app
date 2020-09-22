@@ -33,12 +33,8 @@ class Eco1MonthReport extends base {
         const mm = this.getNiceMonth(month);
         return `select distinct DATE_ADD(DATE(dt), INTERVAL 8 hour) as dtm  from eco.hourseco1 where month(dt) ='${mm}' and year(dt) = '${year}' `;//order by dt asc` ; 
     }
-
  //========================================================================================
-    // getMonthReport(/*self.con,*/ _reportMonth = 7, _reportYear = 2019) {
     getMonthReport(/*self.con,*/ reportMonth = 7, reportYear = 2019) {
-        // const reportMonth = _reportMonth || 2;
-        // const reportYear = _reportYear  || 2019 ;
         let DaysArray = [];
         const self = this;
         console.log("reportMonth, reportYear - ", this.reportMonth, this.reportYear, reportMonth, reportYear);
@@ -46,8 +42,6 @@ class Eco1MonthReport extends base {
         return new Promise((resolve, reject) => {
                     
             self.con.connect(function(err) {
-                // let DaysArray = [];
-    
                 try {
                     if (err){
                         console.log(' con.connect BD connect error: ' + err.message);
@@ -76,23 +70,17 @@ class Eco1MonthReport extends base {
                                 }
                                 console.log(e.message);
                                 self.con.end();
-                                // reject("\nДанные за этот период отсутствуют или ошибочны");
                                 reject(self.formErrorResponse.call(self, "Данные за этот период отсутствуют или ошибочны"));                                
                             })
                             .finally( function(){                                
                                 self.forEachDay(DaysArray/*, con*/)
                                 .then(table => {
-                                    // console.log(table);
                                     const answer = {};
                                     answer.tytle = self.getTitle();
-                                    
-                                    // answer.tytle = self.getTitle(reportDay , reportMonth, reportYear);
                                         answer.eco = self.eco;
                                         answer.data = table
                                     resolve(answer);
                                 });
-                                
-                                
                             }
                             );
                         }             
@@ -128,7 +116,6 @@ class Eco1MonthReport extends base {
                         console.log(err.message);
                         reject(err);
                     } else {
-                        // console.log(" getDaysList result ", result);                        
                         resolve(result);
                     }
                 });
@@ -172,11 +159,9 @@ class Eco1MonthReport extends base {
                     .then(function(dayRow){
                         allData.push( self.dressUpDayRow(dayRow));
                         if (i === arr.length - 1) {
-                        //console.log(allData);
                             self.con.end();
                             allData.push(self.calcMonthData(allData));
                             const htmlTable = self.tableHeader() + self.arrToTableRow(allData);
-                            // const htmlTable = self.getTableHeader() + self.arrToTableRow(allData);
                             res(htmlTable);
                         }
                     });
@@ -187,7 +172,6 @@ class Eco1MonthReport extends base {
                 ;
             }    
         });
-
     }
     //========================================================================================
     getDayRow(day/*, _con*/){
@@ -198,7 +182,7 @@ class Eco1MonthReport extends base {
                 // console.log(` getDayRow ${day} - ${sql}`);            
                     let query = self.con.query(sql,  [], function (err, result, fields) {
                         if (err) {
-                            console.log(err.message);
+                            console.log("# getDayRow - " , err.message);
                             reject(err);
                         } else {
                             resolve(result);

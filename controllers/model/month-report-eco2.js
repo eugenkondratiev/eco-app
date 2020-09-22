@@ -1,5 +1,4 @@
 const Eco1MonthReport = require('./Month-report-eco1');
-// const mysqlConnection = require('./connection');
 
 class Eco2MonthReport extends Eco1MonthReport {
     constructor(reportMonth, reportYear) {
@@ -9,7 +8,6 @@ class Eco2MonthReport extends Eco1MonthReport {
         //this.con = _con; // db connection
          this.HEADER = ["Дата", "Тепло, Гкал", "Расход воды, м3", "Вода на город, С", "Темп. оборотной, С",  "Вода в котле, С", "Давл.в котле, МПа", "Темп. дымовых до ЭКО, С", "Разрежение в топке, Па", "Давление воздуха, см.вд.ст." ];
     }
-   
     //-----------------------------------------------------------------
     //====ovverride=======================================================
     //========================================================================================

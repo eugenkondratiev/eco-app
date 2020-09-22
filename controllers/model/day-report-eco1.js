@@ -24,14 +24,6 @@ class Eco1DayReport extends base {
     tableHeader() {
         return "<tr>" + this.HEADER.map(el => "<th>" + el + "</th>").join("") + "</tr>";
     }
-
-    //-----------------------------------------------------------------
-    //==============================================================================
-    // getDayReportSql(day, month, year) {
-    //     const startDay = this.formDayStr(day, month, year);
-    //     return `SELECT dt, w_38, q_39, T_41, T_42, P_19, P_18, T_10, P_36  FROM eco.hourseco1 where dt between '${startDay}' and DATE_ADD('${startDay}', INTERVAL 23 hour)`;
-    // }
-
     getDayReportSql(day, month, year) {
         const startDay = this.formDayStr(day, month, year);
         return `SELECT ${this.HEADER_LEGEND.join(', ')}
@@ -48,11 +40,9 @@ class Eco1DayReport extends base {
 
                 let query = self.con.query(sql, [], function (err, result, fields) {
                     if (err) {
-                        console.log(err.message);
+                        console.log("### getHoursList - " , err.message);
                         reject(err);
                     } else {
-                        // console.log("days query result = ", result);
-
                         resolve(result);
                     }
                 });

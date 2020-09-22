@@ -36,11 +36,9 @@ class FileLogger {
             ws.on('open',()=> {
                 while (!this.logs.isEmpty()) {
                     try{let msg = this.logs.dequeue();
-                        // console.log(`msg  to ${logFile} :  ${msg}`);
-                        
+                        // console.log(`msg  to ${logFile} :  ${msg}`);                        
                         ws.write(msg, 'utf8', (err) => {
                             if (err) { console.log(err.message);
-                                
                             }
                             if (this.logs.isEmpty()) {
                                 // console.log(`need to end stream here`);                                    
@@ -60,19 +58,6 @@ class FileLogger {
         } finally {
             ;
         }
-        // old version.....
-        // while (!this.logs.isEmpty()) {
-        // try{
-        //     fs.appendFile(logFile, this.logs.dequeue(), (err) => {
-        //         if (err) { console.log(err.message);
-        //         }
-        //     }) ;
-        // } catch (error){
-        //     console.log("fs error", error.message);
-        // }
-        
-    // }
-    //  return;
     };
     
     logIt(data) {

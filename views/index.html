@@ -30,22 +30,20 @@
          <p ><span class="aiLabel">Температура воды на сушки, °С   </span><span class="value" id="Eco3_T_3"> NaN </span></p>
 
          <button id="restart"></button>
-         <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+         <script src="../cdn/socket.io.js"></script>
+         <script src="../cdn/jquery-1.10.1.min.js"></script>
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script> -->
         <script src="javascripts/diagnostic-utils.js"></script>
         
         <script>
                         var socket = io.connect('http://95.158.47.15:3001');
-                        // var socket = io.connect();
                        var username = "testuser";
                         socket.emit('little_newbie', username);
                        socket.on('message', function(message) {
                             console.log('The server has a message for you: ' + message);
                         });
-                             
                          socket.on('newdata', function(message) {
                                  const dataM340 = JSON.parse(message.data);
-                                //console.table(dataM340);
                                 document.getElementById('W_38').innerText = dataM340[25];
                                 document.getElementById('T_41').innerText = dataM340[33];
                                 document.getElementById('T_42').innerText = dataM340[36];

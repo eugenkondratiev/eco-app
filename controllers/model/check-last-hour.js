@@ -69,14 +69,12 @@ checkLastHour(2).
         }
     })
     .then(() => {
-        // setTimeout(function () {
             checkLastHour(1).
                 then(resp => {
                     if (resp.missed) {
                         console.log('no last hour data - Eco1 ', resp.hour);
                     } else {
                         console.log('Eco1 OK ')
-                        // console.log(resp)
                     }
                 })
                 .catch(err => {
@@ -86,7 +84,6 @@ checkLastHour(2).
                 }).finally(()=>{
                     require('./connection-pool-eco')().end();
                 })
-        // }, 0)
     })
     .finally(() => {
         ;

@@ -25,12 +25,7 @@ $(function () {
     $("#Eco1ReqForm input[type=submit]").on('click', function (e) {
         e.preventDefault();
         const _eco = e.target.dataset.eco;
-        // console.log("####  input[type=submit]")
-        // console.log(e);
-        // console.log(e.target);
-        // console.log(_eco);
         getReport.call($("#Eco1ReqForm"), e, _eco);
-        // getReport.call($(this).parent().parent().parent(), e, _eco); // тут нужен родитель методами jquery
     });
 
 
@@ -64,7 +59,6 @@ $(function () {
         $("#Eco1ReqForm").find("input[name=day").val(dt[0]);
         $("#Eco1ReqForm").find("input[name=month").val(dt[1]);
         $("#Eco1ReqForm").find("input[name=year").val(dt[2]);
-        // alert($(this).val());
     });
 
 
@@ -73,15 +67,12 @@ $(function () {
         let dt;
         try {
             dt = $(this).find("input[id^=datepicker]").val().split(/\.|\//);
-            // console.log(dt);            
         } catch (error) {
             ;
         }
         const dd = _dd || dt[0];
         const mn = _mn || dt[1];
         const yy = _yy || dt[2];
-        // const [dd, mn, yy] = dt;
-        // console.log(`${dd} / ${mn} / ${yy}`);
         if (parseInt(yy) < 2018) {
             alert("Введите год от 2018 и выше");
             return

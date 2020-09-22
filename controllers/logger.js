@@ -64,19 +64,6 @@ class FileLogger {
         } finally {
             ;
         }
-        // old version.....
-        // while (!this.logs.isEmpty()) {
-        // try{
-        //     fs.appendFile(logFile, this.logs.dequeue(), (err) => {
-        //         if (err) { console.log(err.message);
-        //         }
-        //     }) ;
-        // } catch (error){
-        //     console.log("fs error", error.message);
-        // }
-        
-    // }
-    //  return;
     };
     
     logIt(data) {

@@ -2,8 +2,6 @@ const monthNames = ["Январь", "Февраль", "Март", "Апрель"
     "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"
 ];
 
-
-
 $(function () {
     function getEcoName(_eco) {
         return `Котельная ${parseInt(_eco)}. `;
@@ -84,26 +82,6 @@ $(function () {
     $(`#yearPicker2 option[value=${currentYear}]`).attr("selected", "selected");
     $(`#monthPicker2 option[value=${currentMonth}]`).attr("selected", "selected");
 
-    // $("#testbutton").click(function(){
-    //     $.get("http://95.158.47.15:3001/reports/month/test", function(data, status) {
-    //         try {
-    //             const message = JSON.parse(data);
-    //             $('h1').text(getEcoName(message.eco) + message.tytle);
-    //             if (message.err) {
-    //                 $("#errorLabel").text(message.err);
-    //                 $("#monthreport").html("");     
-    //             } else {
-    //                 $("#monthreport").html(message.data);
-    //                 $("#errorLabel").text('');
-    //             }
-
-    //         } catch (error) {
-    //             console.log(error.message);
-    //         }   
-    //     })  
-    // });
-
-
     $("#Eco1ReqForm input[type=submit]").on('click', function (e) {
         e.preventDefault();
         const _eco = e.target.dataset.eco;
@@ -112,7 +90,6 @@ $(function () {
 
     $("#Eco2ReqForm").on('submit', function (e) {
         getMonthReport.call($(this), e, 2);
-
     });
 
     $(".forms-container .buttons").click(function (e) {
@@ -132,56 +109,6 @@ $(function () {
         );
 
     });
-
-    // $("#curmonth").click(function(e){
-    //     const dt = new Date();
-    //     console.log("Cet current month"); 
-    //     getMonthReport.call($(this),e, 1, dt.getMonth() + 1, dt.getFullYear())
-    // });
-
-    // $("#lastmonth").click(function(e){
-    //     const dt = new Date();
-    //     const mn = dt.getMonth();
-    //     console.log("Cet current month"); 
-    //     getMonthReport.call($(this),e, 1, mn > 0 ? mn : 12, mn > 0 ? dt.getFullYear() : dt.getFullYear() - 1);
-
-    // });
-
-    // $("#lastmonth2").click(function(e){
-    //     const dt = new Date();
-    //     const mn = dt.getMonth();
-    //     console.log("Cet current month"); 
-    //     getMonthReport.call($(this),e, 2, mn > 0 ? mn : 12, mn > 0 ? dt.getFullYear() : dt.getFullYear() - 1);
-
-    // });
-    // $("#curmonth2").click(function(e){
-    //     const dt = new Date();
-    //     console.log("Cet current month"); 
-    //     getMonthReport.call($(this),e, 2, dt.getMonth() + 1, dt.getFullYear())
-    // });
-
-    // $("#testbutton2").click(function(){
-    //     console.log("testbutton 2");
-    //     $.get("http://95.158.47.15:3001/reports/month/1/", function(data, status) {
-    //         try {
-    //             console.log("status - " , status);
-    //             console.log("response" , data);
-
-    //             const message = JSON.parse(data);
-    //             $('h1').text(getEcoName(message.eco) + message.tytle);
-    //             if (message.err) {
-    //                 $("#errorLabel").text(message.err);
-    //                 $("#monthreport").html("");     
-    //             } else {
-    //                 $("#monthreport").html(message.data);
-    //                 $("#errorLabel").text('');
-    //             }
-
-    //         } catch (error) {
-    //             console.log(error.message);
-    //         }   
-    //     })
-    // });
 
     function getMonthReport(e, _eco = 1, _mn, _yy) {
         e.preventDefault();
