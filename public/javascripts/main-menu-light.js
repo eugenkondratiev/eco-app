@@ -1,5 +1,5 @@
 ﻿// const MotherOfReports = "http://127.0.0.1:3001/";
-const MotherOfReports = "http://95.158.47.15:3001/";
+const MotherOfReports = "http://95.158.44.52:3001/";
 
 const menuItemsList = [
     {

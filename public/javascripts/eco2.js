@@ -1,5 +1,5 @@
 $(function () {
-
+const HOST = "http://95.158.44.52:3001";
     function getAiRow(name, ai, prefix = "Eco1") {
         return $('<tr>', {
             append: $('<td>', {
@@ -20,7 +20,7 @@ $(function () {
         })
     };
 
-    const socket = io.connect('http://95.158.47.15:3001');
+    const socket = io.connect(HOST);
     const username = "testuser";
     socket.emit('little_newbie', username);
     socket.on('message', function (message) {

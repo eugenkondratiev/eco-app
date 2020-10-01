@@ -16,7 +16,7 @@
 <body>
     <div class="content">
         <div class="forms-container">
-            <form class="dateform" id="Eco1ReqForm" action="http://95.158.47.15:3001/reports/day/1/">
+            <form class="dateform" id="Eco1ReqForm" action="http://95.158.44.52:3001/reports/day/1/">
                 <!-- Котельная. Выбор дня -->
                 <fieldset>
                     <legend>Выбор отчетного дня:</legend>
@@ -32,11 +32,11 @@
                 <fieldset>
                     <legend>Получить отчет :</legend>
                     <div class="submit-wrap">
-                        <input class="eco-submit" type="submit" name="submit" data-eco = "1" value="Котельная1">
+                        <input class="eco-submit" type="submit" name="submit" data-eco="1" value="Котельная1">
                         <input class="eco-submit" type="submit" name="submit"
-                            action="http://95.158.47.15:3001/reports/day/2/" data-eco = "2" value="Котельная2">
+                            action="http://95.158.44.52:3001/reports/day/2/" data-eco="2" value="Котельная2">
                         <input class="eco-submit" type="submit" name="submit"
-                            action="http://95.158.47.15:3001/reports/day/3/" data-eco = "3" value="Котельная3">
+                            action="http://95.158.44.52:3001/reports/day/3/" data-eco="3" value="Котельная3">
                     </div>
                 </fieldset>
             </form>
@@ -65,10 +65,11 @@
 
     </div>
     <script src="../cdn/jquery-3.4.1.min.js"></script>
+
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/jqueryui/jquery-ui.min.js"></script> -->
     <script src="../cdn/jquery-ui.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/i18n/jquery-ui-i18n.min.js">
-        // <script src="../cdn/jquery-ui-i18n.min.js">
-    </script>
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/i18n/jquery-ui-i18n.min.js"></script> -->
+    <script src="../cdn/jquery-ui-i18n.min.js"></script>
     <script src="../cdn/socket.io.js"></script>
     <script src="../javascripts/day-reports.js"></script>
     <script src="../javascripts/main-menu-light.js"></script>

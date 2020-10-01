@@ -24,8 +24,6 @@ function readHourFormPlc(_hour) {
                 .then(data => {
                     const _answer = data.data;            
                     const floats = m340.getFloatsFromMOdbusCoils(_answer);
-                    // console.log("last hour  - ",curHour, floats.slice(0, 5));
-                    //get only what needed;
                     const sqlData = getMainParameters(floats);
                     res(sqlData);
                 })

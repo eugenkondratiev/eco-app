@@ -74,7 +74,6 @@ app.use(logger(logFormat, {
 }));
 // app.use(logger('common'));
 
-
 //app.use(session({secret: key}));
 
 app.use(express.static(path.join(__dirname, 'public')));

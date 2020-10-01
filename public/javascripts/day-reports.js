@@ -1,4 +1,5 @@
 $(function () {
+	const HOST = "http://95.158.44.52:3001";
 
     function getdata(request) {
         $.get(request, function (data, status, xhr) {
@@ -81,7 +82,7 @@ $(function () {
             alert("Введите верное число");
             return
         };
-        getdata(`http://95.158.47.15:3001/reports/day/${_eco}/?year=${yy}&month=${mn}&day=${dd}`);
+        getdata(`${HOST}/reports/day/${_eco}/?year=${yy}&month=${mn}&day=${dd}`);
 
     };
 });

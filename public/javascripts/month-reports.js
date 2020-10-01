@@ -3,6 +3,8 @@ const monthNames = ["Январь", "Февраль", "Март", "Апрель"
 ];
 
 $(function () {
+const HOST = = "http://95.158.44.52:3001";
+
     function getEcoName(_eco) {
         return `Котельная ${parseInt(_eco)}. `;
     };
@@ -124,7 +126,7 @@ $(function () {
                 alert("Введите верный месяц");
                 return
             };
-            getdata(`http://95.158.47.15:3001/reports/month/${_eco}/?year=${yy}&month=${mn}`);
+            getdata(`${HOST}/reports/month/${_eco}/?year=${yy}&month=${mn}`);
         } catch (error) {
             console.log(error);
         }
