@@ -3,7 +3,7 @@ const monthNames = ["Январь", "Февраль", "Март", "Апрель"
 ];
 
 $(function () {
-const HOST = = "http://95.158.44.52:3001";
+const HOST = "http://95.158.44.52:3001";
 
     function getEcoName(_eco) {
         return `Котельная ${parseInt(_eco)}. `;
@@ -79,10 +79,10 @@ const HOST = = "http://95.158.44.52:3001";
     $(`#yearPicker option[value=${currentYear}]`).attr("selected", "selected");
     $(`#monthPicker option[value=${currentMonth}]`).attr("selected", "selected");
 
-    $('#Eco2ReqForm > p').append(getMonthPicker("monthPicker2"));
-    $('#Eco2ReqForm > p').append(getYearPicker("yearPicker2"));
-    $(`#yearPicker2 option[value=${currentYear}]`).attr("selected", "selected");
-    $(`#monthPicker2 option[value=${currentMonth}]`).attr("selected", "selected");
+    // $('#Eco2ReqForm > p').append(getMonthPicker("monthPicker2"));
+    // $('#Eco2ReqForm > p').append(getYearPicker("yearPicker2"));
+    // $(`#yearPicker2 option[value=${currentYear}]`).attr("selected", "selected");
+    // $(`#monthPicker2 option[value=${currentMonth}]`).attr("selected", "selected");
 
     $("#Eco1ReqForm input[type=submit]").on('click', function (e) {
         e.preventDefault();
@@ -90,9 +90,9 @@ const HOST = = "http://95.158.44.52:3001";
         getMonthReport.call($("#Eco1ReqForm"), e, _eco);
     });
 
-    $("#Eco2ReqForm").on('submit', function (e) {
-        getMonthReport.call($(this), e, 2);
-    });
+    // $("#Eco2ReqForm").on('submit', function (e) {
+    //     getMonthReport.call($(this), e, 2);
+    // });
 
     $(".forms-container .buttons").click(function (e) {
         console.log(e.target.dataset.eco, e.target.dataset.today);
