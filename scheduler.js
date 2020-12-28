@@ -22,6 +22,11 @@ module.exports = function () {
    });
 
   const schGetPlayers = schedule.scheduleJob(ruleEveryDay, async function () {
+	try{
+		await dbQuery("SELECT 1");
+	} catch  (error) {
+		logTask("Db", ("  DbPing - error " + error.message + "\n"));
+	}
     try {
       const ans2 = await require('./controllers/update-last-day')();
       logTask(2, ("  day checked. result : " + ans2 + "\n"));
