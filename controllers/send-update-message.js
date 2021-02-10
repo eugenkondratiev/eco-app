@@ -1,12 +1,10 @@
 ;
-module.exports = function(_msg) {
+module.exports = function(_msg = { lastDayUpdate: true }) {
     for (ws in wsClients) {
         console.log(ws);
 
         try {
-            const msgToEco1 = JSON.stringify({
-                lastDayUpdate: true
-            });
+            const msgToEco1 = JSON.stringify(_msg);
             console.log(msgToEco1);
 
             wsClients[ws].send(msgToEco1);

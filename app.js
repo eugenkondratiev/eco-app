@@ -19,6 +19,7 @@ const eco3Router = require('./routes/route-eco3');
 const daysRouter = require('./routes/route-day-report');
 const monthRouter = require('./routes/route-month-report');
 const updateRouter = require('./routes/updates-route');
+const updateMonthRouter = require('./routes/update-month-route');
 
 const app = express();
 
@@ -74,6 +75,7 @@ app.use(logger(logFormat, {
 }));
 // app.use(logger('common'));
 
+
 //app.use(session({secret: key}));
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -89,6 +91,7 @@ app.use('/reports/day', daysRouter);
 app.use('/reports/month', monthRouter);
 app.use('/users', usersRouter);
 app.use('/update-last-day', updateRouter);
+app.use('/update-month', updateMonthRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
