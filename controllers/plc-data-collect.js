@@ -66,6 +66,12 @@ function dataCollect(server) {
                     const updateResult = await updateEco1(jsonMessage.lastDayEco1);
                     logTask(1, (' update result : ' + updateResult + " _ \n"));
                 }
+                if (jsonMessage.lastMonthEco1) {
+                    console.log('##### - reseived la  - ', jsonMessage)
+                    logTask(1, ` reseived last month update results \n ${jsonMessage.lastMonthEco1.data ? jsonMessage.lastMonthEco1.data.length : " false"} records \n`);
+                   
+                }
+
             } catch (error) {
                 console.log(error.message);
             }

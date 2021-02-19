@@ -8,7 +8,7 @@ module.exports = function (eco, msg) {
     minute: "2-digit",
     second: "2-digit"
   }) + ":" + now.getMilliseconds() + " Eco" + eco + " " + msg;
-  console.log(logRecord);
+  console.log(" -- logRecord - ", logRecord);
   require('fs').appendFile('./logs/update_day_eco' + eco + '.txt', logRecord, err => {
     if (err) console.error
   });
