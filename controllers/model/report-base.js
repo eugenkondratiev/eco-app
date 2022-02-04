@@ -68,6 +68,7 @@ class ReportBaseUtils {
         let queryDays = [];
         try {
             const queryFields = Object.values(result[0]);
+            console.log("  queryFields   - ", queryFields);
 
             queryFields.map((el, index) => {
                 const _el = el || 0;
@@ -76,6 +77,8 @@ class ReportBaseUtils {
         } catch (error) {
             console.log("dressUpDayRow   - ", error.message);
         } finally {
+
+            console.log(" - queryDays  - ", queryDays)
             return queryDays;
         }
 
@@ -106,11 +109,29 @@ class ReportBaseUtils {
     //================================================
     calcMonthData(allData) {
         const days = allData.length;
-        const sumRow = ["", 0, 0, 0, 0, 0, 0, 0, 0];
+        const sumRow = [""];
+        const self = this;
+        /**
+         * ###TODO  handle this hardcode later
+         */
+
+        // const sumRow = ["", 0, 0, 0, 0, 0, 0, 0, 0];
         allData.map(function (dayRow) {
             dayRow.forEach((e, i) => {
-                if (i >= 1 && i < 3) {
+                if (!sumRow[i]) {
+                    if (self.eco === 3 && (i === 4 || i === 7 || i === 5 || i === 8)) {
+                        sumRow[i] = parseFloat(e)
+                    } else {
+                        sumRow[i] = 0
+                    }
+                }
+                if (self.eco !== 3 && (i >= 1 && i < 3) ||
+                    self.eco === 3 && (i === 1)) {
                     sumRow[i] += parseFloat(e);
+                } else if (self.eco === 3 && (i === 4 || i === 7)) {
+                    if (parseFloat(e) < sumRow[i]) sumRow[i] = parseFloat(e);
+                } else if (self.eco === 3 && (i === 5 || i === 8)) {
+                    if (parseFloat(e) > sumRow[i]) sumRow[i] = parseFloat(e);
                 } else if (i === 0) {} else {
                     sumRow[i] += (parseFloat(e) / days);
                 };

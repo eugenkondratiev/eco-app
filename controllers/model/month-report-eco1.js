@@ -154,6 +154,10 @@ class Eco1MonthReport extends base {
             try {
                 _DaysArray.forEach(function(day, i, arr){
                     sequence = sequence.then(function(){
+                        // const _dayRow = self.getDayRow(day);
+                        // console.log("self.getDayRow(day)  - ", _dayRow);
+
+                        // return _dayRow;
                         return self.getDayRow(day);
                     })
                     .then(function(dayRow){
@@ -179,7 +183,7 @@ class Eco1MonthReport extends base {
             return new Promise(function(resolve, reject){
                 function performQuery(day) {
                     const sql = self.getDayReportSql(day );
-                // console.log(` getDayRow ${day} - ${sql}`);            
+                console.log(` getDayRow ${day} - ${sql}`);            
                     let query = self.con.query(sql,  [], function (err, result, fields) {
                         if (err) {
                             console.log("# getDayRow - " , err.message);
