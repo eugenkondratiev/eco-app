@@ -32,6 +32,7 @@ $(function () {
 
     const ECO1_MESSAGE_BORDER = 50;
 
+    
     $.getJSON('data/ais.json', data => {
 
         for (ai in data.eco1) {

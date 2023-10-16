@@ -101,6 +101,7 @@
         "Q_49" : {  "description" : "Расход воды по внутреннему контуру", "units": "м3/час", "num": 37 , "offset":72},
         "T_40" : {  "description" : "Температура окружающей среды", "units": "°C", "num": 38 , "offset":74},
         "P_17" : {  "description" : "Давление воды на город", "units": "МПа", "num": 39 , "offset":76},
+        "meo_90" : {  "description" : "Обратная связь. ИМ зоны 1", "units": "%", "num": 40 , "offset":92},
        
         "LastDayW38" : {  "description" : "Произведенное тепло за прошлые сутки", "units": "Гкал", "num": 49 , "offset":0, "index" : 0}
 

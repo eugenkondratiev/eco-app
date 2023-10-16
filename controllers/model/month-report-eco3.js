@@ -1,4 +1,4 @@
-const Eco1MonthReport = require('./Month-report-eco1');
+const Eco1MonthReport = require('./month-report-eco1');
 // const mysqlConnection = require('./connection');
 
 class Eco3MonthReport extends Eco1MonthReport {
